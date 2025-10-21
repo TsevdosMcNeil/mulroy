@@ -1,0 +1,94 @@
+services:
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:latest
+    depends_on:
+      - db
+    # Ports are managed by Caddy
+    # ports:
+    #  - "${WORDPRESS_SSL_PORT}:${WORDPRESS_SSL_PORT}"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+      WORDPRESS_SSL_PORT: ${WORDPRESS_SSL_PORT}
+      WP_HOME: ${WORDPRESS_HOME}:${WORDPRESS_SSL_PORT}
+      WP_SITEURL: ${WORDPRESS_HOME}:${WORDPRESS_SSL_PORT}
+    volumes:
+      - wp_data:/var/www/html
+      - ./wp-config.php:/var/www/html/wp-config.php:ro   # <— Custom wp-config.php
+      - ./logs:/var/www/html/logs
+      - ./backups:/var/www/html/backups
+      - ./wp-content/cache:/var/www/html/wp-content/cache
+      - ./wp-content/themes:/var/www/html/wp-content/themes
+      - ./wp-content/uploads:/var/www/html/wp-content/uploads
+      - ./wp-content/plugins:/var/www/html/wp-content/plugins
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    depends_on:
+      - db
+    # Ports are managed by Caddy
+    # ports:
+    #   - "${PHPMYADMIN_PORT}:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on:
+      - wordpress
+      - phpmyadmin
+    ports:
+      # - "80:80"
+      # - "443:443"
+      # - "${WORDPRESS_PORT}:${WORDPRESS_PORT}"   # optional HTTP listener for redirect
+      - "${WORDPRESS_SSL_PORT}:${WORDPRESS_SSL_PORT}"   # HTTPS on custom port
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./certs:/etc/caddy/certs:ro
+
+  wpcli:
+    image: wordpress:cli                # official image with WP-CLI
+    depends_on: [db, wordpress]
+    working_dir: /var/www/html
+    user: "www-data"                    # avoid root-owned files
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+      WORDPRESS_SSL_PORT: ${WORDPRESS_SSL_PORT}
+      WP_HOME: ${WORDPRESS_HOME}:${WORDPRESS_SSL_PORT}
+      WP_SITEURL: ${WORDPRESS_HOME}:${WORDPRESS_SSL_PORT}
+    volumes:
+      - wp_data:/var/www/html
+      - ./wp-config.php:/var/www/html/wp-config.php:ro   # <— Custom wp-config.php
+      - ./wp-content/themes:/var/www/html/wp-content/themes
+      - ./wp-content/plugins:/var/www/html/wp-content/plugins
+      - ./wp-content/uploads:/var/www/html/wp-content/uploads
+      - ./backups:/var/www/html/backups
+    entrypoint: ["wp"]                  # so `docker compose run wpcli <cmd>` runs `wp <cmd>`
+
+
+volumes:
+  db_data:
+  wp_data:
