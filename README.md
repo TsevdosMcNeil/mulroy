@@ -11,21 +11,6 @@ Infrastructure as code (Docker & Wordpress) project for Mulroy
 https://beta.mulroy.tm-studio.co.uk/
 
 
-## Download Database
-
-https://beta.mulroy.tm-studio.co.uk/latest.sql.gz
-
-
-## Download Plugins
-
-https://beta.mulroy.tm-studio.co.uk/plugins.tgz
-
-
-## Download Assets
-
-https://beta.mulroy.tm-studio.co.uk/uploads.tgz
-
-
 ## Production Server
 
 *Not yet available*
