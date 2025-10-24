@@ -16,7 +16,7 @@ Open Terminal and run:
 
 ```bash
 cd ~/Dockers
-mkdir sansaw && cd sansaw
+mkdir mulroy && cd mulroy
 ```
 
 ## Use a `.env` file for secrets and a  `docker-compose.yml` file for configuration
@@ -24,7 +24,7 @@ mkdir sansaw && cd sansaw
 1. Create `.env` in the same folder:
 
 ```env
-MYSQL_DATABASE=sansaw
+MYSQL_DATABASE=mulroy
 MYSQL_USER=<your-user>
 MYSQL_PASSWORD=<your-user-password>
 MYSQL_ROOT_PASSWORD=<root-password>
@@ -83,7 +83,7 @@ volumes:
 
 # 3) Start the stack
 
-From the `~/Dockers/sansaw` folder:
+From the `~/Dockers/mulroy` folder:
 
 ```bash
 docker compose pull
@@ -101,7 +101,7 @@ Run the query inside the DB container:
 docker compose exec db mysqladmin ping -uroot -p
 
 # Try logging in as the WP user
-docker compose exec db mysql -u<your-user> -p -e "SELECT 1;" sansaw
+docker compose exec db mysql -u<your-user> -p -e "SELECT 1;" mulroy
 ```
 
 ### If any of those commnads triggers an error
@@ -111,9 +111,9 @@ docker compose exec db mysql -u<your-user> -p -e "SELECT 1;" sansaw
 ```bash
 # Run these as root in the DB container:
 docker compose exec db mysql -uroot -p -e "
-CREATE DATABASE IF NOT EXISTS sansaw CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS mulroy CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER IF NOT EXISTS 'pablo'@'%' IDENTIFIED WITH caching_sha2_password BY 'REPLACE_ME';
-GRANT ALL PRIVILEGES ON sansaw.* TO 'pablo'@'%';
+GRANT ALL PRIVILEGES ON mulroy.* TO 'pablo'@'%';
 FLUSH PRIVILEGES;"
 ```
 
@@ -129,7 +129,7 @@ FLUSH PRIVILEGES;"
 
 
 
-## Use a pretty local domain like `sansaw.localhost` instead of `localhost:8080`
+## Use a pretty local domain like `mulroy.localhost` instead of `localhost:8080`
 
 Map port 80 and set the site URL in `wp-config.php` via the image’s `WORDPRESS_CONFIG_EXTRA`.
 
@@ -141,15 +141,15 @@ wordpress:
   depends_on:
     - db
   ports:
-    - "80:80"                   # <— now you can use http://sansaw.localhost
+    - "80:80"                   # <— now you can use http://mulroy.localhost
   environment:
     WORDPRESS_DB_HOST: db:3306
     WORDPRESS_DB_USER: ${MYSQL_USER}
     WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
     WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
     WORDPRESS_CONFIG_EXTRA: |
-      define('WP_HOME', 'http://sansaw.localhost:${WORDPRESS_PORT}');
-      define('WP_SITEURL', 'http://sansaw.localhost:${WORDPRESS_PORT}');
+      define('WP_HOME', 'http://mulroy.localhost:${WORDPRESS_PORT}');
+      define('WP_SITEURL', 'http://mulroy.localhost:${WORDPRESS_PORT}');
   volumes:
     - wp_data:/var/www/html
   restart: unless-stopped
@@ -161,7 +161,7 @@ Then:
 docker compose up -d --force-recreate
 ```
 
-Visit: `http://sansaw.localhost:8080`
+Visit: `http://mulroy.localhost:8080`
 
 > If port 8089 is busy, either free it (`sudo lsof -i :8080`) or keep your old port and use Option 1.
 
@@ -169,8 +169,8 @@ Visit: `http://sansaw.localhost:8080`
 
 # 4) Finish WordPress setup
 
-* Open **[http://sansaw.localhost:8080](http://sansaw.localhost:8080)** → choose language, site title, admin user/password.
-* Optional DB UI: **[http://sansaw.localhost:8081](http://sansaw.localhost:8081)** (phpMyAdmin).
+* Open **[http://mulroy.localhost:8080](http://mulroy.localhost:8080)** → choose language, site title, admin user/password.
+* Optional DB UI: **[http://mulroy.localhost:8081](http://mulroy.localhost:8081)** (phpMyAdmin).
 
   * Server: `db`
   * User: `root`
@@ -211,17 +211,17 @@ Terminal on your Mac:
 brew install mkcert nss     # nss helps Firefox trust the cert too
 mkcert -install
 
-cd ~/Dockers/sansaw
+cd ~/Dockers/mulroy
 mkdir -p ./certs
-mkcert -cert-file ./certs/sansaw.localhost.pem \
-       -key-file  ./certs/sansaw.localhost-key.pem \
-       sansaw.localhost pma.sansaw.localhost
+mkcert -cert-file ./certs/mulroy.localhost.pem \
+       -key-file  ./certs/mulroy.localhost-key.pem \
+       mulroy.localhost pma.mulroy.localhost
 
 Created a new certificate valid for the following names 📜
- - "sansaw.localhost"
- - "pma.sansaw.localhost"
+ - "mulroy.localhost"
+ - "pma.mulroy.localhost"
 
-The certificate is at "./certs/sansaw.localhost.pem" and the key at "./certs/sansaw.localhost-key.pem" ✅
+The certificate is at "./certs/mulroy.localhost.pem" and the key at "./certs/mulroy.localhost-key.pem" ✅
 
 It will expire on 15 November 2027 🗓
 ```
@@ -261,8 +261,8 @@ Change your `WORDPRESS_CONFIG_EXTRA` so WordPress knows it lives at **https**:
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
       WORDPRESS_CONFIG_EXTRA: |
-        define('WP_HOME', 'https://sansaw.localhost:${WORDPRESS_SSL_PORT}');
-        define('WP_SITEURL', 'https://sansaw.localhost:${WORDPRESS_SSL_PORT}');
+        define('WP_HOME', 'https://mulroy.localhost:${WORDPRESS_SSL_PORT}');
+        define('WP_SITEURL', 'https://mulroy.localhost:${WORDPRESS_SSL_PORT}');
         define('FORCE_SSL_ADMIN', true);
 ```
 
@@ -271,27 +271,27 @@ Change your `WORDPRESS_CONFIG_EXTRA` so WordPress knows it lives at **https**:
 
 ```caddy
 # Optional: HTTP on 8080 → redirect to HTTPS:8444
-# http://sansaw.localhost:8080 {
-#  redir https://sansaw.localhost:8444{uri}
+# http://mulroy.localhost:8080 {
+#  redir https://mulroy.localhost:8444{uri}
 # }
 
 # Main site over HTTPS on 8444 using your mkcert files
-https://sansaw.localhost:8444 {
-  tls /etc/caddy/certs/sansaw.localhost.pem /etc/caddy/certs/sansaw.localhost-key.pem
+https://mulroy.localhost:8444 {
+  tls /etc/caddy/certs/mulroy.localhost.pem /etc/caddy/certs/mulroy.localhost-key.pem
   encode zstd gzip
   # Everything else → WordPress
   reverse_proxy wordpress:80
 }
 
-https://pma.sansaw.localhost:8444 {
-  tls /etc/caddy/certs/sansaw.localhost.pem /etc/caddy/certs/sansaw.localhost-key.pem
+https://pma.mulroy.localhost:8444 {
+  tls /etc/caddy/certs/mulroy.localhost.pem /etc/caddy/certs/mulroy.localhost-key.pem
   encode zstd gzip
   # Everything else → phpMyAdmin
   reverse_proxy phpmyadmin:80
 }
 ```
 
-Now phpMyAdmin will be at `https://pma.sansaw.localhost:8444`.
+Now phpMyAdmin will be at `https://pma.mulroy.localhost:8444`.
 
 ## 4 Clean restart to free the port
 
@@ -310,7 +310,7 @@ lsof -iTCP:8444 -sTCP:LISTEN || true  # if some local app grabbed it
 docker compose up -d --force-recreate
 ```
 
-Visit: **[https://sansaw.localhost:8444](https://sansaw.localhost:8444)** ✅
+Visit: **[https://mulroy.localhost:8444](https://mulroy.localhost:8444)** ✅
 
 # 8) Further Wordpress configuration
 
@@ -410,8 +410,8 @@ services:
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
       # Optional: helps some commands that rely on site URL
-      WP_HOME: https://sansaw.localhost:${WORDPRESS_SSL_PORT}
-      WP_SITEURL: https://sansaw.localhost:${WORDPRESS_SSL_PORT}
+      WP_HOME: https://mulroy.localhost:${WORDPRESS_SSL_PORT}
+      WP_SITEURL: https://mulroy.localhost:${WORDPRESS_SSL_PORT}
     volumes:
       - wp_data:/var/www/html
       - ./wp-content/themes/codigo:/var/www/html/wp-content/themes/codigo
@@ -439,8 +439,8 @@ docker compose cp wordpress:/var/www/html/wp-content/db-backup.sql ./db-backup.s
 
 # Search-replace (dry run first!)
 docker compose run --rm wpcli search-replace \
-  'http://sansaw.localhost:8080' \
-  'https://sansaw.localhost:8444' \
+  'http://mulroy.localhost:8080' \
+  'https://mulroy.localhost:8444' \
   --all-tables --precise --dry-run
 ```
 
@@ -462,7 +462,7 @@ Add a custom `.ini` file into `/usr/local/etc/php/conf.d/`:
 First create the file in your root:
 
 ```bash
-cd ~/Dockers/sansaw
+cd ~/Dockers/mulroy
 echo "upload_max_filesize = 64M
 post_max_size = 64M
 memory_limit = 256M" > uploads.ini
@@ -541,7 +541,7 @@ docker compose up -d
 ## Suggested repo layout
 
 ```
-sansaw/
+mulroy/
   docker-compose.yml
   compose.staging.yml          # optional override for staging
   .env.example                 # sample vars, no secrets
@@ -670,10 +670,10 @@ docker compose exec wordpress php -i | grep upload_max_filesize
 docker compose exec wordpress php -i | grep post_max_size
 
 # Quick reload after big changes
-cd ~/Dockers/sansaw
+cd ~/Dockers/mulroy
 docker compose up -d --force-recreate
 
-cd ~/Dockers/sansaw/wp-content/themes/seadesign
+cd ~/Dockers/mulroy/wp-content/themes/seadesign
 npm run dist ## OR npm run watch
 
 ```

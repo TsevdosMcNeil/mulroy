@@ -15,13 +15,19 @@ npm run build
 cd ~/Dockers/mulroy
 docker compose up -d --force-recreate
 
-## [1.1.1] - 2023-10-01
+## [0.0.3] - 2023-10-21
+
+### Updated
+
+- PATHS AND URLS in .md files
+
+## [0.0.2] - 2023-10-20
 
 ### Added
 
 - wp-config.php to Wordpress root and WP-CLI
 
-## [1.1.0] - 2023-10-01
+## [0.0.1] - 2023-10-19
 
 ### Added
 

@@ -1,0 +1,31 @@
+# docker-compose.override.yml
+services:
+  wordpress:
+    # Stop appending the port to avoid 301 redirect errors
+    environment:
+      WP_HOME: ${WORDPRESS_HOME}
+      WP_SITEURL: ${WORDPRESS_HOME}
+    ports:
+      - "127.0.0.1:${WORDPRESS_SSL_PORT}:80"   # WP behind NGINX
+
+  phpmyadmin:
+    # optional: expose only to NGINX on another local port
+    ports:
+      - "127.0.0.1:${PHPMYADMIN_PORT}:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      # only needed if you plan to proxy PMA at a subpath (/pma). For subdomain you can omit.
+      PMA_ABSOLUTE_URI: https://beta.mulroy.tm-studio.co.uk/pma/
+
+  # Remove/disable Caddy in staging (NGINX handles TLS)
+  caddy:
+    deploy:
+      replicas: 0
+
+  # Stop appending the port to avoid 301 redirect errors
+  wpcli:
+    environment:
+      WP_HOME: ${WORDPRESS_HOME}
+      WP_SITEURL: ${WORDPRESS_HOME}

@@ -1,7 +1,7 @@
 # Codigo Wordpress Site for Mulroy
 Infrastructure as code (Docker & Wordpress) project for Mulroy
 
-[![version](https://img.shields.io/badge/version-0.0.1-red.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-0.0.2-red.svg)](https://semver.org)
 
 
 
@@ -9,21 +9,6 @@ Infrastructure as code (Docker & Wordpress) project for Mulroy
 ## Staging Server
 
 https://beta.mulroy.tm-studio.co.uk/
-
-
-## Download Database
-
-https://beta.mulroy.tm-studio.co.uk/latest.sql.gz
-
-
-## Download Plugins
-
-https://beta.mulroy.tm-studio.co.uk/plugins.tgz
-
-
-## Download Assets
-
-https://beta.mulroy.tm-studio.co.uk/uploads.tgz
 
 
 ## Production Server
@@ -35,7 +20,7 @@ https://beta.mulroy.tm-studio.co.uk/uploads.tgz
 
 ### Docker Installation
 
-[DOCKER.md](https://github.com/pablorica/mulroy/blob/main/DOCKER.md)
+[DOCKER.md](https://github.com/TsevdosMcNeil/mulroy/blob/main/DOCKER.md)
 
 
 ## Required Plugins
@@ -58,8 +43,8 @@ Copyright 2025 Mulroy Wordpress Theme released under the [MIT](https://github.co
 
 ## Versioning
 
-We use [SemVer](https://semver.org/) for versioning. For the versions available, [list of tags can be found in this page](https://github.com/pablorica/mulroy/tags).
+We use [SemVer](https://semver.org/) for versioning. For the versions available, [list of tags can be found in this page](https://github.com/TsevdosMcNeil/mulroy/tags).
 
 ### Changelog
 
-[CHANGELOG.md](https://github.com/pablorica/mulroy/blob/main/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/TsevdosMcNeil/mulroy/blob/main/CHANGELOG.md)
