@@ -16,7 +16,7 @@ Open Terminal and run:
 
 ```bash
 cd ~/Dockers
-mkdir mulroy && cd mulroy
+mkdir consolidare && cd consolidare
 ```
 
 ## Use a `.env` file for secrets and a  `docker-compose.yml` file for configuration
@@ -24,12 +24,12 @@ mkdir mulroy && cd mulroy
 1. Create `.env` in the same folder:
 
 ```env
-MYSQL_DATABASE=mulroy
+MYSQL_DATABASE=consolidare
 MYSQL_USER=<your-user>
 MYSQL_PASSWORD=<your-user-password>
 MYSQL_ROOT_PASSWORD=<root-password>
 WORDPRESS_PORT=8082
-WORDPRESS_SSL_PORT=8444
+WORDPRESS_SSL_PORT=8448
 PHPMYADMIN_PORT=8083
 ```
 
@@ -83,7 +83,7 @@ volumes:
 
 # 3) Start the stack
 
-From the `~/Dockers/mulroy` folder:
+From the `~/Dockers/consolidare` folder:
 
 ```bash
 docker compose pull
@@ -101,7 +101,7 @@ Run the query inside the DB container:
 docker compose exec db mysqladmin ping -uroot -p
 
 # Try logging in as the WP user
-docker compose exec db mysql -u<your-user> -p -e "SELECT 1;" mulroy
+docker compose exec db mysql -u<your-user> -p -e "SELECT 1;" consolidare
 ```
 
 ### If any of those commnads triggers an error
@@ -111,9 +111,9 @@ docker compose exec db mysql -u<your-user> -p -e "SELECT 1;" mulroy
 ```bash
 # Run these as root in the DB container:
 docker compose exec db mysql -uroot -p -e "
-CREATE DATABASE IF NOT EXISTS mulroy CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS consolidare CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER IF NOT EXISTS 'pablo'@'%' IDENTIFIED WITH caching_sha2_password BY 'REPLACE_ME';
-GRANT ALL PRIVILEGES ON mulroy.* TO 'pablo'@'%';
+GRANT ALL PRIVILEGES ON consolidare.* TO 'pablo'@'%';
 FLUSH PRIVILEGES;"
 ```
 
@@ -129,7 +129,7 @@ FLUSH PRIVILEGES;"
 
 
 
-## Use a pretty local domain like `mulroy.localhost` instead of `localhost:8080`
+## Use a pretty local domain like `consolidare.localhost` instead of `localhost:8080`
 
 Map port 80 and set the site URL in `wp-config.php` via the image’s `WORDPRESS_CONFIG_EXTRA`.
 
@@ -141,15 +141,15 @@ wordpress:
   depends_on:
     - db
   ports:
-    - "80:80"                   # <— now you can use http://mulroy.localhost
+    - "80:80"                   # <— now you can use http://consolidare.localhost
   environment:
     WORDPRESS_DB_HOST: db:3306
     WORDPRESS_DB_USER: ${MYSQL_USER}
     WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
     WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
     WORDPRESS_CONFIG_EXTRA: |
-      define('WP_HOME', 'http://mulroy.localhost:${WORDPRESS_PORT}');
-      define('WP_SITEURL', 'http://mulroy.localhost:${WORDPRESS_PORT}');
+      define('WP_HOME', 'http://consolidare.localhost:${WORDPRESS_PORT}');
+      define('WP_SITEURL', 'http://consolidare.localhost:${WORDPRESS_PORT}');
   volumes:
     - wp_data:/var/www/html
   restart: unless-stopped
@@ -161,7 +161,7 @@ Then:
 docker compose up -d --force-recreate
 ```
 
-Visit: `http://mulroy.localhost:8080`
+Visit: `http://consolidare.localhost:8080`
 
 > If port 8089 is busy, either free it (`sudo lsof -i :8080`) or keep your old port and use Option 1.
 
@@ -169,8 +169,8 @@ Visit: `http://mulroy.localhost:8080`
 
 # 4) Finish WordPress setup
 
-* Open **[http://mulroy.localhost:8080](http://mulroy.localhost:8080)** → choose language, site title, admin user/password.
-* Optional DB UI: **[http://mulroy.localhost:8081](http://mulroy.localhost:8081)** (phpMyAdmin).
+* Open **[http://consolidare.localhost:8080](http://consolidare.localhost:8080)** → choose language, site title, admin user/password.
+* Optional DB UI: **[http://consolidare.localhost:8081](http://consolidare.localhost:8081)** (phpMyAdmin).
 
   * Server: `db`
   * User: `root`
@@ -211,17 +211,17 @@ Terminal on your Mac:
 brew install mkcert nss     # nss helps Firefox trust the cert too
 mkcert -install
 
-cd ~/Dockers/mulroy
+cd ~/Dockers/consolidare
 mkdir -p ./certs
-mkcert -cert-file ./certs/mulroy.localhost.pem \
-       -key-file  ./certs/mulroy.localhost-key.pem \
-       mulroy.localhost pma.mulroy.localhost
+mkcert -cert-file ./certs/consolidare.localhost.pem \
+       -key-file  ./certs/consolidare.localhost-key.pem \
+       consolidare.localhost pma.consolidare.localhost
 
 Created a new certificate valid for the following names 📜
- - "mulroy.localhost"
- - "pma.mulroy.localhost"
+ - "consolidare.localhost"
+ - "pma.consolidare.localhost"
 
-The certificate is at "./certs/mulroy.localhost.pem" and the key at "./certs/mulroy.localhost-key.pem" ✅
+The certificate is at "./certs/consolidare.localhost.pem" and the key at "./certs/consolidare.localhost-key.pem" ✅
 
 It will expire on 15 November 2027 🗓
 ```
@@ -261,8 +261,8 @@ Change your `WORDPRESS_CONFIG_EXTRA` so WordPress knows it lives at **https**:
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
       WORDPRESS_CONFIG_EXTRA: |
-        define('WP_HOME', 'https://mulroy.localhost:${WORDPRESS_SSL_PORT}');
-        define('WP_SITEURL', 'https://mulroy.localhost:${WORDPRESS_SSL_PORT}');
+        define('WP_HOME', 'https://consolidare.localhost:${WORDPRESS_SSL_PORT}');
+        define('WP_SITEURL', 'https://consolidare.localhost:${WORDPRESS_SSL_PORT}');
         define('FORCE_SSL_ADMIN', true);
 ```
 
@@ -270,28 +270,28 @@ Change your `WORDPRESS_CONFIG_EXTRA` so WordPress knows it lives at **https**:
 ## 3 Create a `Caddyfile` (next to your compose file)
 
 ```caddy
-# Optional: HTTP on 8080 → redirect to HTTPS:8444
-# http://mulroy.localhost:8080 {
-#  redir https://mulroy.localhost:8444{uri}
+# Optional: HTTP on 8080 → redirect to HTTPS:8448
+# http://consolidare.localhost:8080 {
+#  redir https://consolidare.localhost:8448{uri}
 # }
 
-# Main site over HTTPS on 8444 using your mkcert files
-https://mulroy.localhost:8444 {
-  tls /etc/caddy/certs/mulroy.localhost.pem /etc/caddy/certs/mulroy.localhost-key.pem
+# Main site over HTTPS on 8448 using your mkcert files
+https://consolidare.localhost:8448 {
+  tls /etc/caddy/certs/consolidare.localhost.pem /etc/caddy/certs/consolidare.localhost-key.pem
   encode zstd gzip
   # Everything else → WordPress
   reverse_proxy wordpress:80
 }
 
-https://pma.mulroy.localhost:8444 {
-  tls /etc/caddy/certs/mulroy.localhost.pem /etc/caddy/certs/mulroy.localhost-key.pem
+https://pma.consolidare.localhost:8448 {
+  tls /etc/caddy/certs/consolidare.localhost.pem /etc/caddy/certs/consolidare.localhost-key.pem
   encode zstd gzip
   # Everything else → phpMyAdmin
   reverse_proxy phpmyadmin:80
 }
 ```
 
-Now phpMyAdmin will be at `https://pma.mulroy.localhost:8444`.
+Now phpMyAdmin will be at `https://pma.consolidare.localhost:8448`.
 
 ## 4 Clean restart to free the port
 
@@ -299,9 +299,9 @@ Now phpMyAdmin will be at `https://pma.mulroy.localhost:8444`.
 # bring the stack down
 docker compose down
 
-# see who still holds 8444 (container or app)
-docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Ports}}' | grep 8444 || true
-lsof -iTCP:8444 -sTCP:LISTEN || true  # if some local app grabbed it
+# see who still holds 8448 (container or app)
+docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Ports}}' | grep 8448 || true
+lsof -iTCP:8448 -sTCP:LISTEN || true  # if some local app grabbed it
 
 # if you see a container, stop it:
 # docker stop <ID-or-NAME>
@@ -310,7 +310,7 @@ lsof -iTCP:8444 -sTCP:LISTEN || true  # if some local app grabbed it
 docker compose up -d --force-recreate
 ```
 
-Visit: **[https://mulroy.localhost:8444](https://mulroy.localhost:8444)** ✅
+Visit: **[https://consolidare.localhost:8448](https://consolidare.localhost:8448)** ✅
 
 # 8) Further Wordpress configuration
 
@@ -410,8 +410,8 @@ services:
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
       # Optional: helps some commands that rely on site URL
-      WP_HOME: https://mulroy.localhost:${WORDPRESS_SSL_PORT}
-      WP_SITEURL: https://mulroy.localhost:${WORDPRESS_SSL_PORT}
+      WP_HOME: https://consolidare.localhost:${WORDPRESS_SSL_PORT}
+      WP_SITEURL: https://consolidare.localhost:${WORDPRESS_SSL_PORT}
     volumes:
       - wp_data:/var/www/html
       - ./wp-content/themes/codigo:/var/www/html/wp-content/themes/codigo
@@ -439,8 +439,8 @@ docker compose cp wordpress:/var/www/html/wp-content/db-backup.sql ./db-backup.s
 
 # Search-replace (dry run first!)
 docker compose run --rm wpcli search-replace \
-  'http://mulroy.localhost:8080' \
-  'https://mulroy.localhost:8444' \
+  'http://consolidare.localhost:8080' \
+  'https://consolidare.localhost:8448' \
   --all-tables --precise --dry-run
 ```
 
@@ -462,7 +462,7 @@ Add a custom `.ini` file into `/usr/local/etc/php/conf.d/`:
 First create the file in your root:
 
 ```bash
-cd ~/Dockers/mulroy
+cd ~/Dockers/consolidare
 echo "upload_max_filesize = 64M
 post_max_size = 64M
 memory_limit = 256M" > uploads.ini
@@ -541,7 +541,7 @@ docker compose up -d
 ## Suggested repo layout
 
 ```
-mulroy/
+consolidare/
   docker-compose.yml
   compose.staging.yml          # optional override for staging
   .env.example                 # sample vars, no secrets
@@ -670,10 +670,10 @@ docker compose exec wordpress php -i | grep upload_max_filesize
 docker compose exec wordpress php -i | grep post_max_size
 
 # Quick reload after big changes
-cd ~/Dockers/mulroy
+cd ~/Dockers/consolidare
 docker compose up -d --force-recreate
 
-cd ~/Dockers/mulroy/wp-content/themes/seadesign
+cd ~/Dockers/consolidare/wp-content/themes/seadesign
 npm run dist ## OR npm run watch
 
 ```
