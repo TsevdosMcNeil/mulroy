@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_67bb610c29884",
-            "label": "Design Type",
+            "label": "Project Name",
             "name": "design_type",
             "aria-label": "",
             "type": "text",
@@ -42,5 +42,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1740333373
+    "modified": 1761730810
 }

@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+	
   // Check if we're on home page
   const homeContainer = document.querySelector('[data-barba-namespace="home"]');
   if (!homeContainer) return;
@@ -12,8 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.querySelector(".hero-overlay");
   const pageTitles = document.querySelectorAll(".page-title svg");
   const pageDesc = document.querySelector(".page-desc");
+	const letters = document.querySelectorAll(".hero-letter");
 	const customCursor = document.querySelector(".custom-cursor");
   // Initial state
+  
+	letters.forEach((el)=>{
+		el.style.color='black'
+	})
   gsap.set(overlay, {
     background: "#00a7e1",
   });
@@ -75,6 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         fill: "#FFFFFF",
         duration: 0.8,
+		  onStart:()=>{
+			  letters.forEach((el)=>{
+		el.style.color='white'
+	})
+		  }
       },
       "<"
     ); // Start at same time as previous

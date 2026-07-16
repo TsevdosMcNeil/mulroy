@@ -7,7 +7,7 @@ $heading = get_sub_field( 'heading' );
 <?php
 if ( is_front_page() || is_home() ) {
  ?>
-          <section class="hero-section-height scroll-section site-container border-none" id='top'>
+          <section class="hero-section-height scroll-section site-container border-none home-page" id='top'>
 			  <div class="custom-cursor" id="custom-cursor"></div>
             <div
               class="hero-background"
@@ -132,7 +132,7 @@ if ( is_front_page() || is_home() ) {
             ></div>
             <div class="hero-overlay"></div>
             <div class="atrium-hero-content site-container">
-              <h3 class="fs-lg"><?php echo $heading; ?></h3>
+              <h3 class="fs-lg uppercase"><?php echo $heading; ?></h3>
               <h2 class="fs-3xl lg:max-w-[35vw] mt-4">
                 <?php the_title(); ?>
               </h2>

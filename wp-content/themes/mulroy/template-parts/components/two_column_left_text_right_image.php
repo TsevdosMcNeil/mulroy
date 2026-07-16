@@ -15,7 +15,9 @@ $image = get_sub_field( 'image' );
                 <div class="w-full image-container">
 				  <img src='<?php echo $image; ?>' class='portrait-img'/>
 				  </div>
+				  <?php if($heading): ?>
                 <span class="post-caption"><?php echo $heading; ?></span>
+				  <?php endif; ?>
               </div>
             </div>
           </section>

@@ -103,7 +103,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_67bff97f7f330",
-                                    "label": "Heading",
+                                    "label": "Project",
                                     "name": "heading",
                                     "aria-label": "",
                                     "type": "post_object",
@@ -127,28 +127,6 @@
                                     "bidirectional": 0,
                                     "ui": 1,
                                     "bidirectional_target": [],
-                                    "parent_repeater": "field_67bff97f5f11e"
-                                },
-                                {
-                                    "key": "field_68bec3fc85e38",
-                                    "label": "Design Type",
-                                    "name": "design_type",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "MOUNT VIEW ROAD",
-                                    "maxlength": "",
-                                    "allow_in_bindings": 0,
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
                                     "parent_repeater": "field_67bff97f5f11e"
                                 },
                                 {
@@ -290,48 +268,6 @@
                             "new_lines": ""
                         },
                         {
-                            "key": "field_67c000d31e6f3",
-                            "label": "Design Name",
-                            "name": "design_name",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_67c000f11e6f4",
-                            "label": "Design Title",
-                            "name": "design_title",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
                             "key": "field_67c000ff1e6f5",
                             "label": "Design Image",
                             "name": "design_image",
@@ -362,7 +298,7 @@
                             "label": "Design Post Url",
                             "name": "design_post_url",
                             "aria-label": "",
-                            "type": "page_link",
+                            "type": "post_object",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -378,10 +314,13 @@
                                 "publish"
                             ],
                             "taxonomy": "",
-                            "allow_archives": 1,
+                            "return_format": "object",
                             "multiple": 0,
                             "allow_null": 0,
-                            "allow_in_bindings": 0
+                            "allow_in_bindings": 1,
+                            "bidirectional": 0,
+                            "ui": 1,
+                            "bidirectional_target": []
                         }
                     ],
                     "min": "",
@@ -393,48 +332,6 @@
                     "label": "Two Columns Big Image Right Small Image Left",
                     "display": "block",
                     "sub_fields": [
-                        {
-                            "key": "field_67c001f894d65",
-                            "label": "Left Side Design Name",
-                            "name": "left_side_design_name",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_67c0020a94d66",
-                            "label": "Left Side Design Title",
-                            "name": "left_side_design_title",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
                         {
                             "key": "field_67c0022894d67",
                             "label": "Left Side Design Image",
@@ -466,7 +363,7 @@
                             "label": "Left Side Design Post Url",
                             "name": "left_side_design_post_url",
                             "aria-label": "",
-                            "type": "page_link",
+                            "type": "post_object",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -482,52 +379,13 @@
                                 "publish"
                             ],
                             "taxonomy": "",
-                            "allow_archives": 1,
+                            "return_format": "object",
                             "multiple": 0,
                             "allow_null": 0,
-                            "allow_in_bindings": 0
-                        },
-                        {
-                            "key": "field_67c002ca948ac",
-                            "label": "Right Side Design Title",
-                            "name": "right_side_design_title",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_67c0029f948ab",
-                            "label": "Right Side Design Name",
-                            "name": "right_side_design_name",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
+                            "allow_in_bindings": 1,
+                            "bidirectional": 0,
+                            "ui": 1,
+                            "bidirectional_target": []
                         },
                         {
                             "key": "field_67c002e2948ad",
@@ -560,7 +418,7 @@
                             "label": "Right Side Design Post Url",
                             "name": "right_side_design_post_url",
                             "aria-label": "",
-                            "type": "page_link",
+                            "type": "post_object",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -576,10 +434,13 @@
                                 "publish"
                             ],
                             "taxonomy": "",
-                            "allow_archives": 1,
+                            "return_format": "object",
                             "multiple": 0,
                             "allow_null": 0,
-                            "allow_in_bindings": 0
+                            "allow_in_bindings": 1,
+                            "bidirectional": 0,
+                            "ui": 1,
+                            "bidirectional_target": []
                         }
                     ],
                     "min": "",
@@ -591,48 +452,6 @@
                     "label": "Two Columns Small Image top Left Big Image Right Bottom",
                     "display": "block",
                     "sub_fields": [
-                        {
-                            "key": "field_67c003e1bd534",
-                            "label": "Left Side Design Name",
-                            "name": "left_side_design_name",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_67c003e1bd535",
-                            "label": "Left Side Design Title",
-                            "name": "left_side_design_title",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
                         {
                             "key": "field_67c003e1bd536",
                             "label": "Left Side Design Image",
@@ -664,7 +483,7 @@
                             "label": "Left Side Design Post Url",
                             "name": "left_side_design_post_url",
                             "aria-label": "",
-                            "type": "page_link",
+                            "type": "post_object",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -680,52 +499,13 @@
                                 "publish"
                             ],
                             "taxonomy": "",
-                            "allow_archives": 1,
+                            "return_format": "object",
                             "multiple": 0,
                             "allow_null": 0,
-                            "allow_in_bindings": 0
-                        },
-                        {
-                            "key": "field_67c003e1bd538",
-                            "label": "Right Side Design Title",
-                            "name": "right_side_design_title",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_67c003e1bd539",
-                            "label": "Right Side Design Name",
-                            "name": "right_side_design_name",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
+                            "allow_in_bindings": 1,
+                            "bidirectional": 0,
+                            "ui": 1,
+                            "bidirectional_target": []
                         },
                         {
                             "key": "field_67c003e1bd53a",
@@ -758,7 +538,7 @@
                             "label": "Right Side Design Post Url",
                             "name": "right_side_design_post_url",
                             "aria-label": "",
-                            "type": "page_link",
+                            "type": "post_object",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -774,10 +554,13 @@
                                 "publish"
                             ],
                             "taxonomy": "",
-                            "allow_archives": 1,
+                            "return_format": "object",
                             "multiple": 0,
                             "allow_null": 0,
-                            "allow_in_bindings": 0
+                            "allow_in_bindings": 1,
+                            "bidirectional": 0,
+                            "ui": 1,
+                            "bidirectional_target": []
                         }
                     ],
                     "min": "",
@@ -789,48 +572,6 @@
                     "label": "Two Columns Small image Left Top Big Landscap image Bottom Center",
                     "display": "block",
                     "sub_fields": [
-                        {
-                            "key": "field_67c0043558037",
-                            "label": "Left Side Design Name",
-                            "name": "left_side_design_name",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_67c0043558038",
-                            "label": "Left Side Design Title",
-                            "name": "left_side_design_title",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
                         {
                             "key": "field_67c0043558039",
                             "label": "Left Side Design Image",
@@ -862,7 +603,7 @@
                             "label": "Left Side Design Post Url",
                             "name": "left_side_design_post_url",
                             "aria-label": "",
-                            "type": "page_link",
+                            "type": "post_object",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -878,52 +619,13 @@
                                 "publish"
                             ],
                             "taxonomy": "",
-                            "allow_archives": 1,
+                            "return_format": "object",
                             "multiple": 0,
                             "allow_null": 0,
-                            "allow_in_bindings": 0
-                        },
-                        {
-                            "key": "field_67c004355803b",
-                            "label": "Right Side Design Title",
-                            "name": "right_side_design_title",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_67c004355803c",
-                            "label": "Right Side Design Name",
-                            "name": "right_side_design_name",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
+                            "allow_in_bindings": 1,
+                            "bidirectional": 0,
+                            "ui": 1,
+                            "bidirectional_target": []
                         },
                         {
                             "key": "field_67c004355803d",
@@ -956,7 +658,7 @@
                             "label": "Right Side Design Post Url",
                             "name": "right_side_design_post_url",
                             "aria-label": "",
-                            "type": "page_link",
+                            "type": "post_object",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -972,10 +674,13 @@
                                 "publish"
                             ],
                             "taxonomy": "",
-                            "allow_archives": 1,
+                            "return_format": "object",
                             "multiple": 0,
                             "allow_null": 0,
-                            "allow_in_bindings": 0
+                            "allow_in_bindings": 1,
+                            "bidirectional": 0,
+                            "ui": 1,
+                            "bidirectional_target": []
                         }
                     ],
                     "min": "",
@@ -1005,5 +710,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1757332632
+    "modified": 1761896967
 }

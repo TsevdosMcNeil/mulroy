@@ -49,7 +49,7 @@
                             "label": "Description Info",
                             "name": "description_info",
                             "aria-label": "",
-                            "type": "wysiwyg",
+                            "type": "textarea",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -59,11 +59,11 @@
                                 "id": ""
                             },
                             "default_value": "",
+                            "maxlength": "",
                             "allow_in_bindings": 1,
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 1,
-                            "delay": 0
+                            "rows": "",
+                            "placeholder": "",
+                            "new_lines": ""
                         },
                         {
                             "key": "field_6810652087c01",
@@ -165,6 +165,28 @@
                             "rows_per_page": 20,
                             "sub_fields": [
                                 {
+                                    "key": "field_692db39402c83",
+                                    "label": "ON\/OFF Job",
+                                    "name": "onoff_job",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": "",
+                                    "parent_repeater": "field_6810658c87c06"
+                                },
+                                {
                                     "key": "field_681065d587c07",
                                     "label": "Job Title",
                                     "name": "job_title",
@@ -224,9 +246,9 @@
                                     },
                                     "default_value": "",
                                     "allow_in_bindings": 0,
-                                    "tabs": "all",
-                                    "toolbar": "full",
-                                    "media_upload": 1,
+                                    "tabs": "visual",
+                                    "toolbar": "onlylink",
+                                    "media_upload": 0,
                                     "delay": 0,
                                     "parent_repeater": "field_6810658c87c06"
                                 },
@@ -349,6 +371,58 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_69298b06f2bb3": {
+                    "key": "layout_69298b06f2bb3",
+                    "name": "current_project_section",
+                    "label": "Current Project Section",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_69298b10f2bb5",
+                            "label": "Section Title",
+                            "name": "section_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_69298b1af2bb6",
+                            "label": "Right Paragraph Text",
+                            "name": "right_paragraph_text",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 1,
+                            "rows": "",
+                            "placeholder": "",
+                            "new_lines": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -374,5 +448,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1745954600
+    "modified": 1764604438
 }

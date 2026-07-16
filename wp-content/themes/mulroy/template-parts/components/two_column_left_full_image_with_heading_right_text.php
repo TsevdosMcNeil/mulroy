@@ -19,9 +19,11 @@ $image = get_sub_field( 'image' );
                         background-image: url('<?php echo $image; ?>');
                       "
                     ></div>
+					  <?php if($heading): ?>
                     <span class="post-caption">
                      <?php echo $heading; ?></span
                     >
+					  <?php endif; ?>
                   </div>
                 </div>
               </div>

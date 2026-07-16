@@ -82,7 +82,7 @@
                     "sub_fields": [
                         {
                             "key": "field_67b937f1affc6",
-                            "label": "Heading",
+                            "label": "Caption",
                             "name": "heading",
                             "aria-label": "",
                             "type": "text",
@@ -159,27 +159,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_67b93b46862d5",
-                            "label": "Heading",
-                            "name": "heading",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
                             "key": "field_67b93b52862d6",
                             "label": "Desc",
                             "name": "desc",
@@ -225,20 +204,10 @@
                             "mime_types": "",
                             "allow_in_bindings": 0,
                             "preview_size": "medium"
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
-                "layout_67bb51f2cc966": {
-                    "key": "layout_67bb51f2cc966",
-                    "name": "two_column_left_full_image_with_heading_right_text",
-                    "label": "Two column Left Full Image with heading Right Text",
-                    "display": "block",
-                    "sub_fields": [
+                        },
                         {
-                            "key": "field_67bb51f2cc967",
-                            "label": "Heading",
+                            "key": "field_67b93b46862d5",
+                            "label": "Caption",
                             "name": "heading",
                             "aria-label": "",
                             "type": "text",
@@ -256,7 +225,17 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
-                        },
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_67bb51f2cc966": {
+                    "key": "layout_67bb51f2cc966",
+                    "name": "two_column_left_full_image_with_heading_right_text",
+                    "label": "Two column Left Full Image with heading Right Text",
+                    "display": "block",
+                    "sub_fields": [
                         {
                             "key": "field_67bb51f2cc968",
                             "label": "Desc",
@@ -303,20 +282,10 @@
                             "mime_types": "",
                             "allow_in_bindings": 0,
                             "preview_size": "medium"
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
-                "layout_67b93c45cbfd1": {
-                    "key": "layout_67b93c45cbfd1",
-                    "name": "two_column_left_text_right_image",
-                    "label": "Two column Left Text Right Image",
-                    "display": "block",
-                    "sub_fields": [
+                        },
                         {
-                            "key": "field_67b93c45cbfd2",
-                            "label": "Heading",
+                            "key": "field_67bb51f2cc967",
+                            "label": "Caption",
                             "name": "heading",
                             "aria-label": "",
                             "type": "text",
@@ -334,7 +303,17 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
-                        },
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_67b93c45cbfd1": {
+                    "key": "layout_67b93c45cbfd1",
+                    "name": "two_column_left_text_right_image",
+                    "label": "Two column Left Text Right Image",
+                    "display": "block",
+                    "sub_fields": [
                         {
                             "key": "field_67b93c45cbfd3",
                             "label": "Desc",
@@ -381,20 +360,10 @@
                             "mime_types": "",
                             "allow_in_bindings": 0,
                             "preview_size": "medium"
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
-                "layout_67b9f80bbbf11": {
-                    "key": "layout_67b9f80bbbf11",
-                    "name": "two_column_left_heading_right_image_and_text",
-                    "label": "Two column Left heading Right Image and Text",
-                    "display": "block",
-                    "sub_fields": [
+                        },
                         {
-                            "key": "field_67b9f80bbbf12",
-                            "label": "Heading",
+                            "key": "field_67b93c45cbfd2",
+                            "label": "Caption",
                             "name": "heading",
                             "aria-label": "",
                             "type": "text",
@@ -412,7 +381,17 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
-                        },
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_67b9f80bbbf11": {
+                    "key": "layout_67b9f80bbbf11",
+                    "name": "two_column_left_heading_right_image_and_text",
+                    "label": "Two column Left heading Right Image and Text",
+                    "display": "block",
+                    "sub_fields": [
                         {
                             "key": "field_67b9f80bbbf13",
                             "label": "Desc",
@@ -459,20 +438,10 @@
                             "mime_types": "",
                             "allow_in_bindings": 0,
                             "preview_size": "medium"
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
-                "layout_67b93badf286d": {
-                    "key": "layout_67b93badf286d",
-                    "name": "centered_banner_image_with_caption",
-                    "label": "Centered banner image with Caption",
-                    "display": "block",
-                    "sub_fields": [
+                        },
                         {
-                            "key": "field_67b93be9f286f",
-                            "label": "Heading",
+                            "key": "field_67b9f80bbbf12",
+                            "label": "Caption",
                             "name": "heading",
                             "aria-label": "",
                             "type": "text",
@@ -490,7 +459,17 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": ""
-                        },
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_67b93badf286d": {
+                    "key": "layout_67b93badf286d",
+                    "name": "centered_banner_image_with_caption",
+                    "label": "Centered banner image with Caption",
+                    "display": "block",
+                    "sub_fields": [
                         {
                             "key": "field_67b93bf6f2870",
                             "label": "Image",
@@ -516,6 +495,27 @@
                             "mime_types": "",
                             "allow_in_bindings": 0,
                             "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_67b93be9f286f",
+                            "label": "Caption",
+                            "name": "heading",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         }
                     ],
                     "min": "",
@@ -797,8 +797,8 @@
                                 "publish"
                             ],
                             "taxonomy": "",
-                            "return_format": "id",
-                            "multiple": 0,
+                            "return_format": "object",
+                            "multiple": 1,
                             "allow_null": 0,
                             "allow_in_bindings": 0,
                             "bidirectional": 0,
@@ -1833,5 +1833,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758027854
+    "modified": 1764603685
 }

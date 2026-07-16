@@ -81,14 +81,14 @@ if ( have_rows( 'components' ) ) :
 	   endwhile;
 	endif; 
 ?>
-        <div class="scroll-section py-8 pt-[5rem] lg:h-[100vh] lg:pt-0 lg:py-12 bg-site">
+        <div class="scroll-section py-8 pt-[5rem] lg:h-[100vh]  lg:py-12 bg-site">
           <a
-            href="studio"
+            href="/studio"
             class="absolute person-profile-cross z-20 lg:top-[1vw] lg:right-[1vw] top-[1rem] right-[2rem]"
             ><span>
               <img
                 src="<?php echo get_template_directory_uri(); ?>/assets/media/X.svg"
-                class="site__arrow w-[2.5rem] lg:w-[1.5rem]"
+                class="site__arrow w-[2.5rem] lg:w-[2.5rem]"
                 alt=""
               /> </span
           ></a>
@@ -108,7 +108,7 @@ if ( have_rows( 'components' ) ) :
                   <div class="person-content">
                     <div class="person-bio mb-10">
                       <h2 class="person-name fs-3xl"><?php echo get_the_title(); ?></h2>
-                      <h3 class="person-page-position fs-xl">DIRECTOR</h3>
+                      <h3 class="person-page-position fs-xl tracking-[3px] lg:tracking-auto uppercase"><?php echo $position; ?></h3>
                     </div>
                     <div class="person-desc">
                       <?php the_content(); ?>

@@ -35,7 +35,23 @@ global $post;
             </div>
           </section>
 
+			<?php elseif (get_row_layout() == 'current_project_section'): ?>
+				<?php 
+						$section_title = get_sub_field("section_title");
+						$right_paragraph_text = get_sub_field("right_paragraph_text");
+					?>
+<section class="whats__like__mulroy__section__career" style="background:#f7ede5;">
+					<div class="page-sect-content">
+					<div class="job__application__text">
+                		<h1><?php echo $section_title; ?></h1>
+              		</div>
+						<div class="what__like__mulroy__right__text__container">
+							<?php echo $right_paragraph_text; ?>
+						</div>
+					</div>
+				</section>
 			<?php elseif (get_row_layout() == 'job_applications_section'): ?>
+				
 				<?php 
 					$job_application_text = get_sub_field("job_application_text");
 					$description_text = get_sub_field("description_text");
@@ -62,7 +78,9 @@ global $post;
 						$job_description = $jobs['job_description'];
 						$job_fields = $jobs['job_fields'];
 						$apply_information = $jobs["apply_information"];
+						$onoff_job = $jobs["onoff_job"];
                 ?>
+					<?php if($onoff_job): ?>
 					<div class="job__card">
                     <label for="<?php echo $index; ?>" class="heading__title">
                       <div class="arrow_icon"></div>
@@ -109,6 +127,7 @@ global $post;
 						   </div>
                     </div>
                   </div>
+					<?php endif; ?>
 						  					
 					<?php endforeach; ?>
           		<?php endif; ?>

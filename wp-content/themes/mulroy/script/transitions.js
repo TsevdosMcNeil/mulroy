@@ -36,6 +36,64 @@ async function loadDesignPageModule() {
   }
 }
 
+function initDesignArchiveSorting(){
+	const table = document.getElementById("designTable");
+	
+	if(table){
+		const headers = table.querySelectorAll("th");
+  const tbody = table.querySelector("tbody");
+  let sortDirection = {};
+	const rows = table.querySelectorAll('tr.data-row');
+	const imageHover = document.querySelector(".design__archive__hover__image__container img");
+	
+	
+	rows.forEach((row)=>{
+		const hoverImage = row.dataset.image;
+		
+		row.addEventListener("mouseenter",()=>{
+			imageHover.style.display = 'flex'
+			imageHover.src = hoverImage
+		})
+		
+		row.addEventListener("mouseleave",()=>{
+			imageHover.style.display = 'none'
+			imageHover.src = ''
+		})
+	})
+
+  headers.forEach((header, index) => {
+    header.addEventListener("click", () => {
+      const type = header.getAttribute("data-type");
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+      const isAsc = sortDirection[index] = !sortDirection[index];
+
+      rows.sort((a, b) => {
+        const aText = a.children[index].innerText.trim();
+        const bText = b.children[index].innerText.trim();
+
+        if (type === "number") {
+          // Compare as numbers (for YEAR)
+          return isAsc ? aText - bText : bText - aText;
+        } else {
+          // Compare as text (for NAME)
+          return isAsc
+            ? aText.localeCompare(bText)
+            : bText.localeCompare(aText);
+        }
+      });
+
+      // Re-append sorted rows
+      tbody.innerHTML = "";
+      rows.forEach(row => tbody.appendChild(row));
+
+      // Optional: visual indicator (↑↓)
+      headers.forEach(h => h.classList.remove("asc", "desc"));
+      header.classList.add(isAsc ? "asc" : "desc");
+    });
+  });
+	}
+  
+}
 
 function initHubspotForm() {
   const container = document.querySelector("#hubspot-form-container");
@@ -99,6 +157,7 @@ function customCursor(){
 
 
 customCursor(); 
+initDesignArchiveSorting();
 // barba.hooks.afterEnter(() => {
 //   customCursor(); 
 // });
@@ -223,7 +282,12 @@ const views = [
 			menu.classList.add('contact-menu-btn')
 		}
           if (footer) {
-            footer.classList.add('footer-hidden');
+			  if(window.innerWidth>1024){
+				  footer.style.display = 'none'
+			  }else{
+				  footer.style.display = 'block'
+			  }
+            
           }
     },
 	  beforeLeave:() => {
@@ -234,7 +298,7 @@ const views = [
 		}
 		  const footer = document.querySelector('footer');
           if (footer) {
-            footer.classList.remove('footer-hidden');
+            footer.style.display = 'block';
           }
 	  }
   },
@@ -300,6 +364,7 @@ const transitions = {
     },
     enter({ next }) {
 		customCursor(); 
+		initDesignArchiveSorting();
 	  const overlay = document.querySelector(".transition-overlay");
 	  overlay.style.opacity = 0;
       window.scrollTo({ top: 0 });
@@ -382,6 +447,7 @@ const transitions = {
     },
     enter({ next }) {
 		customCursor(); 
+		
 	  const overlay = document.querySelector(".transition-overlay");
 	  overlay.style.opacity = "0";
       window.scrollTo({ top: 0 });

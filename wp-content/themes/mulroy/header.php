@@ -43,7 +43,7 @@ $linkedin = get_field('linkedin', 'option');
     <nav>
       <div class="menu-container site-container">
         <div class="menu-content">
-          <div class="menu-letter">
+          <div class="menu-letter hidden">
             <svg
               width="237"
               height="240"
@@ -60,7 +60,7 @@ $linkedin = get_field('linkedin', 'option');
 
             <span class="hero-letter"> M </span>
           </div>
-          <div class="menu-letter">
+          <div class="menu-letter hidden">
             <svg
               width="193"
               height="240"
@@ -95,7 +95,7 @@ $linkedin = get_field('linkedin', 'option');
         </div>
 
         <div class="menu-content">
-          <div class="menu-letter justify-end">
+          <div class="menu-letter justify-end hidden">
             <svg
               width="163"
               height="240"
@@ -111,7 +111,7 @@ $linkedin = get_field('linkedin', 'option');
             </svg>
             <span class="hero-letter"> E </span>
           </div>
-          <div class="menu-letter justify-end">
+          <div class="menu-letter justify-end hidden">
             <svg
               width="195"
               height="245"

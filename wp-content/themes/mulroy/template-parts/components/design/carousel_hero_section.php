@@ -1,5 +1,5 @@
         <!-- hero section -->
-          <section class="scroll-section site-container h-[100vh] design__header">
+          <section class="scroll-section site-container h-[100vh] design__header pb-0">
 			  <div class="design__cursor">
 				  
 			  </div>
@@ -10,21 +10,28 @@
                  while( have_rows('slides') ) : the_row();
                  $image = get_sub_field('image');
                  $heading = get_sub_field('heading');
-				  $design_type = get_sub_field("design_type");
+// 				  $design_type = get_sub_field("design_type");
+					$left_post_id = $heading->ID;
+					$design_type = get_field('design_type', $left_post_id);
+					$left_side_thumb = get_the_post_thumbnail($left_post_id);
 				 
                  ?>
                 <div class="slide">
+					<?php if($image): ?>
                   <img
                     src="<?php echo $image; ?>"
                     loading="eager"
                     alt="Slide 1"
 					   class='slider__item_img'
                   />
+					<?php else: ?>
+						<?php echo $left_side_thumb; ?>
+					<?php endif; ?>
                   <div class="slide-content site-container">
 					 <a href="<?php echo $heading->guid; ?>" class='slider-title-link'> 
 						
 <h2 class='slide-title'>
-	<span class='project-caption font-bold text-[14px]' style="letter-spacing:3.6px;">
+	<span class='project-caption font-bold text-[14px] uppercase' style="letter-spacing:3.6px;">
 	<?php echo $design_type; ?>
 	</span>
 	<div class="new_class">

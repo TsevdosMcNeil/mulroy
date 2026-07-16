@@ -1,3 +1,11 @@
+<style>
+	@media(max-width:1024px){
+		footer{
+			display:block !important;
+		}
+	}
+</style>
+
 <?php 
 /*
 Template Name: Contact Page
@@ -24,7 +32,7 @@ $linkedin = get_field('linkedin', 'option');
            <section
             class="bg-[#D9D8D6]"
           >
-            <div class="contact-page-grid h-full">
+            <div class="contact-page-grid h-[max-content]">
               <div
                 class="contact-page-title col-span-3 fs-3xl"
                 style="line-height: 0.7"
@@ -77,7 +85,7 @@ $linkedin = get_field('linkedin', 'option');
 
                 </div>
 				
-				<div class="subtitle__address_contact__mobile">
+				<div class="subtitle__address_contact__mobile" style="display:none;">
 					 <div class="address">
                   <?php echo $company_name; ?><br /><?php echo $building_address; ?><br />
                   <?php echo $street; ?><br />

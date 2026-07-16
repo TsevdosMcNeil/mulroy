@@ -15,9 +15,11 @@ $right_side_heading = get_sub_field( 'right_side_heading' );
                   >
 					<img src='<?php echo $left_side_image; ?>'/>
 					</div>
+					<?php if($left_side_heading): ?>
                   <span class="post-caption">
                     <?php echo $left_side_heading; ?></span
                   >
+					<?php endif; ?>
                 </div>
               </div>
               <div class="col-start-8 col-end-12">
@@ -28,9 +30,11 @@ $right_side_heading = get_sub_field( 'right_side_heading' );
                   >
 <img src='<?php echo $right_side_image; ?>' class='portrait-img'/>
 </div>
+					<?php if($right_side_heading): ?>
                   <span class="post-caption">
                     <?php echo $right_side_heading; ?></span
                   >
+					<?php endif; ?>
                 </div>
               </div>
             </div>

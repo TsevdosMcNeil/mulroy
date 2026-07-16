@@ -22,9 +22,9 @@ $select_home_page_atrium = get_sub_field( 'select_home_page_atrium' );
 		
 		?>
 <!-- atrium section -->
-          <section class="scroll-section site-container hero-section-height">
+          <section class="scroll-section site-container hero-section-height atrium-section_home">
             <div class="hero-background bg-accent"></div>
-            <div class="hero-content">
+            <div class="hero-content atrium-section_hero">
               <div class="content-sect">
                 <div class="page-title title-start text-black">
                   <svg
@@ -89,6 +89,41 @@ $select_home_page_atrium = get_sub_field( 'select_home_page_atrium' );
                   </span>
                 </a>
               </div>
+				
+				<div class="home-atrium-post home-atrium-post__mobile">
+                <a
+                  href="<?php echo $permalink; ?>"
+                  class="flex flex-col lg:flex-row justify-between w-full lg:items-center home-atrium-post-anchor gap-y-12"
+                >
+					<div class="new__design__home__atrium">
+						
+                  <span
+                    class="home-atrium-post-no inline-flex gap-5 fs-3xl items-center"
+                    >01
+                    <span class="home-atrium-post-icon">
+                      <img src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg" alt="" class='site__arrow'/>
+                    </span>
+                  </span>
+					<span class="fs-2xl">
+                    <?php the_title(); ?>
+                  </span>
+						
+					</div>
+					<img src="<?php echo $image_url; ?>" class="atruim__home__image__background__fit " />
+<!--                   <span
+                    class="home-atrium-post-img w-full h-[20vh] bg-cover lg:w-[10vw] lg:h-[10vw] bg-no-repeat bg-center relative"
+                    style="
+                      background: url('<?php echo $image_url; ?>');
+                    "
+                  >
+                    <div
+                      class="home-atrium-post-overlay absolute inset-0 bg-black/20 w-[5rem] h-[4.8rem] lg:w-[10vw] lg:h-[9.8vw]"
+                    ></div>
+                  </span> -->
+                  
+                </a>
+              </div>
+				
               <div class="content-sect">
                 <div class="page-title title-center text-black">
                   <svg

@@ -32,7 +32,7 @@ global $post;
                       fill="black"
                     />
                   </svg>
-                  <span class="hero-letter"> A </span>
+                  <span class="hero-letter text-black lg:color-auto"> A </span>
                 </div>
                 <div class="page-title title-start text-black">
                   <svg
@@ -48,7 +48,7 @@ global $post;
                       fill="black"
                     />
                   </svg>
-                  <span class="hero-letter"> I </span>
+                  <span class="hero-letter text-black lg:color-auto"> I </span>
                 </div>
               </div>
               <div class="content-sect">
@@ -66,7 +66,7 @@ global $post;
                       fill="black"
                     />
                   </svg>
-                  <span class="hero-letter"> T </span>
+                  <span class="hero-letter text-black lg:color-auto"> T </span>
                 </div>
                 <div class="page-title title-center text-black">
                   <svg
@@ -82,7 +82,7 @@ global $post;
                       fill="black"
                     />
                   </svg>
-                  <span class="hero-letter"> U </span>
+                  <span class="hero-letter text-black lg:color-auto"> U </span>
                 </div>
               </div>
               <div class="content-sect">
@@ -100,7 +100,7 @@ global $post;
                       fill="black"
                     />
                   </svg>
-                  <span class="hero-letter"> R </span>
+                  <span class="hero-letter text-black lg:color-auto"> R </span>
                 </div>
                 <div class="page-title title-end text-black">
                   <svg
@@ -116,7 +116,7 @@ global $post;
                       fill="black"
                     />
                   </svg>
-                  <span class="hero-letter"> M </span>
+                  <span class="hero-letter text-black lg:color-auto"> M </span>
                 </div>
               </div>
             </div>
@@ -127,7 +127,7 @@ global $post;
                 <div
                   class="news-sect-description fs-2xl col-start-6 col-end-13 section__copy__content max-w-[90%]"
                 >
-                  <?php the_content(); ?>
+                  <?php echo get_field("right_side_content_text"); ?>
                 </div>
                 <div class="hover-image-section col-span-2">
                   <div

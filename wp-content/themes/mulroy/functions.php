@@ -201,7 +201,7 @@ add_filter('manage_edit-designs_columns', function($columns) {
 
         // Insert our custom column *after* the Title column
         if ($key === 'title') {
-            $new_columns['design_type'] = __('Design Type', 'bhukman');
+            $new_columns['design_type'] = __('Project Name', 'bhukman');
         }
     }
 
@@ -225,11 +225,47 @@ add_filter('manage_edit-designs_sortable_columns', function($columns) {
 
 
 
+add_action('acf/input/admin_footer', function() {
+    ?>
+    <script type="text/javascript">
+        (function($){
+            // Change the field key below to your field's key (not name)
+            var fieldKey = 'field_67bf36f693ad6'; 
+
+            acf.addAction('select2_init', function($select, args, settings, field){
+                if (field.data.key === fieldKey) {
+                    $select.on('select2:selecting', function(e){
+                        var selected = $select.select2('data');
+                        if (selected.length >= 3) {
+                            e.preventDefault();
+                            alert('You can only select up to 3 posts.');
+                        }
+                    });
+                }
+            });
+        })(jQuery);
+    </script>
+    <?php
+});
 
 
-?>
 
+add_filter('acf/fields/wysiwyg/toolbars', 'acf_custom_minimal_toolbar');
+function acf_custom_minimal_toolbar($toolbars) {
 
+    // Remove all existing toolbars (optional but clean)
+    $toolbars = [];
 
+    // Create a new simplified toolbar
+    $toolbars['OnlyLink'] = [];
+    $toolbars['OnlyLink'][1] = ['link', 'unlink']; // Add link + unlink buttons
 
+    return $toolbars;
+}
 
+// Remove Text/Visual tabs + remove HTML mode
+add_filter('acf/fields/wysiwyg/settings', function($settings) {
+    $settings['media_buttons'] = false;  // hide Add Media button
+    $settings['quicktags'] = false;      // hide Text tab
+    return $settings;
+});

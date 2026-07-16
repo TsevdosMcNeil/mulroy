@@ -12,7 +12,7 @@ global $post;
 ?>
            <!-- hero section -->
           <section class="scroll-section site-container hero-section-height">
-			  <div class="custom-cursor" id="custom-cursor">
+			  <div class="custom-cursor new_header_curosr" id="custom-cursor">
 				  
 			  </div>
             <div class="hero-background bg-orange"></div>
@@ -33,10 +33,10 @@ global $post;
                       fill="black"
                     />
                   </svg>
-                  <span class="hero-letter"> N </span>
+                  <span class="hero-letter text-black lg:color-auto"> N </span>
                 </div>
                 <div class="page-title title-start text-black">
-                  <svg
+<!--                   <svg
                     width="311"
                     height="240"
                     viewBox="0 0 311 240"
@@ -48,8 +48,13 @@ global $post;
                       d="M242.656 240H209.728L155.632 38.4H154.96L100.528 240H67.936L0.400001 0.0959627H30.976L86.08 204.048H86.752L140.848 0.0959627H171.424L225.856 204.048H226.528L281.296 0.0959627H310.192L242.656 240Z"
                       fill="black"
                     />
-                  </svg>
-                  <span class="hero-letter"> W </span>
+                  </svg> -->
+					
+<svg width="310" height="240"  class="menu-icon menu__icno__news__w" viewBox="0 0 310 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M242.258 239.904H209.33L155.234 38.304H154.562L100.13 239.904H67.5376L0.00156339 1.54037e-05H30.5776L85.6816 203.952H86.3536L140.45 1.54037e-05H171.026L225.458 203.952H226.13L280.898 1.54037e-05H309.794L242.258 239.904Z" fill="black"/>
+</svg>
+
+                  <span class="hero-letter text-black lg:color-auto menu__icno__news__w__letter"> W </span>
                 </div>
               </div>
               <div class="content-sect">
@@ -67,7 +72,7 @@ global $post;
                       fill="black"
                     />
                   </svg>
-                  <span class="hero-letter"> E </span>
+                  <span class="hero-letter text-black lg:color-auto"> E </span>
                 </div>
                 <div class="page-title title-end text-black">
                   <svg
@@ -83,7 +88,7 @@ global $post;
                       fill="black"
                     />
                   </svg>
-                  <span class="hero-letter"> S </span>
+                  <span class="hero-letter text-black lg:color-auto"> S </span>
                 </div>
               </div>
             </div>
@@ -100,10 +105,10 @@ global $post;
                 <div class="col-start-6 col-end-13 self-start">
                   <div class="atrium-post-desc-text fs-2xl section__copy__content">
                     	<?php 
-                    	$content = $post->post_content;
-                    	$content = preg_replace('/<p>\s*<\/p>/', '', $content); 
-                        $content = preg_replace('/<p>(.*?)<\/p>/is', '$1', $content); 
-                        echo $content;
+//                     	$content = $post->post_content;
+//                     	$content = preg_replace('/<p>\s*<\/p>/', '', $content); 
+//                         $content = preg_replace('/<p>(.*?)<\/p>/is', '$1', $content); 
+                        echo get_field("right_side_content_text");
                     	?>
                   </div>
                 </div>
@@ -141,7 +146,7 @@ if ($news_query->have_posts()) :
                             alt=""
                         /></span> -->
                       </h2>
-                      <h3 class="news-date"><?php echo get_the_date('F j, Y'); ?></h3>
+                      <h3 class="news-date uppercase"><?php echo get_the_date('F j, Y'); ?></h3>
 					 <div class='mt-6 w-full lg:w-[28vw]' >
 						  <?php echo the_content(); ?>
 						 

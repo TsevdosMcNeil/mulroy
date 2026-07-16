@@ -20,7 +20,7 @@ $right_side_design_post_url = get_sub_field( 'right_side_design_post_url' );
                     class="image-container mb-4">
 <img src='<?php echo $left_side_design_image; ?>'/>
 </div>
-                  <span class="project-caption font-bold text-[14px]">
+                  <span class="project-caption font-bold text-[14px] uppercase">
                     <?php echo $left_side_design_name; ?></span
                   >
                   <h2 class="project-sect-title">

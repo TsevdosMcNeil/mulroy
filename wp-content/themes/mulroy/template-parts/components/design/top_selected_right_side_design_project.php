@@ -1,10 +1,14 @@
 <?php
 $top_selected_heading = get_sub_field( 'top_selected_heading' );
 $desc = get_sub_field( 'desc' );
-$design_name = get_sub_field( 'design_name' );
-$design_title = get_sub_field( 'design_title' );
+// $design_name = get_sub_field( 'design_name' );
+// $design_title = get_sub_field( 'design_title' );
 $design_image = get_sub_field( 'design_image' );
 $design_post_url = get_sub_field( 'design_post_url' );
+$post_id = $design_post_url->ID;
+$design_title = get_the_title($post_id);
+$thumbnail = get_the_post_thumbnail($post_id);
+$design_name = get_field('design_type', $post_id);
 ?>
           <section class="scroll-section bg-site no_min_height_mobile design__page__section__padding">
             <div
@@ -23,14 +27,18 @@ $design_post_url = get_sub_field( 'design_post_url' );
               </div>
 				<?php endif; ?>
               <div class="col-start-1 col-end-13">
-                <a class="home-project-section project-img h-full" href="<?php echo $design_post_url; ?>">
+                <a class="home-project-section project-img h-full" href="<?php echo get_permalink($design_post_url); ?>">
                   <div
                     class="image-container mb-4 lg:h-[82vh] overflow-hidden sm:h-auto"
                    
                   >
+					  <?php if($design_image): ?>
 	<img src='<?php echo $design_image; ?>' alt='design mulroy project' class="object-cover"/>
+					  <?php else: ?>
+					  	<?php echo $thumbnail; ?>
+					  <?php endif; ?>
 </div>
-                  <span class="project-caption font-bold text-[14px]">
+                  <span class="project-caption font-bold text-[14px] uppercase">
                     <?php echo $design_name; ?></span
                   >
                   <h2 class="project-sect-title">

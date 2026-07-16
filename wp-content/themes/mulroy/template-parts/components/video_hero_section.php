@@ -11,7 +11,7 @@ $design_type = get_field( 'design_type' );
 			  </div>
             <div class="hero-background"></div>
             <div class="hero-overlay z-20"></div>
-            <div class="hero-content py-0">
+            <div class="hero-content hero__content__single__design py-0">
               <div class="video-player w-full h-full overflow-hidden">
 				  <?php if($video_url): ?>
 				  <video
@@ -41,7 +41,7 @@ $design_type = get_field( 'design_type' );
               </div>
             </div>
             <div class="news-post-hero-content site-container z-20">
-              <h3 class="fs-lg"><?php echo $design_type; ?></h3>
+              <h3 class="fs-lg uppercase"><?php echo $design_type; ?></h3>
               <h2 class="fs-3xl lg:max-w-[35vw] mt-4">
                 <?php the_title(); ?>
               </h2>

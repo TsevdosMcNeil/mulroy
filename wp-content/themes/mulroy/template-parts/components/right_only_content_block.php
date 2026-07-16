@@ -23,7 +23,9 @@ $photo = get_sub_field( 'photo' );
                   class="w-full image-container mb-[12px]" >
 	<img src='<?php echo $photo; ?>'/>
 </div>
+				  <?php if($heading): ?>
                 <span class="post-caption"> <?php echo $heading; ?></span>
+				  <?php endif; ?>
               </div>
             </div>
           </section>

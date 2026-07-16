@@ -46,7 +46,7 @@ $choose_designs = get_sub_field( 'choose_designs' );
                  <?php echo $desc; ?>
                 </div>
               </div>
-              <div class="col-span-12 lg:col-start-6 lg:col-end-11">
+              <div class="col-span-12 lg:col-start-6 lg:col-end-[-1]">
                 <a
                   class="design-project-item flex flex-col gap-y-1 w-full h-full"
                   href="<?php echo $permalink_0; ?>"
@@ -55,14 +55,14 @@ $choose_designs = get_sub_field( 'choose_designs' );
                     class="image-container mb-2">
 					<img src="<?php echo $featured_image_url_0; ?>" alt='mulroy-design-project'/>
 </div>
-                  <span class="project-caption font-bold text-[14px]">
+                  <span class="project-caption font-bold text-[14px] uppercase">
                     <?php echo $design_type_0; ?></span
                   >
                   <h2
-                    class="project-sect-title fs-2xl flex gap-x-4 items-center"
+                    class="project-sect-title fs-2xl"
                   >
                     <?php echo $title_0; ?>
-                    <span>
+                    <span class="inline-flex">
                       <img src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg" class="site__arrow" alt="" />
                     </span>
                   </h2>
@@ -76,7 +76,7 @@ $choose_designs = get_sub_field( 'choose_designs' );
             id="all-project"
             class="bg-site border-bottom pb-0 no_min_height_mobile"
           >
-            <div class="section-container-grid-two-row">
+            <div class="section-container-grid-two-row lg:pb-10 lg:gap-[1.5rem]">
                 <?php 
                 if($data[1]->ID){
                         $ids = $data[1]->ID;
@@ -85,7 +85,7 @@ $choose_designs = get_sub_field( 'choose_designs' );
     					$title_1 =$data[1]->post_title;
     					$permalink_1 = get_permalink($ids);
                 ?>
-              <div class="col-span-12 lg:col-span-5 lg:pt-[5vh]">
+              <div class="col-span-12 lg:col-start-2 lg:col-end-7 lg:pt-0">
                 <a
                   class="home-project-section flex flex-col gap-y-2 col-span-6 lg:col-start-4 lg:col-end-7 h-full"
                   href="<?php echo $permalink_1; ?>"
@@ -97,7 +97,7 @@ $choose_designs = get_sub_field( 'choose_designs' );
 					  <img src='<?php echo $featured_image_url_1; ?>' alt='mulroy-design-project' />
 
 </div>
-                  <span class="project-caption font-bold text-[14px]">
+                  <span class="project-caption font-bold text-[14px] uppercase">
                      <?php echo $design_type_1; ?></span
                   >
                   <h2 class="project-sect-title fs-2xl">
@@ -121,7 +121,7 @@ $choose_designs = get_sub_field( 'choose_designs' );
     					$title_2 =$data[2]->post_title;
     					$permalink_2 = get_permalink($ids);
                 ?>
-              <div class="col-span-6 lg:col-start-9 lg:col-end-12 h-full lg:pt-[20%]">
+              <div class="col-span-6 lg:col-start-7 lg:col-end-[-1] h-full">
                 <a
                   class="home-project-section flex flex-col gap-y-2 col-span-6 lg:col-start-5 lg:col-end-7 h-full "
                   href="<?php echo $permalink_2; ?>"
@@ -132,7 +132,7 @@ $choose_designs = get_sub_field( 'choose_designs' );
                   >
 					<img src='<?php echo $featured_image_url_2;?>' alt='mulroy-desing-project'/>
 					</div>
-                  <span class="project-caption font-bold text-[14px]">
+                  <span class="project-caption font-bold text-[14px] uppercase">
                     <?php echo $design_type_2; ?></span
                   >
                   <h2 class="project-sect-title">

@@ -69,17 +69,8 @@ global $post;
                 <h1><?php echo $credit_section_text; ?></h1>
               </div>
               <div class="website__holder">
-                <p>WEBSITE</p>
-				<?php if ($website_column): ?>
-            		<?php foreach ($website_column as $index => $web_column):
-               		$row_text = $web_column['row_text'];
-                ?>
-                <p><?php echo $row_text; ?></p>
-				 <?php endforeach; ?>
-          		<?php endif; ?>
-              </div>
-              <div class="mullroy__team">
-                <p>MULLROY TEAM</p>
+				  
+				  <p>MULROY TEAM</p>
 				  <?php if ($mullroy_team): ?>
             		<?php foreach ($mullroy_team as $index => $team_column):
                		$row_text = $team_column['row_text'];
@@ -87,8 +78,10 @@ global $post;
                 <p><?php echo $row_text; ?></p>
 				 <?php endforeach; ?>
           		<?php endif; ?>
+				  
+                
               </div>
-              <div class="photographers">
+              <div class="mullroy__team">
                 <p>PHOTOGRAPHERS</p>
 				  <?php if ($photographers): ?>
             	<?php foreach ($photographers as $index => $photo_column):
@@ -97,6 +90,19 @@ global $post;
                 <p><?php echo $row_text; ?></p>
 				 <?php endforeach; ?>
           		<?php endif; ?>
+              </div>
+              <div class="photographers">
+				  
+				  <p>WEBSITE</p>
+				<?php if ($website_column): ?>
+            		<?php foreach ($website_column as $index => $web_column):
+               		$row_text = $web_column['row_text'];
+                ?>
+                <p><?php echo $row_text; ?></p>
+				 <?php endforeach; ?>
+          		<?php endif; ?>
+				  
+                
               </div>
             </div>
           </section>
