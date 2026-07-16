@@ -160,27 +160,26 @@ wp-content/themes/*
 
 # Wordpress: track these mu-plugins, plugins, and themes
 
-!wp-content/themes/mulroy/
+
+# WPML Plugin: These files were updated to prevent fatal errors caused by incompatibilities between the WPML plugin and SAGE
+#!wp-content/plugins/wpml-string-translation/
+
+
+# Theme
+!wp-content/themes/codigo/
 
 # Ignore dist folder of theme
-wp-content/themes/mulroy/.gitignore
-wp-content/themes/mulroy/.sass-cache
-wp-content/themes/mulroy/bower_components
-wp-content/themes/mulroy/node_modules
-wp-content/themes/mulroy/*.zip
-wp-content/themes/mulroy/dist
-wp-content/themes/mulroy/dist-product
-wp-content/themes/mulroy/npm-debug.log
-wp-content/themes/mulroy/vendor/
-
-# Ignore compiled files
-wp-content/themes/mulroy/js/child-theme.*
-wp-content/themes/mulroy/css/child-theme.*
-wp-content/themes/mulroy/js/mulroy.*
-wp-content/themes/mulroy/css/mulroy.*
-wp-content/themes/mulroy/css/custom-editor-style.*
-
-
-# Ignore potentially dangerous files (dependabot alerts)
-wp-content/themes/mulroy/yarn.lock 
+wp-content/themes/codigo/dist
+# Ignore Sage Files
+wp-content/themes/codigo/node_modules
+wp-content/themes/codigo/vendor
+wp-content/themes/codigo/public
+wp-content/themes/codigo/.env
+wp-content/themes/codigo/.budfiles
+wp-content/themes/codigo/npm-debug.log
+wp-content/themes/codigo/yarn-error.log
+wp-content/themes/codigo/yarn.lock
+wp-content/themes/codigo/package-lock.json
+wp-content/themes/codigo/composer.lock
+#wp-content/themes/codigo/theme.json
 
