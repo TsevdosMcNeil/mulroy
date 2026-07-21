@@ -31,7 +31,7 @@ if ( is_front_page() || is_home() ) {
                   </svg>
                   <span class="hero-letter"> M </span>
                 </div>
-                <div class="page-desc home-page-desc">
+                <div class="page-desc home-page-desc letter__spacing__custom__-2px">
                   <?php echo $heading; ?>
                 </div>
                 <div class="page-title title-start">
@@ -132,8 +132,8 @@ if ( is_front_page() || is_home() ) {
             ></div>
             <div class="hero-overlay"></div>
             <div class="atrium-hero-content site-container">
-              <h3 class="fs-lg uppercase"><?php echo $heading; ?></h3>
-              <h2 class="fs-3xl lg:max-w-[35vw] mt-4">
+              <h3 class="fs-lg uppercase "><?php echo $heading; ?></h3>
+              <h2 class="fs-3xl lg:max-w-[35vw] mt-4 letter__spacing__custom__-3-25px">
                 <?php the_title(); ?>
               </h2>
         </div>

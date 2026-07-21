@@ -28,10 +28,11 @@ $choose_designs = get_sub_field( 'choose_designs' );
                     
 
 					?>
+<!-- ACF:- home_page_design_section -->
           <section class="bg-site scroll-section no_min_height_mobile" id="design-section">
             <div class="page-bar md:py-[1vw] hover-dark-blue">
               <a href="<?php echo $top_heading_link; ?>" class="page-bar-link">
-                <span class="content"><?php echo $top_heading; ?> </span>
+                <span class="content letter__spacing__custom__-3-25px"><?php echo $top_heading; ?> </span>
                 <span class="arrow-content"
                   ><img src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg" class="w-5 md:w-10"
                 /></span>
@@ -42,7 +43,7 @@ $choose_designs = get_sub_field( 'choose_designs' );
                 class="page-sect-info flex flex-col lg:grid col-span-12 my-10 md:my-[2vw] gap-y-5"
               >
                 <div class="page-heading col-span-5"></div>
-                <div class="page-sect-desc col-span-7">
+                <div class="page-sect-desc col-span-7 letter__spacing__custom__-2px">
                  <?php echo $desc; ?>
                 </div>
               </div>
@@ -153,7 +154,7 @@ $choose_designs = get_sub_field( 'choose_designs' );
             </div>
             <div class="page-bar md:py-[1vw] hover-dark-blue">
               <a href="<?php echo $bottom_link; ?>" class="page-bar-link">
-                <span class="content"> <?php echo $bottom_heading; ?> </span>
+                <span class="content letter__spacing__custom__-3-25px"> <?php echo $bottom_heading; ?> </span>
                 <span class="arrow-content"
                   ><img src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg" class="w-5 md:w-10"
                 /></span>

@@ -77,13 +77,17 @@ if ( have_rows( 'components' ) ) :
 			if ( get_row_layout() == 'two_coulmn_both_side_image' ) {
 					include get_theme_file_path( 'template-parts/components/two_coulmn_both_side_image.php' );
 			}
+
+if ( get_row_layout() == 'privacy_policy_section_global' ) {
+					include get_theme_file_path( 'template-parts/privacy-policy-section.php' );
+			}
 			
 	   endwhile;
 	endif; 
 ?>
         <div class="scroll-section py-8 pt-[5rem] lg:h-[100vh]  lg:py-12 bg-site">
           <a
-            href="/studio"
+            href="/studio#<?php echo get_post_field( 'post_name', get_the_ID() ); ?>"
             class="absolute person-profile-cross z-20 lg:top-[1vw] lg:right-[1vw] top-[1rem] right-[2rem]"
             ><span>
               <img
@@ -107,10 +111,10 @@ if ( have_rows( 'components' ) ) :
                 >
                   <div class="person-content">
                     <div class="person-bio mb-10">
-                      <h2 class="person-name fs-3xl"><?php echo get_the_title(); ?></h2>
+                      <h2 class="person-name fs-3xl letter__spacing__custom__-3-25px"><?php echo get_the_title(); ?></h2>
                       <h3 class="person-page-position fs-xl tracking-[3px] lg:tracking-auto uppercase"><?php echo $position; ?></h3>
                     </div>
-                    <div class="person-desc">
+                    <div class="person-desc letter__spacing__custom__-2px">
                       <?php the_content(); ?>
                     </div>
                   </div>

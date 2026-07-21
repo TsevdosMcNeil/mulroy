@@ -28,24 +28,24 @@ $phone = get_field('phone', 'option');
 $email = get_field('email', 'option');
 $instagram = get_field('instagram', 'option');
 $linkedin = get_field('linkedin', 'option');
+
+$title__text = get_field("title_text");
 ?>
            <section
             class="bg-[#D9D8D6]"
           >
             <div class="contact-page-grid h-[max-content]">
               <div
-                class="contact-page-title col-span-3 fs-3xl"
-                style="line-height: 0.7"
+                class="contact-page-title col-span-3 fs-3xl letter__spacing__custom__-3-25px"
+                style="line-height: 0.7;"
               >
                 CONTACT
               </div>
-				<div class="contact-page-subtitle">
-					<p class="fs-2xl">
-						Tell us more about your query with the form  opposite and then book a meeting with our team.
-					</p>
+				<div class="contact-page-subtitle fs-2xl letter__spacing__custom__-2px">
+						<?php echo $title__text; ?>
 					
 				<div class="subtitle__address_contact">
-					 <div class="address">
+					 <div class="address letter__spacing__custom__-1px">
                   <?php echo $company_name; ?><br /><?php echo $building_address; ?><br />
                   <?php echo $street; ?><br />
                   <?php echo $city; ?> <?php echo $pin_code; ?><br />
@@ -55,12 +55,12 @@ $linkedin = get_field('linkedin', 'option');
 				<div class="contact-social">
                   <div class="contact-social-content">
                     <div class="flex flex-col">
-                      <a href="tel:<?php echo $phone; ?>" class="anchor"><?php echo $phone; ?></a>
-                      <a href="mailto:<?php echo $email; ?>" class="anchor"><?php echo $email; ?></a>
+                      <a href="tel:<?php echo $phone; ?>" class="anchor letter__spacing__custom__-1px"><?php echo $phone; ?></a>
+                      <a href="mailto:<?php echo $email; ?>" class="anchor letter__spacing__custom__-1px"><?php echo $email; ?></a>
                     </div>
                     <div class="menu-social flex flex-col">
-                      <a href="<?php echo $instagram; ?>" class="anchor" target="_blank" >Instagram</a>
-                      <a href="<?php echo $linkedin; ?>" class="anchor" target="_blank">Linkedin</a>
+                      <a href="<?php echo $instagram; ?>" class="anchor letter__spacing__custom__-1px" target="_blank" >Instagram</a>
+                      <a href="<?php echo $linkedin; ?>" class="anchor letter__spacing__custom__-1px" target="_blank">Linkedin</a>
                     </div>
                   </div>
                 </div>
@@ -86,7 +86,7 @@ $linkedin = get_field('linkedin', 'option');
                 </div>
 				
 				<div class="subtitle__address_contact__mobile" style="display:none;">
-					 <div class="address">
+					 <div class="address letter__spacing__custom__-1px">
                   <?php echo $company_name; ?><br /><?php echo $building_address; ?><br />
                   <?php echo $street; ?><br />
                   <?php echo $city; ?> <?php echo $pin_code; ?><br />
@@ -96,12 +96,12 @@ $linkedin = get_field('linkedin', 'option');
 				<div class="contact-social">
                   <div class="contact-social-content">
                     <div class="flex flex-col">
-                      <a href="tel:<?php echo $phone; ?>" class="anchor"><?php echo $phone; ?></a>
-                      <a href="mailto:<?php echo $email; ?>" class="anchor"><?php echo $email; ?></a>
+                      <a href="tel:<?php echo $phone; ?>" class="anchor letter__spacing__custom__-1px"><?php echo $phone; ?></a>
+                      <a href="mailto:<?php echo $email; ?>" class="anchor letter__spacing__custom__-1px"><?php echo $email; ?></a>
                     </div>
                     <div class="menu-social flex flex-col">
-                      <a href="<?php echo $instagram; ?>" class="anchor" target="_blank" >Instagram</a>
-                      <a href="<?php echo $linkedin; ?>" class="anchor" target="_blank">Linkedin</a>
+                      <a href="<?php echo $instagram; ?>" class="anchor letter__spacing__custom__-1px" target="_blank" >Instagram</a>
+                      <a href="<?php echo $linkedin; ?>" class="anchor letter__spacing__custom__-1px" target="_blank">Linkedin</a>
                     </div>
                   </div>
                 </div>

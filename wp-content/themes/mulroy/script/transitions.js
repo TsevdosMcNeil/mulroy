@@ -334,7 +334,7 @@ const views = [
     namespace: "default",
     beforeEnter: () => {
       hoverOverPost(); 
-      window.scrollTo({ top: 0, behavior: "instant" });
+//       window.scrollTo({ top: 0, behavior: "instant" });
     },
   },
 ];
@@ -349,7 +349,7 @@ const transitions = {
       burgerButton?.classList.remove("active");
       // Clean up any existing ScrollTriggers
       // Force scroll to top
-      window.scrollTo({ top: 0, behavior: "instant" });
+//       window.scrollTo({ top: 0, behavior: "smooth" });
     },
     leave({ current }) {
       return gsap.to(".header", {
@@ -361,13 +361,22 @@ const transitions = {
     },
     after() {
 		customCursor(); 
+		
+		 const isStudioPage = document.querySelector('.P_page');
+		
+
+  if (!isStudioPage) {
+	 console.log("happen") 
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+// 		window.scrollTo({ top: 0, behavior: "instant" });
     },
     enter({ next }) {
 		customCursor(); 
 		initDesignArchiveSorting();
 	  const overlay = document.querySelector(".transition-overlay");
 	  overlay.style.opacity = 0;
-      window.scrollTo({ top: 0 });
+//       window.scrollTo({ top: 0, behavior: "instant" });
       // Set initial states
       gsap.set(".header", {
         autoAlpha: 0,
@@ -445,12 +454,15 @@ const transitions = {
 		 after() {
 		customCursor(); 
     },
+	afterEnter(){
+// 		window.scrollTo({ top: 0, behavior: "instant" });
+	},
     enter({ next }) {
 		customCursor(); 
 		
 	  const overlay = document.querySelector(".transition-overlay");
 	  overlay.style.opacity = "0";
-      window.scrollTo({ top: 0 });
+//       window.scrollTo({ top: 0, behavior: "instant" });
 
       gsap.set(next.container, {
         xPercent: 100,
@@ -501,6 +513,9 @@ const transitions = {
 
 barba.init({
   views,
+	 prevent: ({ el, href }) => {
+    return href.includes("/studio");
+  },
   transitions: [transitions.general, transitions.rightToLeft],
 });
 

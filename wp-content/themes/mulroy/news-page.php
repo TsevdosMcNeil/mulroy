@@ -103,7 +103,7 @@ global $post;
                 style="grid-template-rows: min-content 1fr"
               >
                 <div class="col-start-6 col-end-13 self-start">
-                  <div class="atrium-post-desc-text fs-2xl section__copy__content">
+                  <div class="atrium-post-desc-text fs-2xl section__copy__content letter__spacing__custom__-2px">
                     	<?php 
 //                     	$content = $post->post_content;
 //                     	$content = preg_replace('/<p>\s*<\/p>/', '', $content); 
@@ -130,14 +130,14 @@ if ($news_query->have_posts()) :
      $featured_image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');   
 ?>
 
-              <section class="scroll-section col-span-12 no_min_height_mobile" >
+              <section class="scroll-section col-span-12 no_min_height_mobile" id="<?php echo sanitize_title(get_the_title()); ?>">
                 <a
 				
                   class="flex flex-col h-full justify-around gap-y-5 lg:grid grid-cols-12 news-post__item gap-x-5"
                 >
                   <div class="col-span-5">
                     <div class="news-content">
-                      <h2 class="news-heading fs-2xl">
+                      <h2 class="news-heading fs-2xl letter__spacing__custom__-2px">
                         <?php echo get_the_title(); ?>
 <!--                         <span
                           ><img
@@ -147,7 +147,7 @@ if ($news_query->have_posts()) :
                         /></span> -->
                       </h2>
                       <h3 class="news-date uppercase"><?php echo get_the_date('F j, Y'); ?></h3>
-					 <div class='mt-6 w-full lg:w-[28vw]' >
+					 <div class='mt-6 w-full lg:w-[28vw] letter__spacing__custom__-2px' >
 						  <?php echo the_content(); ?>
 						 
 						</div>
@@ -186,5 +186,212 @@ if ($news_query->have_posts()) :
             </div>
             
           </div>
-         
+
+
+<?php if (have_rows('legal_page_components')): ?>
+        <?php
+        $count = 1;
+        while (have_rows('legal_page_components')): the_row(); ?>
+            <?php if (get_row_layout() == 'hero_section'): ?>
+				<?php 
+					$page_title = get_sub_field("page_name");
+					$description_text = get_sub_field("description_text");
+				?>
+            <section class="legal__section border-bottom-legal" style="background:#f7ede5;">
+            <div class="page-sect-content">
+              <div class="legal__text">
+                <h1><?php echo $page_title; ?></h1>
+              </div>
+              <div class="legal__text__info">
+                <p>
+                  <?php echo $description_text; ?>
+                </p>
+              </div>
+            </div>
+          </section>
+          
+			<?php elseif (get_row_layout() == 'company_information'): ?>
+				<?php
+					$company_information_title = get_sub_field("company_information_title");
+					$info_text_block = get_sub_field("info_text_block");
+				?>
+		 <section class="company__info__section border-bottom-legal" style="background:#f7ede5;">
+            <div class="page-sect-content gap-[1.1rem]">
+              <div class="company__info__heading">
+                <h1><?php echo $company_information_title; ?></h1>
+              </div>
+				<div class="company__block__container">
+					
+				<?php if ($info_text_block): ?>
+            		<?php foreach ($info_text_block as $index => $block):
+               		$description = $block['description_info'];
+                ?>
+				<div class="company__info__text__1">
+                <p>
+                  <?php echo $description; ?>
+                </p>
+              </div>
+				<?php endforeach; ?>
+          		<?php endif; ?>
+				</div>
+            </div>
+          </section>
+
+			<?php elseif (get_row_layout() == 'credits_section'): ?>
+				<?php
+					$credit_section_text = get_sub_field("credit_section_text");
+					$website_column = get_sub_field("website_column");
+					$mullroy_team = get_sub_field("mullroy_team");
+					$photographers = get_sub_field("photographers");
+				?>
+
+			<section class="credits__section border-bottom-legal" style="background:#f7ede5;">
+            <div class="page-sect-content gap-[1.1rem]">
+              <div class="credit__text">
+                <h1><?php echo $credit_section_text; ?></h1>
+              </div>
+              <div class="website__holder">
+				  
+				  <p>MULROY TEAM</p>
+				  <?php if ($mullroy_team): ?>
+            		<?php foreach ($mullroy_team as $index => $team_column):
+               		$row_text = $team_column['row_text'];
+                ?>
+                <p><?php echo $row_text; ?></p>
+				 <?php endforeach; ?>
+          		<?php endif; ?>
+				  
+                
+              </div>
+              <div class="mullroy__team">
+                <p>PHOTOGRAPHERS</p>
+				  <?php if ($photographers): ?>
+            	<?php foreach ($photographers as $index => $photo_column):
+               		$row_text = $photo_column['row_text'];
+                ?>
+                <p><?php echo $row_text; ?></p>
+				 <?php endforeach; ?>
+          		<?php endif; ?>
+              </div>
+              <div class="photographers">
+				  
+				  <p>WEBSITE</p>
+				<?php if ($website_column): ?>
+            		<?php foreach ($website_column as $index => $web_column):
+               		$row_text = $web_column['row_text'];
+                ?>
+                <p><?php echo $row_text; ?></p>
+				 <?php endforeach; ?>
+          		<?php endif; ?>
+				  
+                
+              </div>
+            </div>
+          </section>
+
+			<?php elseif (get_row_layout() == 'privacy_policy_section'): ?>
+				<?php
+					$privacy_policy_text = get_sub_field("privacy_policy_text");
+					$information_block = get_sub_field("information_block");
+				?>
+
+		<section class="privacy__policy__section border-bottom-legal" style="background:#f7ede5;">
+            <div class="page-sect-content gap-[1.1rem]">
+              <div class="privacy__policy__text">
+                <h1><?php echo $privacy_policy_text ?></h1>
+              </div>
+              <div class="info__section__privacy__policy">
+				  <?php if ($information_block): ?>
+            		<?php foreach ($information_block as $index => $info_block):
+               		$heading = $info_block['heading'];
+				    $description = $info_block['description'];
+                ?>
+				   <div class="info__box">
+                  <p><?php echo $heading; ?></p>
+                  <p>
+                    <?php echo $description; ?>
+                  </p>
+                </div>
+				 <?php endforeach; ?>
+          		<?php endif; ?>
+              </div>
+            </div>
+          </section>
+
+			<?php elseif (get_row_layout() == 'environment_and_social_policy'): ?>
+				<?php
+					$social_policy_text = get_sub_field("social_policy_text");
+					$information_block = get_sub_field("information_block");
+				?>
+
+
+		 <section
+            class="environment__social__policy__section border-bottom-legal"
+				  style="background:#f7ede5;"
+          >
+            <div class="page-sect-content gap-[1.1rem]">
+              <div class="environment__social__policy__text">
+                <h1><?php echo $social_policy_text; ?></h1>
+              </div>
+              <div class="info__section__privacy__policy">
+				  <?php if ($information_block): ?>
+            		<?php foreach ($information_block as $index => $info_block):
+               		$heading = $info_block['heading'];
+				    $description = $info_block['description'];
+                ?>
+				   <div class="info__box">
+                  <p><?php echo $heading; ?></p>
+                  <p>
+                    <?php echo $description; ?>
+                  </p>
+                </div>
+				 <?php endforeach; ?>
+          		<?php endif; ?>
+              </div>
+            </div>
+          </section>
+
+			<?php elseif (get_row_layout() == 'faq_section'): ?>
+				<?php
+					$faq_text = get_sub_field("faq_text");
+					$faq_card = get_sub_field("faq_card");
+				?>
+
+		<section class="faq__section" style="background:#f7ede5;">
+            <div class="page-sect-content gap-[1.1rem]">
+              <div class="faq__text">
+                <h1><?php echo $faq_text; ?></h1>
+              </div>
+              <div class="faq_accordion__container">
+				  <?php if ($faq_card): ?>
+            		<?php foreach ($faq_card as $index => $card):
+               		$faq_question = $card['faq_question'];
+				    $faq_answer = $card['faq_answer'];
+                ?>
+                <div class="faq__card">
+                  <label for="<?php echo $index; ?>" class="faq__question">
+                    <div class="arrow_icon"></div>
+                    <p>
+                      <?php echo $faq_question; ?>
+                    </p>
+                  </label>
+                  <input id="<?php echo $index; ?>" type="checkbox" class="checkbox" />
+                  <div class="faq__answer">
+                    <p>
+                      <?php echo $faq_answer; ?>
+                    </p>
+                  </div>
+                </div>
+
+				 <?php endforeach; ?>
+          		<?php endif; ?>
+              </div>
+            </div>
+          </section>
+
+
+            <?php endif; ?>
+        <?php endwhile; ?>
+    <?php endif; ?>
+
 <?php get_footer(); ?>

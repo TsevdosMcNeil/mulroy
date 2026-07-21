@@ -129,7 +129,7 @@ $linkedin = get_field('linkedin', 'option');
           </div>
         </div>
         <div class="menu-contact-content">
-          <div class="menu-address text-white">
+          <div class="menu-address letter__spacing__custom__-1px text-white">
             <?php echo $company_name; ?> <br /><?php echo $building_address; ?><br />
               <?php echo $street; ?><br />
               <?php echo $city; ?> <?php echo $pin_code; ?>
@@ -138,12 +138,12 @@ $linkedin = get_field('linkedin', 'option');
           </div>
           <div class="menu-social-content">
             <div class="flex flex-col">
-              <a href="tel:<?php echo $phone; ?>" class="anchor-second"><?php echo $phone; ?></a>
-              <a href="mailto:<?php echo $email; ?>" class="anchor-second"><?php echo $email; ?></a>
+              <a href="tel:<?php echo $phone; ?>" class="anchor-second letter__spacing__custom__-1px"><?php echo $phone; ?></a>
+              <a href="mailto:<?php echo $email; ?>" class="anchor-second letter__spacing__custom__-1px"><?php echo $email; ?></a>
             </div>
             <div class="menu-social flex flex-col">
-              <a href="<?php echo $instagram; ?>" class="anchor-second" target="_blank">Instagram</a>
-              <a href="<?php echo $linkedin; ?>" class="anchor-second" target="_blank">LinkedIn</a>
+              <a href="<?php echo $instagram; ?>" class="anchor-second letter__spacing__custom__-1px" target="_blank">Instagram</a>
+              <a href="<?php echo $linkedin; ?>" class="anchor-second letter__spacing__custom__-1px" target="_blank">LinkedIn</a>
             </div>
           </div>
         </div>

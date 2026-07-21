@@ -21,7 +21,7 @@ $select_home_page_atrium = get_sub_field( 'select_home_page_atrium' );
      $permalink = get_permalink($post->ID);
 		
 		?>
-<!-- atrium section -->
+<!-- ACF:- home_page_atrium_section -->
           <section class="scroll-section site-container hero-section-height atrium-section_home">
             <div class="hero-background bg-accent"></div>
             <div class="hero-content atrium-section_hero">
@@ -59,7 +59,7 @@ $select_home_page_atrium = get_sub_field( 'select_home_page_atrium' );
                   <span class="hero-letter text-black">I </span>
                 </div>
               </div>
-              <div class="home-atrium-post-desc">
+              <div class="home-atrium-post-desc letter__spacing__custom__-1px">
                <?php echo $desc; ?>
               </div>
               <div class="home-atrium-post">
@@ -68,12 +68,20 @@ $select_home_page_atrium = get_sub_field( 'select_home_page_atrium' );
                   class="flex flex-col lg:flex-row justify-between w-full lg:items-center home-atrium-post-anchor gap-y-5"
                 >
                   <span
-                    class="home-atrium-post-no inline-flex gap-5 fs-3xl items-center"
+                    class="home-atrium-post-no inline-flex gap-5 fs-3xl items-center w-[52%] letter__spacing__custom__-3-25px"
                     >01
                     <span class="home-atrium-post-icon">
                       <img src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg" alt="" class='site__arrow'/>
                     </span>
-                  </span>
+					  </span>
+					  <div class="home-atrium-post-img lg:w-[100%] bg-contain bg-no-repeat relative">
+					  <img class="w-[50%]" src="<?php echo $image_url; ?>" alt=""/>			
+					<div
+                      class="home-atrium-post-overlay absolute inset-0 bg-black/20 w-[50%]"
+                    ></div>
+					  </div>
+
+<!--                   </span>
                   <span
                     class="home-atrium-post-img w-[5rem] h-[5rem] lg:w-[10vw] lg:h-[10vw] bg-contain bg-no-repeat relative"
                     style="
@@ -83,8 +91,8 @@ $select_home_page_atrium = get_sub_field( 'select_home_page_atrium' );
                     <div
                       class="home-atrium-post-overlay absolute inset-0 bg-black/20 w-[5rem] h-[4.8rem] lg:w-[10vw] lg:h-[9.8vw]"
                     ></div>
-                  </span>
-                  <span class="fs-3xl atrium-title-home">
+                  </span> -->
+                  <span class="fs-3xl atrium-title-home w-[100%] letter__spacing__custom__-3-25px">
                     <?php the_title(); ?>
                   </span>
                 </a>
@@ -98,13 +106,13 @@ $select_home_page_atrium = get_sub_field( 'select_home_page_atrium' );
 					<div class="new__design__home__atrium">
 						
                   <span
-                    class="home-atrium-post-no inline-flex gap-5 fs-3xl items-center"
+                    class="home-atrium-post-no inline-flex gap-5 fs-3xl items-center letter__spacing__custom__-3-25px"
                     >01
                     <span class="home-atrium-post-icon">
                       <img src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg" alt="" class='site__arrow'/>
                     </span>
                   </span>
-					<span class="fs-2xl">
+					<span class="fs-2xl letter__spacing__custom__-3-25px">
                     <?php the_title(); ?>
                   </span>
 						

@@ -3,10 +3,11 @@ $heading = get_sub_field( 'heading' );
 $desc = get_sub_field( 'desc' );
 $image = get_sub_field( 'image' );
 ?>
+<!-- ACF:- two_column_left_text_right_image -->
 <section class="scroll-section site-container bg-site no_min_height_mobile consistent__space__single__project__mobile">
             <div class="flex flex-col gap-y-[3rem] lg:grid grid-cols-12">
               <div class="flex justify-start col-start-3 col-end-6 h-full items-center">
-                <div class="flex" style="height: fit-content">
+                <div class="flex letter__spacing__custom__-1px" style="height: fit-content">
                   <?php echo $desc; ?>
                 </div>
               </div>

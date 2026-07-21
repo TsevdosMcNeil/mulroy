@@ -2,7 +2,8 @@
 $heading = get_sub_field( 'heading' );
 $desc = get_sub_field( 'desc' );
 $image = get_sub_field( 'image' );
-?>          <!-- 2nd section -->
+?>          
+<!-- ACF:- two_column_left_full_image_with_heading_right_text -->
           <section class="scroll-section bg-site site-container container-py no_min_height_mobile consistent__space__single__project__mobile" style="min-height:auto;">
             <div class="section-inner-container h-full">
               <div
@@ -29,7 +30,7 @@ $image = get_sub_field( 'image' );
               </div>
               <div class="col-start-9 col-end-13">
                 <div class="flex justify-center w-full h-full items-center">
-                  <div class="lg:max-w-[28vw]">
+                  <div class="lg:max-w-[28vw] letter__spacing__custom__-1px">
                     <?php echo $desc; ?>
                   </div>
                 </div>

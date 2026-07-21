@@ -3,7 +3,7 @@ $right_heading = get_sub_field( 'right_heading' );
 $right_desc = get_sub_field( 'right_desc' );
 $right_image = get_sub_field( 'right_image' );
 ?>
-<!-- 1st section -->
+<!-- ACF:- design_page_left_table_right_image_heading -->
           <section class="scroll-section site-container bg-site no_min_height_mobile consistent__space__single__project__mobile table__single__design" style="min-height:auto;">
             <div
               class="flex pt-[2rem] lg:pt-0 flex-col lg:grid grid-cols-12 h-full my-custom-grid lg:gap-y-0"
@@ -20,8 +20,12 @@ $right_image = get_sub_field( 'right_image' );
                  $value = get_sub_field('value');
                  ?>
                   <tr class="data-row">
-                    <td><?php echo $name; ?></td>
-					  <td><?php echo $value; ?></td>
+					  <?php if($name): ?>
+                    <td class="letter__spacing__custom__-1px"><?php echo $name; ?></td>
+					  <?php endif; ?>
+					  <?php if($value): ?>
+					  <td class="letter__spacing__custom__-1px"><?php echo $value; ?></td>
+					  <?php endif; ?>
                   </tr>
                   <?php 
                  endwhile;
@@ -30,7 +34,7 @@ $right_image = get_sub_field( 'right_image' );
                 </table>
               </div>
               <div class="col-start-6 col-end-13">
-                <div class="atrium-post-desc-text fs-2xl lg:max-w-[60vw] section__copy__content">
+                <div class="atrium-post-desc-text fs-2xl lg:max-w-[60vw] section__copy__content letter__spacing__custom__-2px">
                   <?php echo $right_desc; ?>
                 </div>
               </div>

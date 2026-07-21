@@ -42,7 +42,7 @@ if ( $atriums_query->have_posts() ) :
     // Print heading if provided
     if ( ! empty( $heading ) ) : ?>
         <header class="people-section-heading mb-8">
-            <h2 class="fs-3xl"><?php echo esc_html( $heading ); ?></h2>
+            <h2 class="fs-3xl letter__spacing__custom__-3-25px"><?php echo esc_html( $heading ); ?></h2>
         </header>
     <?php endif;
 
@@ -70,7 +70,7 @@ if ( $atriums_query->have_posts() ) :
                 $pos = ( $index % 4 === 0 ) ? 4 : ( $index % 4 );
                 $col_class = isset( $col_classes[ $pos ] ) ? $col_classes[ $pos ] : $col_classes[1];
                 ?>
-                <div class="<?php echo esc_attr( $col_class ); ?>">
+                <div class="<?php echo esc_attr( $col_class ); ?>"  id="<?php echo get_post_field( 'post_name', get_the_ID() ); ?>">
                     <a class="person-card relative w-full flex flex-col" href="<?php the_permalink(); ?>">
                         <div class="img-1 w-full inset-0 absolute">
                             <?php if ( $hover_picture ) : ?>
@@ -84,7 +84,7 @@ if ( $atriums_query->have_posts() ) :
                             <?php endif; ?>
                         </div>
 
-                        <h2 class="person-name fs-2xl">
+                        <h2 class="person-name letter__spacing__custom__-2px fs-2xl">
                             <?php the_title(); ?>
                             <span>
                                 <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/media/Arrow.svg' ); ?>" class="site__arrow person-icon" alt="">

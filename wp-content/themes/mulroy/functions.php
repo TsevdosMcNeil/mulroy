@@ -216,6 +216,9 @@ add_action('manage_designs_posts_custom_column', function($column, $post_id) {
     }
 }, 10, 2);
 
+
+
+
 // Make column sortable
 add_filter('manage_edit-designs_sortable_columns', function($columns) {
     $columns['design_type'] = 'design_type';
@@ -269,3 +272,90 @@ add_filter('acf/fields/wysiwyg/settings', function($settings) {
     $settings['quicktags'] = false;      // hide Text tab
     return $settings;
 });
+
+
+
+
+add_filter('acf/load_field/name=atrium_order', function($field) {
+    $field['choices'] = [];
+
+    for ($i = 1; $i <= 20; $i++) {
+        $field['choices'][$i] = 'ATRIUM ' . str_pad($i, 2, '0', STR_PAD_LEFT);
+    }
+
+    return $field;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 1️⃣ Add Atrium Order column and move it second-last
+add_filter('manage_atriums_posts_columns', function($columns) {
+
+    $atrium_order_column = ['atrium_order' => 'Atrium Order'];
+
+    // Remove if already exists
+    unset($columns['atrium_order']);
+
+    $last_key = array_key_last($columns);
+
+    $new_columns = [];
+    foreach ($columns as $key => $value) {
+
+        // Insert Atrium Order before last column
+        if ($key === $last_key) {
+            $new_columns = array_merge($new_columns, $atrium_order_column);
+        }
+
+        $new_columns[$key] = $value;
+    }
+
+    return $new_columns;
+});
+
+// 2️⃣ Display ACF select label in the column
+add_action('manage_atriums_posts_custom_column', function($column, $post_id) {
+    if ($column === 'atrium_order') {
+        $value = get_field('atrium_order', $post_id);          // Get value
+        $field = get_field_object('atrium_order', $post_id);   // Get full field
+
+        if ($value && isset($field['choices'][$value])) {
+            echo esc_html($field['choices'][$value]);          // Show label
+        } else {
+            echo '<em>No Order Selected</em>';
+        }
+    }
+}, 10, 2);
+
+// 3️⃣ Make the column sortable
+add_filter('manage_edit_atriums_sortable_columns', function($columns) {
+    $columns['atrium_order'] = 'atrium_order';
+    return $columns;
+});
+
+// 4️⃣ Handle sorting in admin
+add_action('pre_get_posts', function($query) {
+
+    // Only affect admin main query for atriums
+    if (!is_admin() || !$query->is_main_query()) return;
+
+    $orderby = $query->get('orderby');
+
+    if ($orderby === 'atrium_order') {
+
+        $query->set('meta_key', 'atrium_order');       // ACF field name
+        $query->set('orderby', 'meta_value');          // Sort by value
+        $query->set('order', strtoupper($_GET['order'] ?? 'ASC')); // Respect ASC/DESC
+    }
+});
+
+

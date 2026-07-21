@@ -36,7 +36,7 @@
             "label": "Right Side Content Text",
             "name": "right_side_content_text",
             "aria-label": "",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -46,11 +46,11 @@
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
+            "allow_in_bindings": 1,
+            "tabs": "all",
+            "toolbar": "onlylink",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -71,5 +71,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1764606082
+    "modified": 1784635409
 }

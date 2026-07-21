@@ -16,12 +16,12 @@ $design_name = get_field('design_type', $post_id);
             >
 				<?php if($top_selected_heading): ?>
               <div class="col-span-12">
-                <h2 class="fs-3xl page-bar-padding"><?php echo $top_selected_heading; ?></h2>
+                <h2 class="fs-3xl page-bar-padding letter__spacing__custom__-3-25px"><?php echo $top_selected_heading; ?></h2>
               </div>
 				<?php endif; ?>
 				<?php if($desc): ?>
               <div class="col-start-6 col-end-12">
-                <div class="page__desc fs-2xl section__copy__content">
+                <div class="page__desc fs-2xl section__copy__content letter__spacing__custom__-2px">
                   <?php echo $desc; ?>
                 </div>
               </div>

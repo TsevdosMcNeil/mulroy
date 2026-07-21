@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+	const hsCookie = document.querySelector("#hs-eu-policy-wording");
+	if(hsCookie){
+		hsCookie.innerHTML = 'Do you want cookies?';
+	}
+	
 	
   // Check if we're on home page
   const homeContainer = document.querySelector('[data-barba-namespace="home"]');
@@ -7,16 +12,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Check if animation has played in this session
   const hasAnimationPlayed = sessionStorage.getItem("homeAnimationPlayed");
   if (hasAnimationPlayed) return;
-
+	const hs__cokkie__banner = document.querySelector("#hs-eu-cookie-confirmation");
+	
   // Set the flag for this session
   // sessionStorage.setItem("homeAnimationPlayed", "true");
   const overlay = document.querySelector(".hero-overlay");
   const pageTitles = document.querySelectorAll(".page-title svg");
   const pageDesc = document.querySelector(".page-desc");
 	const letters = document.querySelectorAll(".hero-letter");
-	const customCursor = document.querySelector(".custom-cursor");
+	const customCursor = document.getElementById("custom-cursor");
   // Initial state
-  
+  	
 	letters.forEach((el)=>{
 		el.style.color='black'
 	})
@@ -33,23 +39,18 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.set(pageTitles, {
     fill: "#000000",
   });
-	
-	gsap.set(customCursor,{
-	  opacity:0,
-  })
-
+	customCursor.style.cssText = `visibility: hidden !important;`;
+	document.body.style.overflow = 'hidden';
   // Create animation timeline
   const tl = gsap.timeline({
     defaults: { ease: "power2.inOut" },
     delay: 2,
+	  
   });
 
   tl.to(overlay, {
     autoAlpha: 1,
     duration: 0,
-  })
-	.to(customCursor,{
-	  opacity:1,
   })
     .to(
       pageTitles,
@@ -85,7 +86,15 @@ document.addEventListener("DOMContentLoaded", () => {
 			  letters.forEach((el)=>{
 		el.style.color='white'
 	})
-		  }
+		  },
+		  onComplete:()=>{
+		  document.body.style.overflow = 'auto';
+			  if(hs__cokkie__banner){
+				  hs__cokkie__banner.style.display="block"
+			  }
+			  
+customCursor.style.cssText = `visibility: visible !important;`;
+	  }
       },
       "<"
     ); // Start at same time as previous
