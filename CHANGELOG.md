@@ -15,6 +15,12 @@ npm run build
 cd ~/Dockers/mulroy
 docker compose up -d --force-recreate
 
+## [1.0.1] - 2026-07-24
+
+### Added
+
+- Fento plugin
+
 ## [0.0.3] - 2023-10-21
 
 ### Updated

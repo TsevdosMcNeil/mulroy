@@ -1,9 +1,7 @@
-# Codigo Wordpress Site for Mulroy
+# Wordpress Template & Plugins for Mulroy
 Infrastructure as code (Docker & Wordpress) project for Mulroy
 
 [![version](https://img.shields.io/badge/version-0.0.2-red.svg)](https://semver.org)
-
-
 
 
 ## Staging Server
@@ -13,7 +11,7 @@ https://beta.mulroy.tm-studio.co.uk/
 
 ## Production Server
 
-*Not yet available*
+https://mulroyarchitects.com/
 
 
 ## Installation

@@ -160,6 +160,8 @@ wp-content/themes/*
 
 # Wordpress: track these mu-plugins, plugins, and themes
 
+!wp-content/plugins/fento-wordpress-configuration
+
 !wp-content/themes/mulroy/
 
 # Ignore dist folder of theme
