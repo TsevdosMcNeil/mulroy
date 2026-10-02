@@ -14,7 +14,7 @@ $image_url = null;
 // Support the new ACF Image Array format.
 if (is_array($image) && !empty($image['ID'])) {
   $image_id  = $image['ID'];
-  $image_url = $image['url'] ?? wp_get_attachment_image_url($image_id, 'large');
+  $image_url = $image['url'] ?? wp_get_attachment_image_url($image_id, 'full');
 
   // Backwards compatibility with the old ACF Image URL format.
 } elseif (is_string($image) && $image) {
@@ -187,29 +187,29 @@ $vimeo_id   = hero_get_vimeo_id( $vimeo_url );
 					></iframe>
 				</div>
       
-        <?php elseif ($image_id): ?>
+      <?php elseif ($image_id): ?>
 
           <?php
           echo wp_get_attachment_image(
             $image_id,
-            'large',
+            'full',
             false,
             [
-              'class' => 'w-full h-full object-cover',
+              'class' => 'hero-media hero-media--image w-full h-full object-cover',
             ]
           );
           ?>
 
-        <?php elseif ($image_url): ?>
+      <?php elseif ($image_url): ?>
 
-          <!-- Legacy fallback for an image URL that cannot be resolved
-              to a WordPress Media Library attachment. -->
-          <img
-            src="<?php echo esc_url($image_url); ?>"
-            alt=""
-            class="hero-media hero-media--image w-full h-full object-cover" />
+        <!-- Legacy fallback for an image URL that cannot be resolved
+            to a WordPress Media Library attachment. -->
+        <img
+          src="<?php echo esc_url($image_url); ?>"
+          alt=""
+          class="hero-media hero-media--image w-full h-full object-cover" />
 
-        <?php endif; ?>
+      <?php endif; ?>
 
 		</div>
 	</div>

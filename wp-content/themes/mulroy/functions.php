@@ -5,12 +5,14 @@ function mulroy_theme_support() {
 
 add_action( 'after_setup_theme', 'mulroy_theme_support' );
 function mulroy_styles() {
-		wp_register_style(
-			'mulroy-style',
-			get_template_directory_uri() . '/style.css',
-			array(),
-			1
-		);
+  $theme = wp_get_theme();
+
+  wp_register_style(
+    'mulroy-style',
+    get_template_directory_uri() . '/assets/css/main.css',
+    array(),
+    $theme->get( 'Version' )
+  );		
 
 		// Enqueue theme stylesheet.
 		wp_enqueue_style( 'mulroy-style' );
@@ -201,7 +203,7 @@ add_filter('manage_edit-designs_columns', function($columns) {
 
         // Insert our custom column *after* the Title column
         if ($key === 'title') {
-            $new_columns['design_type'] = __('Project Name', 'bhukman');
+            $new_columns['design_type'] = __('Subtitle', 'bhukman');
         }
     }
 

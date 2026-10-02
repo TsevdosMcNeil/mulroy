@@ -9,7 +9,7 @@ $image_url = null;
 // Support the new ACF Image Array format.
 if (is_array($image) && !empty($image['ID'])) {
   $image_id  = $image['ID'];
-  $image_url = $image['url'] ?? wp_get_attachment_image_url($image_id, 'large');
+  $image_url = $image['url'] ?? wp_get_attachment_image_url($image_id, 'full');
 
   // Backwards compatibility with the old ACF Image URL format.
 } elseif (is_string($image) && $image) {
@@ -51,7 +51,7 @@ if (is_array($image) && !empty($image['ID'])) {
         <?php
         echo wp_get_attachment_image(
           $image_id,
-          'large',
+          'full',
           false,
           [
             'class' => 'w-full h-full object-cover',

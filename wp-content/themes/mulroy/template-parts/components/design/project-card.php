@@ -10,11 +10,20 @@ if (!$post_id) {
   return;
 }
 
+$image_class = implode(
+  ' ',
+  array_unique(
+      array_filter(
+          array_merge( [ 'object-cover' ], preg_split( '/\s+/', $image_class ) )
+      )
+  )
+);
+
 $title    = get_the_title($post_id);
 $subtitle = get_field('design_type', $post_id);
 
 ?>
-
+<!-- template-parts/components/design/project-card.php -->
 <a
   class="home-project-section project-img <?php echo esc_attr($class); ?>"
   href="<?php echo esc_url(get_permalink($post_id)); ?>"
@@ -39,13 +48,21 @@ $subtitle = get_field('design_type', $post_id);
       $attachment_id = attachment_url_to_postid($image);
 
       if ($attachment_id) {
-        echo wp_get_attachment_image($attachment_id, 'large');
+        echo wp_get_attachment_image(
+          $attachment_id, 
+          'large',
+          false,
+          [
+            'class' => 'attachment-large size-large '.$image_class,
+          ]
+        );
       } else {
         // Legacy fallback for an image URL that cannot be resolved
         // to a WordPress Media Library attachment.
       ?>
         <img
           src="<?php echo esc_url($image); ?>"
+          class="<?php echo $image_class; ?>"
           alt=""
           loading="lazy" />
       <?php
@@ -77,3 +94,4 @@ $subtitle = get_field('design_type', $post_id);
     </span>
   </h3>
 </a>
+<!-- template-parts/components/design/project-card.php -->

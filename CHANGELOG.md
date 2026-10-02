@@ -8,12 +8,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.1.2] - 2026-10-03
+
+### Fixed
+
+- Design images object cover
+
+### Updated
+
+- Admin area: Design columns titles
+- Refactored theme CSS structure by moving styles from `style.css` into a dedicated stylesheet, leaving `style.css` for WordPress theme metadata only.
+
 ## [1.1.1] - 2026-10-03
 
 ### Added
 
 - Deployment script
-
 
 
 ## [1.1.0] - 2026-10-02

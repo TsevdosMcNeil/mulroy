@@ -5,7 +5,7 @@ set -e
 SSH_HOST="Mulroy"
 
 THEME_NAME="mulroy"
-LOCAL_THEME="./wordpress/wp-content/themes/$THEME_NAME/"
+LOCAL_THEME="./wp-content/themes/$THEME_NAME/"
 
 REMOTE_ROOT="/home/u652416532/domains/mulroyarchitects.com/public_html"
 REMOTE_THEME="$REMOTE_ROOT/wp-content/themes/$THEME_NAME"
