@@ -63,6 +63,10 @@ services:
       # - "443:443"
       # - "${WORDPRESS_PORT}:${WORDPRESS_PORT}"   # optional HTTP listener for redirect
       - "${WORDPRESS_SSL_PORT}:${WORDPRESS_SSL_PORT}"   # HTTPS on custom port
+    environment:
+      WORDPRESS_SSL_PORT: ${WORDPRESS_SSL_PORT}         
+      CADDY_HOSTNAME: ${CADDY_HOSTNAME}     
+      CADDY_PRODUCTION_DOMAIN: ${CADDY_PRODUCTION_DOMAIN}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./certs:/etc/caddy/certs:ro

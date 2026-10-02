@@ -6,14 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+---
 
-# Quick reload after big changes (if you are using DOCKER)
+## [1.0.2] - 2026-07-24
 
-cd ~/Dockers/mulroy/wp-content/themes/seadesign
-npm run build 
+### Updated
 
-cd ~/Dockers/mulroy
-docker compose up -d --force-recreate
+- Load remote uploads
+
 
 ## [1.0.1] - 2026-07-24
 
