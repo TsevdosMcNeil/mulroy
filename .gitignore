@@ -157,6 +157,9 @@ wp-content/themes/*
 !docker-compose.yml
 #!Caddyfile
 
+# Deployment
+!deploy.sh
+
 
 # Wordpress: track these mu-plugins, plugins, and themes
 

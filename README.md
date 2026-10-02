@@ -21,11 +21,23 @@ https://mulroyarchitects.com/
 [DOCKER.md](https://github.com/TsevdosMcNeil/mulroy/blob/main/DOCKER.md)
 
 
+## Deployment
+
+Change permissions:
+
+```bash
+chmod +x deploy.sh
+```
+
+Deploy;
+
+```bash
+cd ~/Dockers/mulroy
+./deploy.sh
+```
+
+
 ## Required Plugins
-
-*List here the required plugins*
-
-**Example**
 
 * [Advanced Custom Fields](https://www.advancedcustomfields.com/pro/)
 * [All-in-One WP Migration and Backup](https://wordpress.org/plugins/all-in-one-wp-migration/)
