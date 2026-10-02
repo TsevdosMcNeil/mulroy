@@ -216,7 +216,7 @@ if ( is_front_page() || is_home() ) {
                 </div>
               </div>
             </div>
-            <div class="news-post-hero-content site-container">
+            <div class="news-post-hero-content design-post-hero-content site-container">
               <h3 class="fs-lg"><?php echo $published_date = get_the_date('F j, Y'); ?></h3>
               <h2 class="fs-3xl lg:max-w-[35vw]">
                 <?php the_title(); ?>

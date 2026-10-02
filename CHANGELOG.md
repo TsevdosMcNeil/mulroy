@@ -8,6 +8,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.1.0] - 2026-10-02
+
+### Updated
+
+- Project templates & content structure
+
+  - Refactored project templates to improve code consistency and reuse shared project components.
+
+  - Updated hero templates to use the shared project card structure where appropriate.
+
+  - Improved video hero handling, including proper poster image support and image fallback when no video is available.
+
+  - Updated the project content structure so the WordPress post title can be used as the actual project title.
+
+  - Added support for a separate project subtitle, replacing the previous approach where the article-style subtitle was incorrectly stored as the WordPress post title.
+
+  - Updated project heading output so the correct project title can be used as the primary H1.
+
+  - Prepared project templates for the title/slug migration, improving compatibility with Yoast SEO and WordPress-generated URLs.
+
+  - Removed reliance on the legacy project_title field from the updated project templates.
+
+
 ## [1.0.2] - 2026-07-24
 
 ### Updated

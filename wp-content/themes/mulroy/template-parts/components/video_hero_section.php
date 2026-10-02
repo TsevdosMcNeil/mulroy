@@ -5,8 +5,28 @@
  */
 
 // ---- Get ACF fields ----
+
+$image     = get_sub_field( 'image' );
+$image_id  = null;
+$image_url = null;
+
+
+// Support the new ACF Image Array format.
+if (is_array($image) && !empty($image['ID'])) {
+  $image_id  = $image['ID'];
+  $image_url = $image['url'] ?? wp_get_attachment_image_url($image_id, 'large');
+
+  // Backwards compatibility with the old ACF Image URL format.
+} elseif (is_string($image) && $image) {
+  $image_url = $image;
+  $image_id  = attachment_url_to_postid($image);
+}
+
+//error_log(print_r($image_url));
+
+
 $media_source   = get_sub_field( 'media_source' ); // image | upload_video | youtube | vimeo | video_link
-$image          = get_sub_field( 'image' );
+
 $video_file     = get_sub_field( 'video_file' );
 $youtube_url    = get_sub_field( 'youtube_url' );
 $vimeo_url      = get_sub_field( 'vimeo_url' );
@@ -66,10 +86,16 @@ function hero_get_vimeo_id( $url ) {
 
 $youtube_id = hero_get_youtube_id( $youtube_url );
 $vimeo_id   = hero_get_vimeo_id( $vimeo_url );
+
+
 ?>
 
-<!-- hero section -->
-<section class="scroll-section video-hero hero-section-height" style="padding-bottom:0;" id="news-top">
+<!-- template-parts/components/video_hero_section.php -->
+<section 
+  class="scroll-section video-hero hero-section-height" 
+  style="padding-bottom:0;" 
+  id="news-top"
+>
 	<div class="custom-cursor" id="custom-cursor"></div>
 
 	<div class="hero-background"></div>
@@ -160,24 +186,38 @@ $vimeo_id   = hero_get_vimeo_id( $vimeo_url );
 						allowfullscreen
 					></iframe>
 				</div>
+      
+        <?php elseif ($image_id): ?>
 
-			<?php elseif ( $image ) : ?>
+          <?php
+          echo wp_get_attachment_image(
+            $image_id,
+            'large',
+            false,
+            [
+              'class' => 'w-full h-full object-cover',
+            ]
+          );
+          ?>
 
-				<img
-					src="<?php echo esc_url( $image ); ?>"
-					alt="Hero"
-					class="hero-media hero-media--image w-full h-full object-cover"
-				/>
+        <?php elseif ($image_url): ?>
 
-			<?php endif; ?>
+          <!-- Legacy fallback for an image URL that cannot be resolved
+              to a WordPress Media Library attachment. -->
+          <img
+            src="<?php echo esc_url($image_url); ?>"
+            alt=""
+            class="hero-media hero-media--image w-full h-full object-cover" />
+
+        <?php endif; ?>
 
 		</div>
 	</div>
 
-	<div class="news-post-hero-content site-container z-20">
-		<h3 class="fs-lg uppercase"><?php echo esc_html( $design_type ); ?></h3>
+	<div class="news-post-hero-content video-hero-content site-container z-20">
+		<h1 class="fs-lg uppercase"><?php the_title(); ?></h1>
 		<h2 class="fs-3xl lg:max-w-[35vw] mt-4 letter__spacing__custom__-3-25px">
-			<?php the_title(); ?>
+			<?php echo esc_html( $design_type ); ?>
 		</h2>
 	</div>
 </section>
@@ -210,3 +250,4 @@ $vimeo_id   = hero_get_vimeo_id( $vimeo_url );
 	transform: translate(-50%, -50%);
 }
 </style>
+<!-- End template-parts/components/video_hero_section.php -->
