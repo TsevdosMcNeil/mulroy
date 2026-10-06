@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+<<<<<<< HEAD
 ## [1.1.4] - 2026-10-06
 
 ### Updated
@@ -15,11 +16,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
    - Add Hero Description into preloader on homepage
 
 ## [1.1.4] - 2026-10-03
+=======
+## [1.1.5] - 2026-10-06
+
+### Updated
+
+- **Refactor: Shared ACF component rendering**
+  - Refactored repeated ACF flexible content rendering across page and single templates.
+  - Added a shared component renderer to dynamically load template parts based on the ACF layout name.
+  - Removed duplicated component conditionals from individual templates.
+  - Moved page-specific components into the shared component structure.
+  - Consolidated repeated legal page component rendering into shared templates.
+  - Refactored repeated post navigation into a reusable template part.
+  - Standardised component file naming and organisation.
+  - Reduced duplicated code and simplified the process of adding new ACF components.
+
+## [1.1.4] - 2026-10-05
+>>>>>>> c00d2e6ece1f5b2d462e9757330e36b8f1d69ec5
 
 ### Updated
 
 - Deployment script: 
-   - Staging and Produciton environment
+   - Staging and Production environment
 
 
 
