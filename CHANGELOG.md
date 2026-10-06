@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.1.4] - 2026-10-06
+
+### Updated
+- Preloader Update: 
+   - Add Hero Description into preloader on homepage
+
 ## [1.1.4] - 2026-10-03
 
 ### Updated
