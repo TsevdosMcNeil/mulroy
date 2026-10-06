@@ -19,10 +19,14 @@ $args = array(
 $atriums_query = new WP_Query($args);
 $data = $atriums_query->get_posts();
 if ($data[0]->ID) {
-  $featured_image_url_0 = get_the_post_thumbnail_url($data[0]->ID, 'full');
+  $featured_image_0 = get_post_thumbnail_id($data[0]->ID, 'full');
+  //$featured_image_url_0 = get_the_post_thumbnail_url($data[0]->ID, 'full');
   $design_type_0 = get_field('design_type', $data[0]->ID);
   $title_0 = $data[0]->post_title;
   $permalink_0 = get_permalink($data[0]->ID);
+
+  error_log($title_0." ".print_r($featured_image_0, true));
+
 }
 
 
@@ -30,12 +34,20 @@ if ($data[0]->ID) {
 ?>
 <!-- template-parts/components/home_page_design_section.php -->
 <section id="design-section"
-  class="bg-site scroll-section no_min_height_mobile" 
->
+  class="bg-site scroll-section no_min_height_mobile">
   <div class="page-bar md:py-[1vw] hover-dark-blue">
     <a href="<?php echo $top_heading_link; ?>" class="page-bar-link">
       <span class="content letter__spacing__custom__-3-25px"><?php echo $top_heading; ?> </span>
-      <span class="arrow-content"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg" class="w-5 md:w-10" /></span>
+      <?php
+      get_template_part(
+        'template-parts/components/icons/arrow',
+        null,
+        [
+          'container_class' => 'arrow-content',
+          'arrow_class' => 'w-5 md:w-10',
+        ]
+      );
+      ?>
     </a>
   </div>
   <div class="page-sect-content">
@@ -50,16 +62,29 @@ if ($data[0]->ID) {
       <a
         class="design-project-item flex flex-col gap-y-1 w-full h-full"
         href="<?php echo $permalink_0; ?>">
-        <div
-          class="image-container mb-2">
-          <img src="<?php echo $featured_image_url_0; ?>" alt='mulroy-design-project' />
-        </div>
+        <?php
+        get_template_part(
+          'template-parts/components/column-image',
+          null,
+          [
+            'image'   => $featured_image_0,
+            'container_class' => 'mb-2 featured_image_0',
+          ]
+        );
+        ?>
         <h2 class="project-caption font-bold text-[14px] uppercase"><?php echo $title_0; ?></h2>
         <h3 class="project-sect-title fs-2xl">
           <?php echo $design_type_0; ?>
-          <span class="inline-flex">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg" class="site__arrow" alt="" />
-          </span>
+          <?php
+          get_template_part(
+            'template-parts/components/icons/arrow',
+            null,
+            [
+              'container_class' => 'inline-flex',
+              'arrow_class' => 'site__arrow',
+            ]
+          );
+          ?>
         </h3>
       </a>
     </div>
@@ -74,7 +99,8 @@ if ($data[0]->ID) {
     <?php
     if ($data[1]->ID) {
       $ids = $data[1]->ID;
-      $featured_image_url_1 = get_the_post_thumbnail_url($ids, 'full');
+      $featured_image_1 = get_post_thumbnail_id($ids, 'full');
+      //$featured_image_url_1 = get_the_post_thumbnail_url($ids, 'full');
       $design_type_1 = get_field('design_type', $ids);
       $title_1 = $data[1]->post_title;
       $permalink_1 = get_permalink($ids);
@@ -83,20 +109,29 @@ if ($data[0]->ID) {
         <a
           class="home-project-section flex flex-col gap-y-2 col-span-6 lg:col-start-4 lg:col-end-7 h-full"
           href="<?php echo $permalink_1; ?>">
-          <div
-            class="image-container mb-1">
-            <img src='<?php echo $featured_image_url_1; ?>' alt='mulroy-design-project' />
-
-          </div>
+          <?php
+          get_template_part(
+            'template-parts/components/column-image',
+            null,
+            [
+              'image'   => $featured_image_1,
+              'container_class' => 'mb-1 featured_image_1'
+            ]
+          );
+          ?>
           <h2 class="project-caption font-bold text-[14px] uppercase"><?php echo $title_1; ?></h2>
           <h3 class="project-sect-title fs-2xl">
             <?php echo $design_type_1; ?>
-            <span class="inline-flex">
-              <img
-                src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg"
-                alt=""
-                class="site__arrow" />
-            </span>
+            <?php
+            get_template_part(
+              'template-parts/components/icons/arrow',
+              null,
+              [
+                'container_class' => 'inline-flex',
+                'arrow_class' => 'site__arrow',
+              ]
+            );
+            ?>
           </h3>
         </a>
       </div>
@@ -104,7 +139,8 @@ if ($data[0]->ID) {
     <?php
     if ($data[2]->ID) {
       $ids = $data[2]->ID;
-      $featured_image_url_2 = get_the_post_thumbnail_url($ids, 'full');
+      $featured_image_2 = get_post_thumbnail_id($ids, 'full');
+      //$featured_image_url_2 = get_the_post_thumbnail_url($ids, 'full');
       $design_type_2 = get_field('design_type', $ids);
       $title_2 = $data[2]->post_title;
       $permalink_2 = get_permalink($ids);
@@ -113,21 +149,31 @@ if ($data[0]->ID) {
         <a
           class="home-project-section flex flex-col gap-y-2 col-span-6 lg:col-start-5 lg:col-end-7 h-full "
           href="<?php echo $permalink_2; ?>">
-          <div
-            class="image-container mb-1">
-            <img src='<?php echo $featured_image_url_2; ?>' alt='mulroy-desing-project' />
-          </div>
+          <?php
+          get_template_part(
+            'template-parts/components/column-image',
+            null,
+            [
+              'image'   => $featured_image_2,
+              'container_class' => 'mb-1 featured_image_2'
+            ]
+          );
+          ?>
           <span class="project-caption font-bold text-[14px] uppercase">
             <?php echo $design_type_2; ?></span>
           <h2 class="project-sect-title">
             <span class="fs-2xl">
               <?php echo $title_2; ?>
-              <span class="inline-flex items-center">
-                <img
-                  src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg"
-                  class="site__arrow"
-                  alt="" />
-              </span>
+              <?php
+              get_template_part(
+                'template-parts/components/icons/arrow',
+                null,
+                [
+                  'container_class' => 'inline-flex items-center',
+                  'arrow_class' => 'site__arrow',
+                ]
+              );
+              ?>
             </span>
           </h2>
         </a>
@@ -137,8 +183,17 @@ if ($data[0]->ID) {
   <div class="page-bar md:py-[1vw] hover-dark-blue">
     <a href="<?php echo $bottom_link; ?>" class="page-bar-link">
       <span class="content letter__spacing__custom__-3-25px"> <?php echo $bottom_heading; ?> </span>
-      <span class="arrow-content"><img src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg" class="w-5 md:w-10" /></span>
+      <?php
+      get_template_part(
+        'template-parts/components/icons/arrow',
+        null,
+        [
+          'container_class' => 'arrow-content',
+          'arrow_class' => 'w-5 md:w-10',
+        ]
+      );
+      ?>
     </a>
   </div>
 </section>
-<!-- End template-parts/components/home_page_design_section.php --> 
+<!-- End template-parts/components/home_page_design_section.php -->

@@ -1,10 +1,8 @@
 <!-- template-parts/components/design/carousel_hero_section.php -->
 <section class="scroll-section site-container h-[100vh] design__header pb-0">
-  <div class="design__cursor">
-
-  </div>
+  <div class="design__cursor"></div>
   <div class="carousel-container">
-    <!--               <div class="hero-overlay" style="z-index: 2"></div> -->
+
     <div class="carousel-wrapper">
       <?php if (have_rows('slides')):  ?>
         <?php while (have_rows('slides')): the_row(); ?>
@@ -80,15 +78,11 @@
 
             <?php endif; ?>
 
-
-
-
             <div class="slide-content site-container">
-
               <a href="<?php echo $heading->guid; ?>" class='slider-title-link'>
 
                 <div class='slide-title'>
-                  <h2 class='project-caption font-bold text-[14px] uppercase' 
+                  <h2 class='project-caption font-bold text-[14px] uppercase'
                     style="letter-spacing:3.6px;">
                     <?php echo $title; ?>
                   </h2>
@@ -96,9 +90,16 @@
                   <div class="new_class">
                     <h3 class='fs-2xl'>
                       <?php echo $subtitle; ?>
-                      <span class="inline-flex items-center">
-                      <img src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow_white.svg" class="site__arrow" alt="">
-                    </span>
+                      <?php
+                      get_template_part(
+                        'template-parts/components/icons/arrow',
+                        null,
+                        [
+                          'container_class' => 'inline-flex items-center',
+                          'arrow_class' => 'site__arrow',
+                        ]
+                      );
+                      ?>
                     </h3>
                   </div>
 
