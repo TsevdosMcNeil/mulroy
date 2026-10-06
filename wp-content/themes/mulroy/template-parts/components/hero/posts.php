@@ -9,38 +9,15 @@ $months = str_split($month_number);
 ?>
 <!-- template-parts/components/hero/posts.php -->
 <section class="scroll-section site-container hero-section-height" id="news-top">
-  <?php if ($hero_image) : ?>
-    <div class="hero-background">
-      <?php
-      if (is_numeric($hero_image)) {
-        // WordPress attachment ID
-        echo wp_get_attachment_image(
-          (int) $hero_image,
-          'full',
-          false,
-          [
-            'class'         => 'hero-background-image',
-            'alt'           => '',
-            'aria-hidden'   => 'true',
-            'loading'       => 'eager',
-            'fetchpriority' => 'high',
-          ]
-        );
-      } else {
-        // Fallback for image URLs
-      ?>
-        <img
-          src="<?php echo esc_url($hero_image); ?>"
-          class="hero-background-image"
-          alt=""
-          aria-hidden="true"
-          loading="eager"
-          fetchpriority="high">
-      <?php
-      }
-      ?>
-    </div>
-  <?php endif; ?>
+<?php if ($hero_image) : 
+    get_template_part(
+      'template-parts/components/hero/background',
+      null,
+      [
+        'image' => $hero_image,
+      ]
+    );
+  endif; ?>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="content-sect">
