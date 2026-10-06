@@ -147,10 +147,10 @@ global $post;
 		'post_type'      => 'atriums',   
 		'posts_per_page' => -1,           
 		'post_status'    => 'publish', 
-		'post__in'       => $selected_atrium_posts,
-		'meta_key'       => 'atrium_order',      // ACF field name
-		'orderby'        => 'meta_value_num',    // Order by number
-		'order'          => 'ASC'
+		// 'post__in'       => $selected_atrium_posts,
+		// 'meta_key'       => 'atrium_order',      // ACF field name
+		// 'orderby'        => 'meta_value_num',    // Order by number
+		'order'          => 'DESC'
 	);
 
 	$atriums_query = new WP_Query($args);

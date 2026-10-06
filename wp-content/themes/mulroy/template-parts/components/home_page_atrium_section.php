@@ -3,6 +3,26 @@ $desc = get_sub_field('desc');
 $select_home_page_atrium = get_sub_field('select_home_page_atrium');
 ?>
 <?php
+
+// Get all published Atrium posts ordered by newest first
+$all_atriums = get_posts([
+  'post_type'      => 'atriums',
+  'posts_per_page' => -1,
+  'post_status'    => 'publish',
+  'orderby'        => 'date',
+  'order'          => 'DESC',
+  'fields'         => 'ids',
+]);
+
+// Find the position of the selected Atrium post
+$atrium_number = array_search($select_home_page_atrium, $all_atriums);
+
+if ($atrium_number !== false) {
+  $atrium_number = str_pad($atrium_number + 1, 2, '0', STR_PAD_LEFT);
+} else {
+  $atrium_number = '01';
+}
+
 $args = array(
   'post_type'      => 'atriums',
   'posts_per_page' => 1,
@@ -62,37 +82,25 @@ foreach ($posts as $post) {
       <div class="home-atrium-post">
         <a
           href="<?php echo $permalink; ?>"
-          class="flex flex-col lg:flex-row justify-between w-full lg:items-center home-atrium-post-anchor gap-y-5">
+          class="flex flex-col lg:flex-row justify-start w-full lg:items-center home-atrium-post-anchor gap-y-5 gap-x-[37px]">
           <span
-            class="home-atrium-post-no inline-flex gap-5 fs-3xl items-center w-[52%] letter__spacing__custom__-3-25px">01
-            <?php
-              get_template_part(
-                'template-parts/components/icons/arrow',
-                null,
-                [
-                  'arrow_class' => 'site__arrow',
-                  'container_class' => 'home-atrium-post-icon',
-                ]
-              );
-            ?>
+            class="home-atrium-post-no inline-flex gap-5 fs-3xl items-center letter__spacing__custom__-3-25px">
+            <?php echo $atrium_number; ?>
+
           </span>
-          <div class="home-atrium-post-img lg:w-[100%] bg-contain bg-no-repeat relative">
-            <?php
-            get_template_part(
-              'template-parts/components/column-image',
-              null,
-              [
-                'image'   => $post_thumbnail,
-                'image_class' => "w-[50%]",
-                'image_wrap' => 'none',
-              ]
-            );
-            ?>
-            <div class="home-atrium-post-overlay absolute inset-0 bg-black/20 w-[50%]"></div>
-          </div>
-          <span class="fs-3xl atrium-title-home w-[100%] letter__spacing__custom__-3-25px">
+          <span class="fs-3xl atrium-title-home w-auto letter__spacing__custom__-3-25px">
             <?php the_title(); ?>
           </span>
+          <?php
+          get_template_part(
+            'template-parts/components/icons/arrow',
+            null,
+            [
+              'arrow_class' => 'site__arrow w-[46px] h-[45px]',
+              'container_class' => 'home-atrium-post-icon',
+            ]
+          );
+          ?>
         </a>
       </div>
 
@@ -105,14 +113,14 @@ foreach ($posts as $post) {
             <span
               class="home-atrium-post-no inline-flex gap-5 fs-3xl items-center letter__spacing__custom__-3-25px">01
               <?php
-                get_template_part(
-                  'template-parts/components/icons/arrow',
-                  null,
-                  [
-                    'arrow_class' => 'site__arrow',
-                    'container_class' => 'home-atrium-post-icon',
-                  ]
-                );
+              get_template_part(
+                'template-parts/components/icons/arrow',
+                null,
+                [
+                  'arrow_class' => 'site__arrow',
+                  'container_class' => 'home-atrium-post-icon',
+                ]
+              );
               ?>
             </span>
             <span class="fs-2xl letter__spacing__custom__-3-25px">

@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
     - Homepage hero description added to preloader as well.
   ACF Changing
     - Convert all the text area field into Editor field to have a ability to link any text in the descrioption.
+  Atrium Section & Atrium Page
+    - Atrium section new design update implemeted.
+    - Story Number now come according to the publication date both on homepage and atrium page.
 
 ## [1.1.5] - 2026-10-06
 
