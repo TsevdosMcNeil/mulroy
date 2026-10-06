@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.1.7] - 2026-10-06
+
+### Updated
+
+ - **Hero sections – SEO and image improvements**
+  - Added proper semantic **H1 headings** to the Home and Studio hero sections, allowing search engines to correctly identify the page titles while keeping the existing SVG-based design unchanged.
+  - Updated the hero SVG lettering to be treated as decorative content.
+  - Improved the heading hierarchy on the Home page by changing the secondary hero heading to an **H2**.
+  - Replaced CSS background images with WordPress-generated `<img>` elements using `wp_get_attachment_image()`, providing responsive `srcset`/`sizes` markup and better image optimisation.
+  - Added fallback support for hero images provided as direct URLs.
+  - Optimised hero images for LCP by using eager loading and high fetch priority.
+
 ## [1.1.6] - 2026-10-06
 
 ### Added
