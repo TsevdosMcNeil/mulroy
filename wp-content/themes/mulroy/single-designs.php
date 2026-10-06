@@ -1,112 +1,22 @@
 <?php
 get_header();
-global $post;
-
 ?>
 <!-- single-designs.php -->
 <?php
-$post_id = get_the_ID();
-$post = get_post($post_id);
+get_template_part('template-parts/components');
+get_template_part(
+  'template-parts/post-navigation',
+  null,
+  [
+    'class'      => 'bg-site site-container py-8 col-span-12',
+    'back_url'   => '/design',
+    'top_anchor' => "#news-top"
+  ]
+);
+
 $position = get_field('position');
 $hover_picture = get_field('hover_picture');
 $picture = get_field('picture');
-?>
-<?php
-if (have_rows('components')) :
-  while (have_rows('components')) : the_row();
-
-    if (get_row_layout() == 'hero_section') {
-      include get_theme_file_path('template-parts/components/hero_section.php');
-    }
-    if (get_row_layout() == 'right_only_content_block') {
-      include get_theme_file_path('template-parts/components/right_only_content_block.php');
-    }
-    if (get_row_layout() == 'two_column_left_image_right_text') {
-      include get_theme_file_path('template-parts/components/two_column_left_image_right_text.php');
-    }
-    if (get_row_layout() == 'two_column_left_text_right_image') {
-      include get_theme_file_path('template-parts/components/two_column_left_text_right_image.php');
-    }
-    if (get_row_layout() == 'centered_banner_image_with_caption') {
-      include get_theme_file_path('template-parts/components/centered_banner_image_with_caption.php');
-    }
-    if (get_row_layout() == 'two_column_left_heading_right_image_and_text') {
-      include get_theme_file_path('template-parts/components/two_column_left_heading_right_image_and_text.php');
-    }
-    if (get_row_layout() == 'three_column_left_image_center_text_right_text') {
-      include get_theme_file_path('template-parts/components/three_column_left_image_center_text_right_text.php');
-    }
-    if (get_row_layout() == 'landscape-img-right-text-left') {
-      include get_theme_file_path('template-parts/components/landscape-img-right-text-left.php');
-    }
-    if (get_row_layout() == 'full_width_big_centered_image') {
-      include get_theme_file_path('template-parts/components/full_width_big_centered_image.php');
-    }
-    if (get_row_layout() == 'three_column_right_image_center_text_left_text') {
-      include get_theme_file_path('template-parts/components/three_column_right_image_center_text_left_text.php');
-    }
-    if (get_row_layout() == 'people_section') {
-      include get_theme_file_path('template-parts/components/people_section.php');
-    }
-    if (get_row_layout() == 'carousel_hero_section') {
-      include get_theme_file_path('template-parts/components/carousel_hero_section.php');
-    }
-    if (get_row_layout() == 'home_page_studio_section') {
-      include get_theme_file_path('template-parts/components/home_page_studio_section.php');
-    }
-    if (get_row_layout() == 'home_page_design_section') {
-      include get_theme_file_path('template-parts/components/home_page_design_section.php');
-    }
-    if (get_row_layout() == 'home_page_news_section') {
-      include get_theme_file_path('template-parts/components/home_page_news_section.php');
-    }
-    if (get_row_layout() == 'home_page_atrium_section') {
-      include get_theme_file_path('template-parts/components/home_page_atrium_section.php');
-    }
-    if (get_row_layout() == 'video_hero_section') {
-      include get_theme_file_path('template-parts/components/video_hero_section.php');
-    }
-    if (get_row_layout() == 'design_page_left_table_right_image_heading') {
-      include get_theme_file_path('template-parts/components/design_page_left_table_right_image_heading.php');
-    }
-    if (get_row_layout() == 'two_column_left_full_image_with_heading_right_text') {
-      include get_theme_file_path('template-parts/components/two_column_left_full_image_with_heading_right_text.php');
-    }
-    if (get_row_layout() == 'two_column_left_landscape_and_righ_portriat_image') {
-      include get_theme_file_path('template-parts/components/two_column_left_landscape_and_righ_portriat_image.php');
-    }
-    if (get_row_layout() == 'two_coulmn_both_side_image') {
-      include get_theme_file_path('template-parts/components/two_coulmn_both_side_image.php');
-    }
-
-    if (get_row_layout() == 'privacy_policy_section_global') {
-      include get_theme_file_path('template-parts/privacy-policy-section.php');
-    }
-  endwhile;
-endif;
-?>
-
-<div class="bg-site site-container py-8 col-span-12">
-  <div class="flex justify-between">
-    <a href="/design">
-      <span>
-        <img
-          src="<?php echo get_template_directory_uri(); ?>/assets/media/arrow-left.svg"
-          class="site__arrow post__arrow arrow__right"
-          alt="Go back" />
-      </span>
-    </a>
-    <a href="#news-top">
-      <span>
-        <img
-          src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg"
-          class="site__arrow post__arrow arrow__up"
-          alt="Go up" />
-      </span>
-    </a>
-  </div>
-</div>
-<?php
 $atriumdesc =  get_field('desc', 'option');
 $select_page_atrium = get_field('select_page_atrium', 'option');
 

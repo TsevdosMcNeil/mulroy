@@ -1,124 +1,20 @@
-<?php 
-get_header(); 
-global $post;
+<?php
+get_header();
+?>
+<!-- single-atriums.php -->
+<?php
+get_template_part('template-parts/components');
+
+get_template_part(
+  'template-parts/post-navigation',
+  null,
+  [
+    'id'         => 'atrium-post-navigation',
+    'back_url'   => esc_url(wp_get_referer()),
+    'top_anchor' => "#atrium-top"
+  ]
+);
 
 ?>
-<?php
-    $post_id = get_the_ID(); 
-    $post = get_post($post_id);
-  	
-?>
-<?php
-if ( have_rows( 'components' ) ) :
-		while ( have_rows( 'components' ) ) : the_row();
-			
-			if ( get_row_layout() == 'hero_section' ) {
-					include get_theme_file_path( 'template-parts/components/hero_section.php' );
-			}
-			if ( get_row_layout() == 'right_only_content_block' ) {
-					include get_theme_file_path( 'template-parts/components/right_only_content_block.php' );
-			}
-			if ( get_row_layout() == 'two_column_left_image_right_text' ) {
-					include get_theme_file_path( 'template-parts/components/two_column_left_image_right_text.php' );
-			}
-			if ( get_row_layout() == 'two_column_left_text_right_image' ) {
-					include get_theme_file_path( 'template-parts/components/two_column_left_text_right_image.php' );
-			}
-			if ( get_row_layout() == 'centered_banner_image_with_caption' ) {
-					include get_theme_file_path( 'template-parts/components/centered_banner_image_with_caption.php' );
-			}
-			if ( get_row_layout() == 'two_column_left_heading_right_image_and_text' ) {
-					include get_theme_file_path( 'template-parts/components/two_column_left_heading_right_image_and_text.php' );
-			}
-			if ( get_row_layout() == 'three_column_left_image_center_text_right_text' ) {
-					include get_theme_file_path( 'template-parts/components/three_column_left_image_center_text_right_text.php' );
-			}
-			if ( get_row_layout() == 'landscape-img-right-text-left' ) {
-					include get_theme_file_path( 'template-parts/components/landscape-img-right-text-left.php' );
-			}
-			if ( get_row_layout() == 'full_width_big_centered_image' ) {
-					include get_theme_file_path( 'template-parts/components/full_width_big_centered_image.php' );
-			}
-			if ( get_row_layout() == 'three_column_right_image_center_text_left_text' ) {
-					include get_theme_file_path( 'template-parts/components/three_column_right_image_center_text_left_text.php' );
-			}
-			if ( get_row_layout() == 'people_section' ) {
-					include get_theme_file_path( 'template-parts/components/people_section.php' );
-			}
-			if ( get_row_layout() == 'carousel_hero_section' ) {
-					include get_theme_file_path( 'template-parts/components/carousel_hero_section.php' );
-			}
-			if ( get_row_layout() == 'home_page_studio_section' ) {
-					include get_theme_file_path( 'template-parts/components/home_page_studio_section.php' );
-			}
-			if ( get_row_layout() == 'home_page_design_section' ) {
-					include get_theme_file_path( 'template-parts/components/home_page_design_section.php' );
-			}
-		    if ( get_row_layout() == 'home_page_news_section' ) {
-					include get_theme_file_path( 'template-parts/components/home_page_news_section.php' );
-			}
-			if ( get_row_layout() == 'home_page_atrium_section' ) {
-					include get_theme_file_path( 'template-parts/components/home_page_atrium_section.php' );
-			}
-			if ( get_row_layout() == 'video_hero_section' ) {
-					include get_theme_file_path( 'template-parts/components/video_hero_section.php' );
-			}
-			if ( get_row_layout() == 'design_page_left_table_right_image_heading' ) {
-					include get_theme_file_path( 'template-parts/components/design_page_left_table_right_image_heading.php' );
-			}
-			if ( get_row_layout() == 'two_column_left_full_image_with_heading_right_text' ) {
-					include get_theme_file_path( 'template-parts/components/two_column_left_full_image_with_heading_right_text.php' );
-			}
-		    if ( get_row_layout() == 'two_column_left_landscape_and_righ_portriat_image' ) {
-					include get_theme_file_path( 'template-parts/components/two_column_left_landscape_and_righ_portriat_image.php' );
-			}
-			if ( get_row_layout() == 'two_coulmn_both_side_image' ) {
-					include get_theme_file_path( 'template-parts/components/two_coulmn_both_side_image.php' );
-			}
-			
-if ( get_row_layout() == 'privacy_policy_section_global' ) {
-					include get_theme_file_path( 'template-parts/privacy-policy-section.php' );
-			}
-if ( get_row_layout() == 'right_only_text_paragraph' ) {
-	$content = get_sub_field("content");
-	?>			
-	<section class="scroll-section site-container bg-site no_min_height_mobile">
-            <div class="flex flex-col lg:grid grid-cols-12" style="grid-template-rows: min-content 1fr">
-              <div class="col-start-6 col-end-11 mb-8">
-                <div class="atrium-post-desc-text fs-2xl section__copy__content letter__spacing__custom__-2px">
-                  <?php echo $content; ?>                					
-				  </div>
-              </div>
-            </div>
-          </section>
-<?php
-			}
-	   endwhile;
-	endif; 
-?>            
-            <div
-              class="bg-site w-full site-container py-8"
-              id="atrium-post-navigation"
-            >
-              <div class="flex justify-between">
-                <a href="<?php echo esc_url(wp_get_referer()); ?>">
-                  <span>
-                    <img
-                      src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg"
-                      class="site__arrow post__arrow arrow__right"
-                      alt=""
-                    />
-                  </span>
-                </a>
-                <a href="#atrium-top">
-                  <span>
-                    <img
-                      src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg"
-                      class="site__arrow post__arrow arrow__up"
-                      alt=""
-                    />
-                  </span>
-                </a>
-              </div>
-            </div>
+<!-- End single-atriums.php -->
 <?php get_footer(); ?>
