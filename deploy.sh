@@ -15,22 +15,25 @@ echo ""
 read -p "Environment [1/2]: " ENVIRONMENT
 
 case "$ENVIRONMENT" in
-    1|staging|Staging|STAGING)
+    1)
         DEPLOY_ENV="staging"
+        DEPLOY_LABEL="STAGING"
         REMOTE_THEME="$REMOTE_ROOT/staging/wp-content/themes/$THEME_NAME"
         ;;
-    2|production|Production|PRODUCTION)
+    2)
         DEPLOY_ENV="production"
+        DEPLOY_LABEL="PRODUCTION"
         REMOTE_THEME="$REMOTE_ROOT/wp-content/themes/$THEME_NAME"
         ;;
     *)
-        echo "Invalid environment. Deployment cancelled."
+        echo "❌ Invalid environment. Deployment cancelled."
         exit 1
         ;;
 esac
 
+
 echo ""
-echo "🎯 Environment: ${DEPLOY_ENV^^}"
+echo "🎯 Environment: $DEPLOY_LABEL"
 echo "📂 Remote theme: $REMOTE_THEME"
 
 BACKUP_DIR="/home/u652416532/backups/themes"
@@ -56,7 +59,7 @@ rsync -avzn --delete \
 
 
 echo ""
-read -p "Deploy these changes to ${DEPLOY_ENV^^}? (y/N) " CONFIRM
+read -p "Deploy these changes to $DEPLOY_LABEL? (y/N) " CONFIRM
 
 if [[ "$CONFIRM" != "y" && "$CONFIRM" != "Y" ]]; then
     echo "Deployment cancelled."
@@ -94,7 +97,7 @@ fi
 
 
 echo ""
-echo "🚀 Deploying to ${DEPLOY_ENV^^}..."
+echo "🚀 Deploying to $DEPLOY_LABEL..."
 
 rsync -avz --delete \
     "${RSYNC_EXCLUDES[@]}" \

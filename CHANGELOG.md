@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Updated
 
 - Deployment script: 
-   - Staging and Produciton environment
+   - Staging and Production environment
 
 
 

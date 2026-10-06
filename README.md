@@ -6,7 +6,7 @@ Infrastructure as code (Docker & Wordpress) project for Mulroy
 
 ## Staging Server
 
-https://beta.mulroy.tm-studio.co.uk/
+https://staging.mulroyarchitects.com/
 
 
 ## Production Server
