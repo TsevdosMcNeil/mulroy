@@ -7,16 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
-
-<<<<<<< HEAD
-## [1.1.4] - 2026-10-06
+## [1.1.6] - 2026-10-06
 
 ### Updated
-- Preloader Update: 
-   - Add Hero Description into preloader on homepage
+  Preloader Update
+    - Homepage hero description added to preloader as well.
+  ACF Changing
+    - Convert all the text area field into Editor field to have a ability to link any text in the descrioption.
 
-## [1.1.4] - 2026-10-03
-=======
 ## [1.1.5] - 2026-10-06
 
 ### Updated
@@ -32,7 +30,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   - Reduced duplicated code and simplified the process of adding new ACF components.
 
 ## [1.1.4] - 2026-10-05
->>>>>>> c00d2e6ece1f5b2d462e9757330e36b8f1d69ec5
 
 ### Updated
 
