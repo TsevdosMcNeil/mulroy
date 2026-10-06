@@ -678,7 +678,8 @@ nav.open {
 .hover-dark-blue:hover {
   background-color: var(--color-blue);
 }
-.page-bar a .content {
+.page-bar a .content,
+.page-bar .large-title {
   font-size: var(--fs-3xl);
   text-transform: uppercase;
 	line-height: 70px; /* 107.692% */
@@ -1991,7 +1992,8 @@ p {
 	.home-news-date{
 		white-space:nowrap;
 	}
-	.page-bar a .content{
+	.page-bar a .content,
+  .page-bar .large-title {
 		letter-spacing:-1px;
 	}
 	.page-desc{
