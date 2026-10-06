@@ -8,6 +8,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+
+## [1.1.8] - 2026-10-06
+
+### Updated
+
+ - Remove deprecated files
+   - template-parts/components/design/hero_section.php
+
+### Added
+
+  - Shared component renderer to dynamically load SEO background images
+
+
 ## [1.1.7] - 2026-10-06
 
 ### Updated
@@ -24,7 +37,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
- - Home `about` ssection
+ - Home `about` section
 
 ## [1.1.5] - 2026-10-06
 

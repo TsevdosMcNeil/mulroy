@@ -1,39 +1,40 @@
 <?php
-$heading = get_sub_field( 'heading' );
-$desc = get_sub_field( 'desc' );
-$image = get_sub_field( 'image' );
-?>          
-<!-- ACF:- two_column_left_full_image_with_heading_right_text -->
-          <section class="scroll-section bg-site site-container container-py no_min_height_mobile consistent__space__single__project__mobile" style="min-height:auto;">
-            <div class="section-inner-container h-full">
-              <div
-                class="col-start-1 col-end-8 lg:self-center"
-                id="news-post-page-left-img-right-text"
-              >
-                <div
-                  class="flex flex-col lg:flex-row items-center w-full gap-y-5"
-                >
-                  <div class="flex flex-col w-full">
-                    <div
-                      class="w-full bg-no-repeat bg-start lg:bg-center bg-cover min-h-[40vw] project-mobile-responsive"
-                      style="
-                        background-image: url('<?php echo $image; ?>');
-                      "
-                    ></div>
-					  <?php if($heading): ?>
-                    <span class="post-caption">
-                     <?php echo $heading; ?></span
-                    >
-					  <?php endif; ?>
-                  </div>
-                </div>
-              </div>
-              <div class="col-start-9 col-end-13">
-                <div class="flex justify-center w-full h-full items-center">
-                  <div class="lg:max-w-[28vw] letter__spacing__custom__-1px">
-                    <?php echo $desc; ?>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+$heading = get_sub_field('heading');
+$desc = get_sub_field('desc');
+$image = get_sub_field('image');
+?>
+<!-- template-parts/components/two_column_left_full_image_with_heading_right_text.php -->
+<section class="scroll-section bg-site site-container container-py no_min_height_mobile consistent__space__single__project__mobile" style="min-height:auto;">
+  <div class="section-inner-container h-full">
+    <div
+      class="col-start-1 col-end-8 lg:self-center"
+      id="news-post-page-left-img-right-text">
+      <div
+        class="flex flex-col lg:flex-row items-center w-full gap-y-5">
+        <div class="flex flex-col w-full">
+          <?php if ($image) :
+            get_template_part(
+              'template-parts/components/background-image',
+              null,
+              [
+                'image' => $image,
+                'wrapper_class' => 'w-full bg-no-repeat bg-start lg:bg-center bg-cover min-h-[40vw] project-mobile-responsive relative'
+              ]
+            );
+          endif; ?>
+          <?php if ($heading): ?>
+            <span class="post-caption"><?php echo esc_html($heading); ?></span>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+    <div class="col-start-9 col-end-13">
+      <div class="flex justify-center w-full h-full items-center">
+        <div class="lg:max-w-[28vw] letter__spacing__custom__-1px">
+          <?php echo esc_html($desc); ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End template-parts/components/two_column_left_full_image_with_heading_right_text.php -->

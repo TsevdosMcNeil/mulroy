@@ -24,27 +24,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_6ac51f61fa02d",
-                            "label": "Title",
-                            "name": "title",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
                             "key": "field_67b9373baffc3",
                             "label": "Heading",
                             "name": "heading",
@@ -2089,5 +2068,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1791305733
+    "modified": 1791312817
 }

@@ -7,7 +7,7 @@ $heading     = $args['heading'] ??  null;
   <div class="custom-cursor" id="custom-cursor"></div>
   <?php if ($hero_image) : 
     get_template_part(
-      'template-parts/components/hero/background',
+      'template-parts/components/background-image',
       null,
       [
         'image' => $hero_image,

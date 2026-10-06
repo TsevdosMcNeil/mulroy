@@ -1,9 +1,10 @@
 <?php
-$image  = $args['image'] ?? null;
+$image         = $args['image'] ?? null;
+$wrapper_class = $args['wrapper_class'] ?? 'hero-background';
 if ($image):
 ?>
-<!-- template-parts/components/hero/background.php -->
-<div class="hero-background">
+<!-- template-parts/components/background-image.php -->
+<div class="<?php echo esc_html($wrapper_class); ?>">
   <?php
   $attachment_id = is_numeric($image)
     ? (int) $image
@@ -34,7 +35,7 @@ if ($image):
   }
   ?>
 </div>
-<!-- End template-parts/components/hero/background.php -->
+<!-- End template-parts/components/background-image.php -->
 <?php
 endif;
 ?>

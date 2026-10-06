@@ -1,5 +1,4 @@
 <?php
-$title       = $args['title'] ?? 'Mulroy Architects';
 $hero_image  = $args['hero_image'] ?? null;
 $heading     = $args['heading'] ??  null;
 ?>
@@ -8,7 +7,7 @@ $heading     = $args['heading'] ??  null;
   <div class="custom-cursor" id="custom-cursor"></div>
   <?php if ($hero_image) : 
     get_template_part(
-      'template-parts/components/hero/background',
+      'template-parts/components/background-image',
       null,
       [
         'image' => $hero_image,
@@ -17,7 +16,7 @@ $heading     = $args['heading'] ??  null;
   endif; ?>
   <div class="hero-overlay"></div>
   <div class="hero-content home-hero">
-    <h1 class="sr-only"><?php echo wp_kses_post($title); ?></h1>
+    <h1 class="sr-only"><?php echo get_bloginfo('name'); ?></h1>
     <div class="content-sect">
       <div class="page-title title-start">
         <svg

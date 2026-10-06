@@ -11,7 +11,7 @@ $months = str_split($month_number);
 <section class="scroll-section site-container hero-section-height" id="news-top">
 <?php if ($hero_image) : 
     get_template_part(
-      'template-parts/components/hero/background',
+      'template-parts/components/background-image',
       null,
       [
         'image' => $hero_image,

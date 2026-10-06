@@ -12,7 +12,6 @@ if ( is_front_page() || is_home() ) {
     null,
     [
       'hero_image' => $hero_image,
-      'title'      => get_bloginfo('name'),
       'heading'    => $heading,
     ]
   );
@@ -29,7 +28,7 @@ if($post_type=='atriums'){
   );
 }
  
-if($post_type=='post'){ 
+if($post_type=='post' ){ 
   get_template_part(
     'template-parts/components/hero/posts',
     null,
@@ -37,7 +36,7 @@ if($post_type=='post'){
       'hero_image' => $hero_image,
     ]
   );
-} 
+}
 
 if($page_slug=='studio'){
   get_template_part(

@@ -8,7 +8,7 @@ $hero_image  = $args['hero_image'] ?? null;
   </div>
   <?php if ($hero_image) : 
     get_template_part(
-      'template-parts/components/hero/background',
+      'template-parts/components/background-image',
       null,
       [
         'image' => $hero_image,
