@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+
+## [1.1.4] - 2026-10-03
+
+### Updated
+
+- Deployment script: 
+   - Staging and Produciton environment
+
+
+
 ## [1.1.3] - 2026-10-02
 
 ### Updated

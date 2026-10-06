@@ -35,7 +35,30 @@ Deploy;
 cd ~/Dockers/mulroy
 ./deploy.sh
 ```
+you’ll get:
 
+```bash
+Select deployment environment:
+  1) Staging
+  2) Production
+
+Environment [1/2]:
+```
+
+Choosing 1 deploys to:
+
+```bash
+/public_html/staging/wp-content/themes/mulroy
+```
+with no backup.
+
+Choosing 2 deploys to:
+
+```bash
+/public_html/wp-content/themes/mulroy
+```
+
+and runs your existing production backup + cleanup first. The script also still asks for confirmation after showing the dry-run, but now identifies the selected environment clearly.
 
 ## Required Plugins
 
