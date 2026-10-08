@@ -17,6 +17,7 @@
 
           $post_id  = $project->ID;
           $title    = get_the_title($post_id);
+          $project_link = get_permalink($post_id);
           $subtitle = get_field('design_type', $post_id);
           ?>
           <div class="slide">
@@ -79,8 +80,7 @@
             <?php endif; ?>
 
             <div class="slide-content site-container">
-              <a href="<?php echo $heading->guid; ?>" class='slider-title-link'>
-
+              <a href="<?php echo esc_url($project_link); ?>" class='slider-title-link'>
                 <div class='slide-title'>
                   <h2 class='project-caption font-bold text-[14px] uppercase'
                     style="letter-spacing:3.6px;">
