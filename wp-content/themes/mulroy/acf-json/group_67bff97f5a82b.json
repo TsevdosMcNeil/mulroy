@@ -17,63 +17,6 @@
                 "id": ""
             },
             "layouts": {
-                "layout_67b9369cae879": {
-                    "key": "layout_67b9369cae879",
-                    "name": "hero_section",
-                    "label": "Hero section",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_67bff97f5ea6c",
-                            "label": "Heading",
-                            "name": "heading",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_67bff97f5eaaf",
-                            "label": "Hero Image",
-                            "name": "hero_image",
-                            "aria-label": "",
-                            "type": "image",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "url",
-                            "library": "all",
-                            "min_width": "",
-                            "min_height": "",
-                            "min_size": "",
-                            "max_width": "",
-                            "max_height": "",
-                            "max_size": "",
-                            "mime_types": "",
-                            "allow_in_bindings": 0,
-                            "preview_size": "medium"
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
                 "layout_67ba1e8baf71a": {
                     "key": "layout_67ba1e8baf71a",
                     "name": "carousel_hero_section",
@@ -710,8 +653,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "display_title": "",
-    "allow_ai_access": false,
-    "ai_description": "",
-    "modified": 1791299963
+    "modified": 1791311946
 }

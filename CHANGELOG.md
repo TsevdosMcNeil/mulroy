@@ -27,6 +27,37 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
     - Atrium section new design update implemeted.
     - Story Number now come according to the publication date both on homepage and atrium page.
 
+
+## [1.1.8] - 2026-10-06
+
+### Updated
+
+ - Remove deprecated files
+   - template-parts/components/design/hero_section.php
+
+### Added
+
+  - Shared component renderer to dynamically load SEO background images
+
+
+## [1.1.7] - 2026-10-06
+
+### Updated
+
+ - **Hero sections – SEO and image improvements**
+  - Added proper semantic **H1 headings** to the Home and Studio hero sections, allowing search engines to correctly identify the page titles while keeping the existing SVG-based design unchanged.
+  - Updated the hero SVG lettering to be treated as decorative content.
+  - Improved the heading hierarchy on the Home page by changing the secondary hero heading to an **H2**.
+  - Replaced CSS background images with WordPress-generated `<img>` elements using `wp_get_attachment_image()`, providing responsive `srcset`/`sizes` markup and better image optimisation.
+  - Added fallback support for hero images provided as direct URLs.
+  - Optimised hero images for LCP by using eager loading and high fetch priority.
+
+## [1.1.6] - 2026-10-06
+
+### Added
+
+ - Home `about` section
+
 ## [1.1.5] - 2026-10-06
 
 ### Updated

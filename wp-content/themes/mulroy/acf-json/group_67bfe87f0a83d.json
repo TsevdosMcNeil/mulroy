@@ -58,7 +58,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "return_format": "url",
+                            "return_format": "id",
                             "library": "all",
                             "min_width": "",
                             "min_height": "",
@@ -2068,8 +2068,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "display_title": "",
-    "allow_ai_access": false,
-    "ai_description": "",
-    "modified": 1791300226
+    "modified": 1791312817
 }

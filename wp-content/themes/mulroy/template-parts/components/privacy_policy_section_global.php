@@ -6,7 +6,7 @@ $information_block = get_sub_field("information_block");
 <section class="privacy__policy__section border-bottom-legal" style="background:#f7ede5;">
   <div class="page-sect-content gap-[1.1rem]">
     <div class="privacy__policy__text">
-      <h1 class="letter__spacing__custom__-3-25px"><?php echo $privacy_policy_text ?></h1>
+      <h2 class="letter__spacing__custom__-3-25px"><?php echo $privacy_policy_text ?></h2>
     </div>
     <div class="info__section__privacy__policy">
       <?php if ($information_block): ?>
