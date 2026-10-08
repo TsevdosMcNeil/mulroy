@@ -16,8 +16,18 @@ $attachment_id = attachment_url_to_postid(
 );
 
 ?>
+
 <section class="py-4 lg:py-[2vw] bg-site design__archive__section" id="design-top">
+
   <div class="flex flex-col lg:grid grid-cols-12 gap-[7vw]">
+    <div class="col-span-12 site-container">
+      <h2 class="fs-3xl">ARCHIVE</h2>
+    </div>
+    <div class="col-start-6 col-end-13 px-[2rem] lg:pr-10">
+      <div class="archive-desc fs-2xl">
+        <?php echo get_field("right_only_content_text"); ?>
+      </div>
+    </div>
     <?php
     if ($attachment_id) {
       get_template_part(
@@ -30,15 +40,6 @@ $attachment_id = attachment_url_to_postid(
       );
     }
     ?>
-
-    <div class="col-span-12 site-container">
-      <h2 class="fs-3xl">ARCHIVE</h2>
-    </div>
-    <div class="col-start-6 col-end-13 px-[2rem] lg:pr-10">
-      <div class="archive-desc fs-2xl">
-        <?php echo get_field("right_only_content_text"); ?>
-      </div>
-    </div>
     <div class="col-start-6 col-end-13 px-[2rem] lg:pr-10 table__desgin__archive">
       <table class="w-full archive-table" id="designTable">
         <thead>
@@ -90,16 +91,32 @@ $attachment_id = attachment_url_to_postid(
               $typology = $list['typology'];
               $location = $list['location'];
           ?>
-              <tr class="data-row" data-image="<?php echo $hover_image; ?>">
-                <td><a href="<?php echo get_permalink($url); ?>" class="secondary-titles"><?php echo esc_html($project_name); ?>
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.8715 6.28544L0 6.28544M11.8715 6.28544L6.0268 12.0943M11.8715 6.28544L6.0268 0.476562" stroke="black" stroke-width="1.34354" stroke-miterlimit="10" />
-                    </svg>
-                  </a></td>
-                <td class="secondary-titles"><?php echo esc_html($year); ?></td>
-                <td class="typorolog__td secondary-titles"><?php echo esc_html($typology); ?></td>
-                <td class="locatoin__td secondary-titles"><?php echo esc_html($location); ?></td>
-              </tr>
+              <?php if ($url): ?>
+                <tr class="data-row" data-image="<?php echo esc_url($hover_image); ?>">
+                  <td>
+                    <a href="<?php echo get_permalink($url); ?>" class="secondary-titles">
+                      <?php echo esc_html($project_name); ?>
+                      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.8715 6.28544L0 6.28544M11.8715 6.28544L6.0268 12.0943M11.8715 6.28544L6.0268 0.476562" stroke="black" stroke-width="1.34354" stroke-miterlimit="10" />
+                      </svg>
+                    </a>
+                  </td>
+                  <td class="secondary-titles"><?php echo esc_html($year); ?></td>
+                  <td class="typorolog__td secondary-titles"><?php echo esc_html($typology); ?></td>
+                  <td class="locatoin__td secondary-titles"><?php echo esc_html($location); ?></td>
+                </tr>
+              <?php else: ?>
+                <tr class="data-row" data-image="<?php echo esc_url($hover_image); ?>">
+                  <td>
+                    <div class="secondary-titles">
+                      <?php echo esc_html($project_name); ?>
+                    </div>
+                  </td>
+                  <td class="secondary-titles"><?php echo esc_html($year); ?></td>
+                  <td class="typorolog__td secondary-titles"><?php echo esc_html($typology); ?></td>
+                  <td class="locatoin__td secondary-titles"><?php echo esc_html($location); ?></td>
+                </tr>
+              <?php endif; ?>
           <?php endforeach;
           endif; ?>
           <?php
@@ -133,18 +150,18 @@ $attachment_id = attachment_url_to_postid(
       </table>
 
     </div>
-<?php
-get_template_part(
-  'template-parts/post-navigation',
-  null,
-  [
-    'id'         => 'atrium-post-navigation',
-    'class'      => 'col-span-12 site-container',
-    'back_url'   => '/design',
-    'top_anchor' => "#studio-top"
-  ]
-);
-?>
+    <?php
+    get_template_part(
+      'template-parts/post-navigation',
+      null,
+      [
+        'id'         => 'atrium-post-navigation',
+        'class'      => 'col-span-12 site-container',
+        'back_url'   => '/design',
+        'top_anchor' => "#studio-top"
+      ]
+    );
+    ?>
   </div>
 </section>
 <?php get_template_part('template-parts/legal-components'); ?>
