@@ -132,6 +132,7 @@ wp-content/themes/*
 !.phpcs.xml.dist
 !README.md
 !CHANGELOG.md
+!CHANGELOG_DEV.md
 !DOCKER.md
 !SERVER.md
 !composer.json
