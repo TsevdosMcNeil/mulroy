@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const hsCookie = document.querySelector("#hs-eu-policy-wording");
-	if(hsCookie){
-		hsCookie.innerHTML = 'Do you want cookies?';
-	}
-	
-	
+  const hsCookie = document.querySelector("#hs-eu-policy-wording");
+  if (hsCookie) {
+    hsCookie.innerHTML = "Do you want cookies?";
+  }
+
   // Check if we're on home page
   const homeContainer = document.querySelector('[data-barba-namespace="home"]');
   if (!homeContainer) return;
@@ -12,20 +11,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // Check if animation has played in this session
   const hasAnimationPlayed = sessionStorage.getItem("homeAnimationPlayed");
   if (hasAnimationPlayed) return;
-	const hs__cokkie__banner = document.querySelector("#hs-eu-cookie-confirmation");
-	
+  const hs__cokkie__banner = document.querySelector(
+    "#hs-eu-cookie-confirmation",
+  );
+
   // Set the flag for this session
   // sessionStorage.setItem("homeAnimationPlayed", "true");
   const overlay = document.querySelector(".hero-overlay");
   const pageTitles = document.querySelectorAll(".page-title svg");
   const pageDesc = document.querySelector(".page-desc");
-	const letters = document.querySelectorAll(".hero-letter");
-	const customCursor = document.getElementById("custom-cursor");
+  const letters = document.querySelectorAll(".hero-letter");
+  const customCursor = document.getElementById("custom-cursor");
   // Initial state
-  	
-	letters.forEach((el)=>{
-		el.style.color='black'
-	})
+
+  letters.forEach((el) => {
+    el.style.color = "black";
+  });
   gsap.set(overlay, {
     background: "#00a7e1",
   });
@@ -33,19 +34,19 @@ document.addEventListener("DOMContentLoaded", () => {
     autoAlpha: 0,
   });
   gsap.set(pageDesc, {
-    opacity: 0,
-    visibility: "hidden",
+    // opacity: 0,
+    // visibility: "hidden",
+    color: "black",
   });
   gsap.set(pageTitles, {
     fill: "#000000",
   });
-	customCursor.style.cssText = `visibility: hidden !important;`;
-	document.body.style.overflow = 'hidden';
+  customCursor.style.cssText = `visibility: hidden !important;`;
+  document.body.style.overflow = "hidden";
   // Create animation timeline
   const tl = gsap.timeline({
     defaults: { ease: "power2.inOut" },
     delay: 2,
-	  
   });
 
   tl.to(overlay, {
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         autoAlpha: 1,
         duration: 0,
       },
-      "<"
+      "<",
     ) // Start at same time as overlay
     .to(
       overlay,
@@ -66,37 +67,38 @@ document.addEventListener("DOMContentLoaded", () => {
         background: "rgba(0,0,0,.2)",
         duration: 0.8,
       },
-      "<"
+      "<",
     ) // Start at same time as previous
     .to(
       pageDesc,
       {
         duration: 0.8,
-        opacity: 1,
-    visibility: "visible",
+        // opacity: 1,
+        color:"white",
+        // visibility: "visible",
       },
-      "<"
+      "<",
     ) // Start at same time as previous
     .to(
       pageTitles,
       {
         fill: "#FFFFFF",
         duration: 0.8,
-		  onStart:()=>{
-			  letters.forEach((el)=>{
-		el.style.color='white'
-	})
-		  },
-		  onComplete:()=>{
-		  document.body.style.overflow = 'auto';
-			  if(hs__cokkie__banner){
-				  hs__cokkie__banner.style.display="block"
-			  }
-			  
-customCursor.style.cssText = `visibility: visible !important;`;
-	  }
+        onStart: () => {
+          letters.forEach((el) => {
+            el.style.color = "white";
+          });
+        },
+        onComplete: () => {
+          document.body.style.overflow = "auto";
+          if (hs__cokkie__banner) {
+            hs__cokkie__banner.style.display = "block";
+          }
+
+          customCursor.style.cssText = `visibility: visible !important;`;
+        },
       },
-      "<"
+      "<",
     ); // Start at same time as previous
   function initializeScroll() {
     // Clean up any existing ScrollTriggers first
@@ -143,7 +145,7 @@ customCursor.style.cssText = `visibility: visible !important;`;
           e.preventDefault();
         }
       },
-      { passive: false }
+      { passive: false },
     );
 
     return () => {
@@ -151,7 +153,7 @@ customCursor.style.cssText = `visibility: visible !important;`;
       ScrollTrigger.getAll().forEach((st) => st.kill());
     };
   }
-//   initializeScroll();
+  //   initializeScroll();
   // function hoverOverPost() {
   //   const newsItems = document.querySelectorAll(".home-news-post-item");
   //   const hoverImageSection = document.querySelector(".hover-image-section");

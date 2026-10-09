@@ -194,7 +194,7 @@
                             "label": "Desc",
                             "name": "desc",
                             "aria-label": "",
-                            "type": "textarea",
+                            "type": "wysiwyg",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -204,11 +204,11 @@
                                 "id": ""
                             },
                             "default_value": "",
-                            "maxlength": "",
                             "allow_in_bindings": 0,
-                            "rows": "",
-                            "placeholder": "",
-                            "new_lines": ""
+                            "tabs": "all",
+                            "toolbar": "onlylink",
+                            "media_upload": 1,
+                            "delay": 0
                         },
                         {
                             "key": "field_67c000ff1e6f5",

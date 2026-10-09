@@ -7,7 +7,7 @@
             "label": "Right Only Content Text",
             "name": "right_only_content_text",
             "aria-label": "",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -17,11 +17,11 @@
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
             "allow_in_bindings": 0,
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
+            "tabs": "all",
+            "toolbar": "onlylink",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_6901f6ef41464",
@@ -211,5 +211,8 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1764606399
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1791299835
 }

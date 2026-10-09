@@ -51,6 +51,8 @@ services:
       PMA_USER: root
       PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     restart: unless-stopped
+    volumes:
+      - ./pma-uploads.ini:/usr/local/etc/php/conf.d/pma-uploads.ini:ro
 
   caddy:
     image: caddy:2
