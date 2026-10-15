@@ -21,7 +21,7 @@ $attachment_id = attachment_url_to_postid(
 
   <div class="flex flex-col lg:grid grid-cols-12 gap-[7vw]">
     <div class="col-span-12 site-container">
-      <h2 class="fs-3xl">ARCHIVE</h2>
+      <h1 class="fs-3xl">PROJECT ARCHIVE</h1>
     </div>
     <div class="col-start-6 col-end-13 px-[2rem] lg:pr-10">
       <div class="archive-desc fs-2xl">
