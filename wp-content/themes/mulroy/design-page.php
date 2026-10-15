@@ -253,7 +253,7 @@ if ( have_rows( 'design_blocks' ) ) :
     <?php endif; ?>
           <div class="page-bar md:py-[1vw] hover-dark-blue bg-site">
             <a href="/design-archive" class="page-bar-link">
-              <span class="content letter__spacing__custom__-3-25px"> Archive </span>
+              <span class="content letter__spacing__custom__-3-25px"> Project Archive </span>
               <span class="arrow-content"
                 ><img src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg" class="w-5 md:w-10"
               /></span>
