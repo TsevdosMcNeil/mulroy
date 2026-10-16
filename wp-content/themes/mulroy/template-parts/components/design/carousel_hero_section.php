@@ -96,7 +96,7 @@
                         null,
                         [
                           'container_class' => 'inline-flex items-center',
-                          'arrow_class' => 'site__arrow',
+                          'arrow_class' => 'site__arrow carousel_section_arrow_design',
                         ]
                       );
                       ?>

@@ -8,14 +8,23 @@
   };
 
   const PRELOAD_ALL = true;
+  const PRELOAD_CONCURRENCY = 4;
 
   class DesignArchiveHover {
     constructor() {
       this.table = null;
       this.image = null;
       this.activeRow = null;
+      this.currentUrl = null;
+
       this.preloaded = new Set();
-      this.hasPreloaded = false;
+      this.failed = new Set();
+      this.queue = [];
+      this.inflight = new Set();
+      this.generation = 0;
+      this.idleId = null;
+      this.timerId = null;
+      this.loadHandler = null;
 
       this.onPointerOver = this.onPointerOver.bind(this);
       this.onImageError = this.onImageError.bind(this);
@@ -40,6 +49,8 @@
 
       this.table.addEventListener("pointerover", this.onPointerOver);
       this.image.addEventListener("error", this.onImageError);
+
+      if (PRELOAD_ALL) this.schedulePreload();
     }
 
     destroy() {
@@ -49,11 +60,33 @@
       if (this.image) {
         this.image.removeEventListener("error", this.onImageError);
       }
+
+      this.generation++;
+      if (this.loadHandler) {
+        window.removeEventListener("load", this.loadHandler);
+        this.loadHandler = null;
+      }
+      if (this.idleId !== null && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(this.idleId);
+      }
+      if (this.timerId !== null) window.clearTimeout(this.timerId);
+      this.idleId = null;
+      this.timerId = null;
+
+      this.inflight.forEach((img) => {
+        img.onload = null;
+        img.onerror = null;
+        img.removeAttribute("src");
+      });
+      this.inflight.clear();
+
       this.table = null;
       this.image = null;
       this.activeRow = null;
-      this.hasPreloaded = false;
+      this.currentUrl = null;
+      this.queue = [];
       this.preloaded.clear();
+      this.failed.clear();
     }
 
     onPointerOver(event) {
@@ -64,32 +97,32 @@
 
       this.activeRow = row;
       this.swap(row);
-
-      if (PRELOAD_ALL && !this.hasPreloaded) {
-        this.hasPreloaded = true;
-        this.preloadAll();
-      }
     }
 
     swap(row) {
       const url = this.sanitize(row.dataset.image);
 
-      if (!url) {
+      if (!url || this.failed.has(url)) {
         this.clear();
         return;
       }
+
+      this.preloaded.add(url);
+      this.currentUrl = url;
 
       const label = row.querySelector("td")?.textContent.trim() ?? "";
 
       this.image.removeAttribute("srcset");
       this.image.removeAttribute("sizes");
       this.image.loading = "eager";
+      this.image.fetchPriority = "high";
       this.image.alt = label;
       this.image.src = url;
       this.image.style.visibility = "";
     }
 
     clear() {
+      this.currentUrl = null;
       this.image.removeAttribute("srcset");
       this.image.removeAttribute("sizes");
       this.image.removeAttribute("src");
@@ -98,25 +131,78 @@
     }
 
     onImageError() {
+      if (this.currentUrl) this.failed.add(this.currentUrl);
       this.clear();
     }
 
-    preloadAll() {
-      const rows = this.table.querySelectorAll(SELECTORS.row);
-      const run = () => {
-        rows.forEach((row) => {
-          const url = this.sanitize(row.dataset.image);
-          if (!url || this.preloaded.has(url)) return;
-          this.preloaded.add(url);
-          new Image().src = url;
-        });
+    schedulePreload() {
+      const generation = this.generation;
+
+      const start = () => {
+        this.idleId = null;
+        this.timerId = null;
+        if (generation !== this.generation) return;
+        this.startPreload();
       };
 
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(run, { timeout: 2000 });
+      const run = () => {
+        this.loadHandler = null;
+        if (generation !== this.generation) return;
+        if ("requestIdleCallback" in window) {
+          this.idleId = window.requestIdleCallback(start, { timeout: 1500 });
+        } else {
+          this.timerId = window.setTimeout(start, 200);
+        }
+      };
+
+      if (document.readyState === "complete") {
+        run();
       } else {
-        window.setTimeout(run, 200);
+        this.loadHandler = run;
+        window.addEventListener("load", run, { once: true });
       }
+    }
+
+    startPreload() {
+      const queued = new Set();
+      this.table.querySelectorAll(SELECTORS.row).forEach((row) => {
+        const url = this.sanitize(row.dataset.image);
+        if (url && !queued.has(url)) {
+          queued.add(url);
+          this.queue.push(url);
+        }
+      });
+      this.pump();
+    }
+
+    pump() {
+      while (this.inflight.size < PRELOAD_CONCURRENCY && this.queue.length) {
+        const url = this.queue.shift();
+        if (this.preloaded.has(url) || this.failed.has(url)) continue;
+        this.load(url);
+      }
+    }
+
+    load(url) {
+      const generation = this.generation;
+      const img = new Image();
+
+      this.preloaded.add(url);
+      this.inflight.add(img);
+
+      const done = (ok) => {
+        img.onload = null;
+        img.onerror = null;
+        if (generation !== this.generation) return;
+        this.inflight.delete(img);
+        if (!ok) this.failed.add(url);
+        this.pump();
+      };
+
+      img.decoding = "async";
+      img.onload = () => done(true);
+      img.onerror = () => done(false);
+      img.src = url;
     }
 
     sanitize(raw) {

@@ -79,7 +79,7 @@ foreach ($posts as $post) {
       <div class="home-atrium-post-desc letter__spacing__custom__-1px">
         <?php echo $desc; ?>
       </div>
-      <div class="home-atrium-post">
+      <div class="home-atrium-post home-atrium-post_homepage">
         <a
           href="<?php echo $permalink; ?>"
           class="flex flex-col lg:flex-row justify-start w-full lg:items-center home-atrium-post-anchor gap-y-5 gap-x-[37px]">
