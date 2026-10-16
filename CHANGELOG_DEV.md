@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.1.8] - 2026-10-15
+
+### Updated
+  Design Page
+    - Hero Carousel Section hover arrow color change from black to white.
+  Atrium Section HomePage
+    - Update the design alignment
+  Indvidual Atrium page
+    - Number now appear in hero section automatically according to there published date.
+    
+
 ## [1.1.7] - 2026-10-08
 
 ### Updated
