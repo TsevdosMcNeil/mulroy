@@ -998,6 +998,7 @@ nav.open {
   padding-left: 2vw;
   padding-top: 3vw;
   padding-right: 2rem;
+  margin-top: -100%;
 }
 
 .design__archive__hover__image__container img {

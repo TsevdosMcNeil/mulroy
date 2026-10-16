@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.1.9] - 2026-10-16
+
+### Updated
+  Design Archive Page
+    - Update the hover image position.
+    - Update there js code so the image will load faster preloader added.
+  
+
 ## [1.1.8] - 2026-10-15
 
 ### Updated
