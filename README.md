@@ -1,7 +1,7 @@
 # Wordpress Template & Plugins for Mulroy
 Infrastructure as code (Docker & Wordpress) project for Mulroy
 
-[![version](https://img.shields.io/badge/version-1.1.11-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-1.1.13-green.svg)](https://semver.org)
 
 
 ## Staging Server

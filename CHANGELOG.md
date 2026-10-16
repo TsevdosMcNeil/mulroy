@@ -8,6 +8,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.1.13] - 2026-10-16
+
+### Updated
+  Design Archive Page
+    - Update the hover image position.
+    - Update there js code so the image will load faster preloader added.
+  
+
+## [1.1.12] - 2026-10-15
+
+### Updated
+  Design Page
+    - Hero Carousel Section hover arrow color change from black to white.
+  Atrium Section HomePage
+    - Update the design alignment
+  Indvidual Atrium page
+    - Number now appear in hero section automatically according to there published date.
+    
+
 ## [1.1.11] - 2026-10-08
 
 ### Updated
