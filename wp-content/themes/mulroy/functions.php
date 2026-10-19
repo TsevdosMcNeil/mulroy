@@ -70,6 +70,7 @@ function codecover_scripts()
         'themePath' => get_template_directory_uri()
     ));
     wp_enqueue_script('menu', get_template_directory_uri() . '/script/menu.js', array(), null, true);
+    wp_enqueue_script('pageNavigation', get_template_directory_uri() . '/script/page-navigation.js', array(), null, true);
     wp_enqueue_script('transitions', get_template_directory_uri() . '/script/transitions.js', array(), null, true);
     wp_enqueue_script('designArchiveHoverImage', get_template_directory_uri() . '/script/designArchiveHoverImage.js', array(), null, true);
     wp_enqueue_script('initalHomePageLoad', get_template_directory_uri() . '/script/initalHomePageLoad.js', array(), null, true);

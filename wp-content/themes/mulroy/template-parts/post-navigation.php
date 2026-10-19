@@ -5,36 +5,36 @@ $back_url   = $args['back_url'] ?? '';
 $top_anchor = $args['top_anchor'] ?? '';
 ?>
 <!-- template-parts/post-navigation.php -->
-<div id="<?php echo esc_html($id); ?>" 
-  class="<?php echo esc_html($class); ?>"
->
+<div id="<?php echo esc_html($id); ?>"
+  class="<?php echo esc_html($class); ?>">
   <div class="flex justify-between">
 
-  <?php if ($back_url): ?>
-    <a href="<?php echo esc_url($back_url); ?>">
-      <span>
-        <img
-          src="<?php echo esc_url(
-                  get_template_directory_uri() .
-                    '/assets/media/arrow-left.svg'
-                ); ?>"
-          class="site__arrow post__arrow arrow__right"
-          alt="Go back">
-      </span>
-    </a>
-  <?php endif ?>
-  <?php if ($top_anchor): ?>
-    <a href="<?php echo esc_url($top_anchor); ?>">
-      <span>
-        <img
-          src="<?php echo esc_url(
-                  get_template_directory_uri() .
-                    '/assets/media/arrow-up.svg'
-                ); ?>"
-          class="site__arrow post__arrow"
-          alt="Go to top">
-      </span>
-    </a>
+    <?php if ($back_url): ?>
+      <a href="#"
+        onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = this.href; }">
+        <span>
+          <img
+            src="<?php echo esc_url(
+                    get_template_directory_uri() .
+                      '/assets/media/arrow-left.svg'
+                  ); ?>"
+            class="site__arrow post__arrow arrow__right"
+            alt="Go back">
+        </span>
+      </a>
+    <?php endif ?>
+    <?php if ($top_anchor): ?>
+      <a href="<?php echo esc_url($top_anchor); ?>" class="js-go-back" data-barba-prevent>
+        <span class="upward__arrow__got__top">
+          <img
+            src="<?php echo esc_url(
+                    get_template_directory_uri() .
+                      '/assets/media/arrow-left.svg'
+                  ); ?>"
+            class="site__arrow post__arrow"
+            alt="Go to top">
+        </span>
+      </a>
     <?php endif ?>
 
   </div>

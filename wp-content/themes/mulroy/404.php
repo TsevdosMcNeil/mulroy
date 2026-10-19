@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying 404 pages (not found)
  *
@@ -8,17 +9,19 @@
 
 get_header();
 ?>
-
-	<header class="page-header alignwide">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing here', 'odl' ); ?></h1>
-	</header><!-- .page-header -->
-
-	<div class="error-404 not-found default-max-width">
-		<div class="page-content">
-			<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'odl' ); ?></p>
-			<?php get_search_form(); ?>
-		</div><!-- .page-content -->
-	</div><!-- .error-404 -->
+<style>
+	footer {
+		display: none !important;
+	}
+</style>
+<section class="not__found__page">
+	<div class="page-sect-content gap-[1.1rem]">
+		<div class="content__404__wrapper">
+			<h1>404</h1>
+			<p>It looks like nothing was found at this location. </p>
+		</div>
+	</div>
+</section>
 
 <?php
 get_footer();

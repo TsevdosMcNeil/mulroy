@@ -35,15 +35,13 @@ if (is_array($image) && !empty($image['ID'])) {
         <video
           class="top-0 relative z-[-1] md:left-0 xl:w-full bg-gray-400 bg-cover bg-center h-full xl:h-auto"
           autoplay
+          src="<?php echo esc_url($video_url); ?>"
           muted
           loop
           playsinline
           <?php if ($image_url): ?>
           poster="<?php echo esc_url($image_url); ?>"
           <?php endif; ?>>
-          <source
-            src="<?php echo esc_url($video_url); ?>"
-            type="video/mp4" />
         </video>
 
       <?php elseif ($image_id): ?>
