@@ -507,6 +507,9 @@ const transitions = {
 const pageNavigation = new PageNavigation({
   backSelector: ".js-go-back",
 
+  // Same rule as barba.init prevent below: these pages load normally.
+  fullReload: (href) => href.includes("/studio"),
+
   onPageReady: async (container, data) => {
     // Your existing Barba views already initialize
     // contact forms, design sliders, and other page features.

@@ -10,8 +10,7 @@ $top_anchor = $args['top_anchor'] ?? '';
   <div class="flex justify-between">
 
     <?php if ($back_url): ?>
-      <a href="#"
-        onclick="event.preventDefault(); if (window.history.length > 1) { window.history.back(); } else { window.location.href = this.href; }">
+      <a href="<?php echo esc_url($back_url); ?>" class="js-go-back" data-barba-prevent>
         <span>
           <img
             src="<?php echo esc_url(
@@ -24,7 +23,7 @@ $top_anchor = $args['top_anchor'] ?? '';
       </a>
     <?php endif ?>
     <?php if ($top_anchor): ?>
-      <a href="<?php echo esc_url($top_anchor); ?>" class="js-go-back" data-barba-prevent>
+      <a href="<?php echo esc_url($top_anchor); ?>" data-barba-prevent>
         <span class="upward__arrow__got__top">
           <img
             src="<?php echo esc_url(
