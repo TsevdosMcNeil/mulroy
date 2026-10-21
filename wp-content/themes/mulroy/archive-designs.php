@@ -158,7 +158,7 @@ $attachment_id = attachment_url_to_postid(
         'id'         => 'atrium-post-navigation',
         'class'      => 'col-span-12 site-container',
         'back_url'   => '/design',
-        'top_anchor' => "#studio-top"
+        'top_anchor' => "#design-top"
       ]
     );
     ?>

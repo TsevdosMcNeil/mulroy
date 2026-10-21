@@ -36,63 +36,63 @@ async function loadDesignPageModule() {
   }
 }
 
-function initDesignArchiveSorting(){
-	const table = document.getElementById("designTable");
-	
-	if(table){
-		const headers = table.querySelectorAll("th");
-  const tbody = table.querySelector("tbody");
-  let sortDirection = {};
-	const rows = table.querySelectorAll('tr.data-row');
-	const imageHover = document.querySelector(".design__archive__hover__image__container img");
-	
-	
-	rows.forEach((row)=>{
-		const hoverImage = row.dataset.image;
-		
-		row.addEventListener("mouseenter",()=>{
-			imageHover.style.display = 'flex'
-			imageHover.src = hoverImage
-		})
-		
-		row.addEventListener("mouseleave",()=>{
-			imageHover.style.display = 'none'
-			imageHover.src = ''
-		})
-	})
+function initDesignArchiveSorting() {
+  const table = document.getElementById("designTable");
 
-  headers.forEach((header, index) => {
-    header.addEventListener("click", () => {
-      const type = header.getAttribute("data-type");
-      const rows = Array.from(tbody.querySelectorAll("tr"));
-      const isAsc = sortDirection[index] = !sortDirection[index];
+  if (table) {
+    const headers = table.querySelectorAll("th");
+    const tbody = table.querySelector("tbody");
+    let sortDirection = {};
+    const rows = table.querySelectorAll("tr.data-row");
+    const imageHover = document.querySelector(
+      ".design__archive__hover__image__container img",
+    );
 
-      rows.sort((a, b) => {
-        const aText = a.children[index].innerText.trim();
-        const bText = b.children[index].innerText.trim();
+    rows.forEach((row) => {
+      const hoverImage = row.dataset.image;
 
-        if (type === "number") {
-          // Compare as numbers (for YEAR)
-          return isAsc ? aText - bText : bText - aText;
-        } else {
-          // Compare as text (for NAME)
-          return isAsc
-            ? aText.localeCompare(bText)
-            : bText.localeCompare(aText);
-        }
+      row.addEventListener("mouseenter", () => {
+        imageHover.style.display = "flex";
+        imageHover.src = hoverImage;
       });
 
-      // Re-append sorted rows
-      tbody.innerHTML = "";
-      rows.forEach(row => tbody.appendChild(row));
-
-      // Optional: visual indicator (↑↓)
-      headers.forEach(h => h.classList.remove("asc", "desc"));
-      header.classList.add(isAsc ? "asc" : "desc");
+      row.addEventListener("mouseleave", () => {
+        imageHover.style.display = "none";
+        imageHover.src = "";
+      });
     });
-  });
-	}
-  
+
+    headers.forEach((header, index) => {
+      header.addEventListener("click", () => {
+        const type = header.getAttribute("data-type");
+        const rows = Array.from(tbody.querySelectorAll("tr"));
+        const isAsc = (sortDirection[index] = !sortDirection[index]);
+
+        rows.sort((a, b) => {
+          const aText = a.children[index].innerText.trim();
+          const bText = b.children[index].innerText.trim();
+
+          if (type === "number") {
+            // Compare as numbers (for YEAR)
+            return isAsc ? aText - bText : bText - aText;
+          } else {
+            // Compare as text (for NAME)
+            return isAsc
+              ? aText.localeCompare(bText)
+              : bText.localeCompare(aText);
+          }
+        });
+
+        // Re-append sorted rows
+        tbody.innerHTML = "";
+        rows.forEach((row) => tbody.appendChild(row));
+
+        // Optional: visual indicator (↑↓)
+        headers.forEach((h) => h.classList.remove("asc", "desc"));
+        header.classList.add(isAsc ? "asc" : "desc");
+      });
+    });
+  }
 }
 
 function initHubspotForm() {
@@ -108,7 +108,7 @@ function initHubspotForm() {
       portalId: "6491656",
       formId: "32c0eab7-ab42-488e-b931-35b71d970c73",
       region: "na1",
-      target: "#hubspot-form-container"
+      target: "#hubspot-form-container",
     });
   } else {
     // If script not yet loaded, wait for it to load
@@ -119,65 +119,64 @@ function initHubspotForm() {
   }
 }
 
-
-
-function customCursor(){
+function customCursor() {
   const cursor = document.getElementById("custom-cursor");
   const header = document.querySelector(".hero-section-height");
-  
-	
-	if(!cursor || !header) return;
+
+  if (!cursor || !header) return;
+
+  cursor.style.opacity = 0;
+  cursor.style.display = "none";
 
   // Show cursor only inside header
-  header.addEventListener("mouseenter", () => {
-    cursor.style.display = "block";
-	  cursor.style.opacity = 1;
-  });
+  // header.addEventListener("mouseenter", () => {
+  //   cursor.style.display = "block";
+  //   cursor.style.opacity = 1;
+  // });
   header.addEventListener("mouseleave", () => {
-	  cursor.style.opacity = 0;
+    cursor.style.opacity = 0;
     cursor.style.display = "none";
   });
 
   // Move custom cursor
   header.addEventListener("mousemove", (e) => {
-	  cursor.style.opacity = 1;
+    cursor.style.opacity = 1;
+    cursor.style.display = "block";
     cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) rotate(90deg)`;
   });
 
   // Click to scroll to first section
   header.addEventListener("click", () => {
-  const headerHeight = header.offsetHeight;
+    const headerHeight = header.offsetHeight;
 
-  window.scrollBy({
-    top: headerHeight, // scroll exactly by header height
-    behavior: "smooth"
+    window.scrollBy({
+      top: headerHeight, // scroll exactly by header height
+      behavior: "smooth",
+    });
   });
-});
 }
 
-
-customCursor(); 
+customCursor();
 initDesignArchiveSorting();
 // barba.hooks.afterEnter(() => {
-//   customCursor(); 
+//   customCursor();
 // });
-
 
 function designCustomCursor() {
   const cursor = document.querySelector(".design__cursor");
   const header = document.querySelector(".design__header");
   const slides = document.querySelectorAll(".slide");
-	const slideTitle = document.querySelectorAll(".slide-title");
-	
-	slideTitle.forEach((el)=>{
-		el.addEventListener("mouseenter", () => {
-    		cursor.style.display = "none";
-  		});
-		
-		el.addEventListener("mouseleave", () => {
-    		cursor.style.display = "block";
-  		});
-	})
+  const slideTitle = document.querySelectorAll(".slide-title");
+
+  slideTitle.forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      cursor.style.display = "none";
+    });
+
+    el.addEventListener("mouseleave", () => {
+      cursor.style.display = "block";
+    });
+  });
 
   if (!cursor || !header || slides.length === 0) return;
 
@@ -206,8 +205,6 @@ function designCustomCursor() {
     const prev = (currentSlide - 1 + totalSlides) % totalSlides;
     goToSlide(prev);
   }
-	
-	
 
   // Show/hide cursor
   header.addEventListener("mouseenter", () => {
@@ -216,8 +213,6 @@ function designCustomCursor() {
   header.addEventListener("mouseleave", () => {
     cursor.style.display = "none";
   });
-	
-	
 
   // Move cursor + rotate
   header.addEventListener("mousemove", (e) => {
@@ -264,77 +259,71 @@ function designCustomCursor() {
   });
 }
 
-
-
 const views = [
-		{
-		  namespace: "contact",
-		  afterEnter:()=>{
-			  console.log("CONTact working");
-			  initHubspotForm()
-			  			  console.log("CONTact working after function");
-		  },
-    beforeEnter: () => {
-      const footer = document.querySelector('footer');
-		const menu = document.querySelector('.burger-menu')
-		console.log(menu)
-		if(menu){
-			menu.classList.add('contact-menu-btn')
-		}
-          if (footer) {
-			  if(window.innerWidth>1024){
-				  footer.style.display = 'none'
-			  }else{
-				  footer.style.display = 'block'
-			  }
-            
-          }
+  {
+    namespace: "contact",
+    afterEnter: () => {
+      console.log("CONTact working");
+      initHubspotForm();
+      console.log("CONTact working after function");
     },
-	  beforeLeave:() => {
-		  const menu = document.querySelector('.burger-menu')
-		  
-		if(menu){
-			menu.classList.remove('contact-menu-btn')
-		}
-		  const footer = document.querySelector('footer');
-          if (footer) {
-            footer.style.display = 'block';
-          }
-	  }
+    beforeEnter: () => {
+      const footer = document.querySelector("footer");
+      const menu = document.querySelector(".burger-menu");
+      console.log(menu);
+      if (menu) {
+        menu.classList.add("contact-menu-btn");
+      }
+      if (footer) {
+        if (window.innerWidth > 1024) {
+          footer.style.display = "none";
+        } else {
+          footer.style.display = "block";
+        }
+      }
+    },
+    beforeLeave: () => {
+      const menu = document.querySelector(".burger-menu");
+
+      if (menu) {
+        menu.classList.remove("contact-menu-btn");
+      }
+      const footer = document.querySelector("footer");
+      if (footer) {
+        footer.style.display = "block";
+      }
+    },
   },
   {
     namespace: "person",
     beforeEnter: () => {
-      const footer = document.querySelector('footer');
-          if (footer) {
-            footer.classList.add('footer-hidden');
-          }
+      const footer = document.querySelector("footer");
+      if (footer) {
+        footer.classList.add("footer-hidden");
+      }
     },
-	  beforeLeave:() => {
-		  const footer = document.querySelector('footer');
-          if (footer) {
-            footer.classList.remove('footer-hidden');
-          }
-	  }
+    beforeLeave: () => {
+      const footer = document.querySelector("footer");
+      if (footer) {
+        footer.classList.remove("footer-hidden");
+      }
+    },
   },
   {
     namespace: "design",
     beforeEnter: async () => {
-	
-		
       await loadDesignPageModule();
       if (initializeSlider) {
         initializeSlider();
-		  designCustomCursor();
+        designCustomCursor();
       }
-
     },
   },
   {
     namespace: "default",
     beforeEnter: () => {
-      hoverOverPost(); 
-//       window.scrollTo({ top: 0, behavior: "instant" });
+      hoverOverPost();
+      //       window.scrollTo({ top: 0, behavior: "instant" });
     },
   },
 ];
@@ -349,7 +338,7 @@ const transitions = {
       burgerButton?.classList.remove("active");
       // Clean up any existing ScrollTriggers
       // Force scroll to top
-//       window.scrollTo({ top: 0, behavior: "smooth" });
+      //       window.scrollTo({ top: 0, behavior: "smooth" });
     },
     leave({ current }) {
       return gsap.to(".header", {
@@ -360,23 +349,22 @@ const transitions = {
       });
     },
     after() {
-		customCursor(); 
-		
-		 const isStudioPage = document.querySelector('.P_page');
-		
+      customCursor();
 
-  if (!isStudioPage) {
-	 console.log("happen") 
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }
-// 		window.scrollTo({ top: 0, behavior: "instant" });
+      // const isStudioPage = document.querySelector(".P_page");
+
+      // if (!isStudioPage) {
+      //   // console.log("happen");
+      //   window.scrollTo({ top: 0, behavior: "instant" });
+      // }
+      // 		window.scrollTo({ top: 0, behavior: "instant" });
     },
     enter({ next }) {
-		customCursor(); 
-		initDesignArchiveSorting();
-	  const overlay = document.querySelector(".transition-overlay");
-	  overlay.style.opacity = 0;
-//       window.scrollTo({ top: 0, behavior: "instant" });
+      customCursor();
+      initDesignArchiveSorting();
+      const overlay = document.querySelector(".transition-overlay");
+      overlay.style.opacity = 0;
+      //       window.scrollTo({ top: 0, behavior: "instant" });
       // Set initial states
       gsap.set(".header", {
         autoAlpha: 0,
@@ -391,46 +379,48 @@ const transitions = {
         zIndex: 99,
         width: "100%",
       });
-      return gsap
-        .timeline()
-// 		.to(overlay,{
-// // 		 	opacity:1,
-// // 		  	duration:0.02,
-// 	  	})
-//         .to(next.container, {
-// //           duration: 0.35,
-// //           autoAlpha: 1,
-// //           y: "-5vh",
-// //           ease: "power1.out",
-//         })
-// 		.to(overlay,{
-// // 		  opacity:0,
-// // 		  duration:0.01,
-// 	     })
-//         .to(next.container, {
-// //           duration: 0.2,
-// //           y: "1.01vh",
-// //           ease: "power1.out",
-//         })
-        .to(next.container, {
-//           duration: 0.1,
-//           y: "0vh",
-//           ease: "power2.out",
-          onComplete: () => {
-            gsap.set(next.container, { clearProps: "all" });
-            gsap.fromTo(
-              ".header",
-              { autoAlpha: 0, yPercent: 5 },
-              { autoAlpha: 1, yPercent: 0, duration: 0, ease: "power2.out" }
-            );
-          },
-        });
+      return (
+        gsap
+          .timeline()
+          // 		.to(overlay,{
+          // // 		 	opacity:1,
+          // // 		  	duration:0.02,
+          // 	  	})
+          //         .to(next.container, {
+          // //           duration: 0.35,
+          // //           autoAlpha: 1,
+          // //           y: "-5vh",
+          // //           ease: "power1.out",
+          //         })
+          // 		.to(overlay,{
+          // // 		  opacity:0,
+          // // 		  duration:0.01,
+          // 	     })
+          //         .to(next.container, {
+          // //           duration: 0.2,
+          // //           y: "1.01vh",
+          // //           ease: "power1.out",
+          //         })
+          .to(next.container, {
+            //           duration: 0.1,
+            //           y: "0vh",
+            //           ease: "power2.out",
+            onComplete: () => {
+              gsap.set(next.container, { clearProps: "all" });
+              gsap.fromTo(
+                ".header",
+                { autoAlpha: 0, yPercent: 5 },
+                { autoAlpha: 1, yPercent: 0, duration: 0, ease: "power2.out" },
+              );
+            },
+          })
+      );
     },
   },
   rightToLeft: {
     name: "right-to-left-page-transition",
-    to: { namespace: ["person","atrium"] },
-//     from: { namespace: ["person"] },
+    to: { namespace: ["person", "atrium"] },
+    //     from: { namespace: ["person"] },
     beforeEnter() {
       const nav = document.querySelector("nav");
       nav.classList.remove("open", "active", "visible");
@@ -443,7 +433,7 @@ const transitions = {
       window.scrollTo({ top: 0, behavior: "instant" });
     },
     leave({ current }) {
-		customCursor(); 
+      customCursor();
       return gsap.timeline().to(".header", {
         autoAlpha: 0,
         yPercent: -5,
@@ -451,18 +441,18 @@ const transitions = {
         ease: "power2.out",
       });
     },
-		 after() {
-		customCursor(); 
+    after() {
+      customCursor();
     },
-	afterEnter(){
-// 		window.scrollTo({ top: 0, behavior: "instant" });
-	},
+    afterEnter() {
+      // 		window.scrollTo({ top: 0, behavior: "instant" });
+    },
     enter({ next }) {
-		customCursor(); 
-		
-	  const overlay = document.querySelector(".transition-overlay");
-	  overlay.style.opacity = "0";
-//       window.scrollTo({ top: 0, behavior: "instant" });
+      customCursor();
+
+      const overlay = document.querySelector(".transition-overlay");
+      overlay.style.opacity = "0";
+      //       window.scrollTo({ top: 0, behavior: "instant" });
 
       gsap.set(next.container, {
         xPercent: 100,
@@ -473,47 +463,68 @@ const transitions = {
         zIndex: 991,
       });
 
-      return gsap
-        .timeline()
-// 		.to(overlay,{
-// 		 	opacity:1,
-// 		  	duration:0.02,
-// 	  	})
-//         .to(next.container, {
-//           xPercent: -1,
-//           duration: 0.35,
-//           autoAlpha: 1,
-//           ease: "power1.out",
-//         })
-// 		.to(overlay,{
-// 		  opacity:0,
-// 		  duration:0.01,
-// 	     })
-//         .to(next.container, {
-//           duration: 0.2,
-//           xPercent: 1.01,
-//           ease: "power1.out",
-//         })
-        .to(next.container, {
-//           duration: 0.1,
-//           xPercent: 0,
-//           ease: "power2.out",
-          onComplete: () => {
-            gsap.set(next.container, { clearProps: "all" });
-            gsap.fromTo(
-              ".header",
-              { autoAlpha: 0, yPercent: 5 },
-              { autoAlpha: 1, yPercent: 0, duration: 0, ease: "power2.out" }
-            );
-          },
-        });
+      return (
+        gsap
+          .timeline()
+          // 		.to(overlay,{
+          // 		 	opacity:1,
+          // 		  	duration:0.02,
+          // 	  	})
+          //         .to(next.container, {
+          //           xPercent: -1,
+          //           duration: 0.35,
+          //           autoAlpha: 1,
+          //           ease: "power1.out",
+          //         })
+          // 		.to(overlay,{
+          // 		  opacity:0,
+          // 		  duration:0.01,
+          // 	     })
+          //         .to(next.container, {
+          //           duration: 0.2,
+          //           xPercent: 1.01,
+          //           ease: "power1.out",
+          //         })
+          .to(next.container, {
+            //           duration: 0.1,
+            //           xPercent: 0,
+            //           ease: "power2.out",
+            onComplete: () => {
+              gsap.set(next.container, { clearProps: "all" });
+              gsap.fromTo(
+                ".header",
+                { autoAlpha: 0, yPercent: 5 },
+                { autoAlpha: 1, yPercent: 0, duration: 0, ease: "power2.out" },
+              );
+            },
+          })
+      );
     },
   },
 };
+// Initialize page navigation once.
+// PageNavigation must be loaded before transition.js.
+const pageNavigation = new PageNavigation({
+  backSelector: ".js-go-back",
 
+  // Same rule as barba.init prevent below: these pages load normally.
+  fullReload: (href) => href.includes("/studio"),
+
+  onPageReady: async (container, data) => {
+    // Your existing Barba views already initialize
+    // contact forms, design sliders, and other page features.
+
+    // Refresh GSAP measurements after the new page loads.
+    if (window.ScrollTrigger) {
+      ScrollTrigger.refresh();
+    }
+  },
+});
+
+pageNavigation.init();
 barba.init({
   views,
-	 prevent: ({ el, href }) => {
+  prevent: ({ el, href }) => {
     return href.includes("/studio");
   },
   transitions: [transitions.general, transitions.rightToLeft],

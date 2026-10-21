@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.0] - 2026-10-19
+
+### Updated
+  404 Page
+    - Page Design Created.
+  Hero Section moving Arrow
+    - Fixed the arrow shown in the hero while visit the page.
+  Go back arrow button
+    - Add function to go back as where the last left.
+    - studio page scroll back to where left.
+  Top arrow icon fixed
+    - Arrow icon tip fixed.
+    - add function to go top instant.
+  News Page
+    - News page W icon align with S from bottom.
+
+  Project Individual Page
+    - Hero video fixed now its play.
+
 ## [1.1.9] - 2026-10-16
 
 ### Updated
