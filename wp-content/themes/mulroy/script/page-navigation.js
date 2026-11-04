@@ -9,6 +9,7 @@ class PageNavigation {
     this.initialized = false;
     this.scrollFrame = null;
     this.restoreToken = 0;
+    this.enteredTarget = null;
 
     // Back-arrow trail: for each history entry, the on-site page
     // (URL + scroll) the visitor came from. Never uses history.back(),
@@ -185,6 +186,19 @@ class PageNavigation {
     return stored;
   }
 
+  // Applies per history entry: without it the browser scrolls the old page
+  // on back/forward before the Barba transition has started.
+  manualScrollRestoration() {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    // ScrollTrigger.refresh() puts back the value it remembers, so tell it too.
+    if (window.ScrollTrigger) {
+      ScrollTrigger.clearScrollMemory("manual");
+    }
+  }
+
   // barba.init() replaces history.state, dropping our entry id.
   reattachEntryId() {
     if (!this.currentId || this.getEntryId() === this.currentId) return;
@@ -194,6 +208,7 @@ class PageNavigation {
 
     nextState[this.entryKey] = this.currentId;
     window.history.replaceState(nextState, "", window.location.href);
+    this.manualScrollRestoration();
   }
 
   isHistoryLoad() {
@@ -416,6 +431,44 @@ class PageNavigation {
     }
   }
 
+  isHistoryTrigger(data) {
+    return (
+      data.trigger === "back" ||
+      data.trigger === "forward" ||
+      data.trigger === "popstate"
+    );
+  }
+
+  // Where an incoming Barba page will land: its saved position on browser
+  // back/forward, the #hash element on a link, otherwise the top.
+  entryTarget(data) {
+    const top = { x: 0, y: 0 };
+
+    if (this.isHistoryTrigger(data)) {
+      return this.positions[this.getEntryId()] || top;
+    }
+
+    // Read from the clicked link: Barba drops the hash from the URL when the
+    // request redirects (/studio to /studio/).
+    const hash = (data.trigger.hash || "").slice(1);
+    const el = hash && data.next.container.querySelector("#" + CSS.escape(hash));
+
+    if (!el) return top;
+
+    return {
+      x: 0,
+      y:
+        el.getBoundingClientRect().top -
+        data.next.container.getBoundingClientRect().top,
+    };
+  }
+
+  // For transitions that place the page themselves; pageEntered keeps this spot.
+  jumpToEntry(data) {
+    this.enteredTarget = this.entryTarget(data);
+    this.jumpTo(this.enteredTarget)();
+  }
+
   async restoreScroll(shouldRestore, explicitTarget = null, root = null) {
     const token = ++this.restoreToken;
     this.restoring = true;
@@ -447,14 +500,14 @@ class PageNavigation {
 
   async pageEntered(data) {
     this.ensureEntryId();
+    this.manualScrollRestoration();
 
-    const isHistoryNavigation =
-      data.trigger === "back" ||
-      data.trigger === "forward" ||
-      data.trigger === "popstate";
+    const isHistoryNavigation = this.isHistoryTrigger(data);
 
-    const backTarget = this.recordEntry(isHistoryNavigation, this.lastLeft);
+    const backTarget =
+      this.recordEntry(isHistoryNavigation, this.lastLeft) || this.enteredTarget;
     this.lastLeft = null;
+    this.enteredTarget = null;
 
     try {
       await Promise.resolve(this.onPageReady(data.next.container, data));
@@ -502,9 +555,7 @@ class PageNavigation {
 
     this.initialized = true;
 
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
+    this.manualScrollRestoration();
 
     this.ensureEntryId();
 
