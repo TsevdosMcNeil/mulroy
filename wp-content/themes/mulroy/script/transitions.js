@@ -328,6 +328,50 @@ const views = [
   },
 ];
 
+// Studio <-> bio crossfade. The incoming page fades in over the old one, already
+// showing the spot it will land on. The old page is then swapped out and the
+// scroll set in the same tick, so the hero or a scroll jump never gets painted.
+function studioBioTransition(from, to) {
+  return {
+    name: `${from}-to-${to}-transition`,
+    from: { namespace: [from] },
+    to: { namespace: [to] },
+    sync: true,
+    before() {
+      // The person view hides the footer; keep the old page from shifting.
+      document.body.style.minHeight = `${document.documentElement.scrollHeight}px`;
+    },
+    enter(data) {
+      const { current, next } = data;
+
+      gsap.set(next.container, {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        zIndex: 99,
+        autoAlpha: 0,
+      });
+      gsap.set(next.container, { y: -pageNavigation.entryTarget(data).y });
+
+      return gsap.to(next.container, {
+        autoAlpha: 1,
+        duration: 0.35,
+        ease: "power1.out",
+        onComplete: () => {
+          current.container.style.display = "none";
+          gsap.set(next.container, { clearProps: "all" });
+          document.body.style.minHeight = "";
+          pageNavigation.jumpToEntry(data);
+        },
+      });
+    },
+    after() {
+      customCursor();
+    },
+  };
+}
+
 const transitions = {
   general: {
     name: "general-transition",
@@ -524,10 +568,17 @@ const pageNavigation = new PageNavigation({
 pageNavigation.init();
 barba.init({
   views,
+  // Slow responses wait on the current page instead of falling back to a full load.
+  timeout: 8000,
   prevent: ({ el, href }) => {
-    return href.includes("/studio");
+    return href.includes("/studio") && !el.closest(".person-profile-cross");
   },
-  transitions: [transitions.general, transitions.rightToLeft],
+  transitions: [
+    transitions.general,
+    transitions.rightToLeft,
+    studioBioTransition("studio", "person"),
+    studioBioTransition("person", "studio"),
+  ],
 });
 
 // gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
