@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.2] - 2026-11-05
+
+### Updated
+  Design Page
+    - add check for if project is not selected then nothing will show
+
 ## [1.2.1] - 2026-11-04
 
 ### Updated
