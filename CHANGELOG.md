@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.1.14] - 2026-11-04
+
+### Updated
+  Studio and People Bio page transition
+    - Fixed studio hero flash while going from studio page to bio page.
+    - Fixed hero flash and instant scroll while going back from bio page with X button.
+    - X button now uses Barba with a smooth fade and lands on the same person.
+    - Browser back and forward buttons no longer flash the hero.
+  Barba and Scroll
+    - Barba timeout increased from 2s to 8s so slow pages do not fall back to full reload.
+    - Browser scroll restoration set to manual on all pages.
+
 ## [1.1.13] - 2026-10-16
 
 ### Updated
