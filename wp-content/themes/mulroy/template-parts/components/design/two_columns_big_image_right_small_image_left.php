@@ -14,34 +14,35 @@ $right_image = get_sub_field('right_side_design_image');
   class="scroll-section site-container bg-site container-py no_min_height_mobile design__page__section__padding"
   style="min-height:auto;">
   <div class="flex flex-col lg:grid grid-cols-12 gap-y-10 h-full inside__design gap-x-5">
-
-    <div class="small-img col-start-2 col-end-7">
-      <?php
-      get_template_part(
-        'template-parts/components/design/project-card',
-        null,
-        [
-          'post_id' => $left_post?->ID,
-          'image'   => $left_image,
-        ]
-      );
-      ?>
-    </div>
-
-    <div class="col-start-7 col-end-13">
-      <?php
-      get_template_part(
-        'template-parts/components/design/project-card',
-        null,
-        [
-          'post_id' => $right_post?->ID,
-          'image'   => $right_image,
-          'class'   => 'h-full block',
-        ]
-      );
-      ?>
-    </div>
-
+    <?php if ($left_post): ?>
+      <div class="small-img col-start-2 col-end-7">
+        <?php
+        get_template_part(
+          'template-parts/components/design/project-card',
+          null,
+          [
+            'post_id' => $left_post?->ID,
+            'image'   => $left_image,
+          ]
+        );
+        ?>
+      </div>
+    <?php endif; ?>
+    <?php if ($right_post): ?>
+      <div class="col-start-7 col-end-13">
+        <?php
+        get_template_part(
+          'template-parts/components/design/project-card',
+          null,
+          [
+            'post_id' => $right_post?->ID,
+            'image'   => $right_image,
+            'class'   => 'h-full block',
+          ]
+        );
+        ?>
+      </div>
+    <?php endif; ?>
   </div>
 </section>
 <!-- End template-parts/components/design/two_columns_big_image_right_small_image_left.php -->
