@@ -106,26 +106,19 @@ $vimeo_id   = hero_get_vimeo_id($vimeo_url);
 	<div class="hero-content hero__content__single__design py-0" style="padding-bottom:0 !important;">
 		<div class="video-player w-full h-full overflow-hidden hero-media-wrap">
 
-			<?php if ($media_source === 'upload_video' && $video_file) : ?>
+			<?php if (($media_source === 'upload_video' && $video_file) || ($media_source === 'video_link' && $video_link)) :
+				$native_src = $media_source === 'upload_video' ? $video_file : $video_link;
+			?>
 
 				<video
 					class="hero-media hero-media--video top-0 relative h-full object-cover z-[-1] md:left-0 xl:w-full bg-gray-400 bg-cover bg-center h-full"
-					autoplay
-					loop
-					muted
+					<?php echo $autoplay ? 'autoplay' : ''; ?>
+					<?php echo $loop ? 'loop' : ''; ?>
+					<?php echo $muted ? 'muted' : ''; ?>
+					<?php echo $controls ? 'controls' : ''; ?>
 					playsinline
-					src="<?php echo esc_url($video_file); ?>">
-				</video>
-
-			<?php elseif ($media_source === 'video_link' && $video_link) : ?>
-
-				<video
-					class="hero-media hero-media--video top-0 relative h-full object-cover z-[-1] md:left-0 xl:w-full bg-gray-400 bg-cover bg-center h-full"
-					autoplay
-					loop
-					muted
-					playsinline
-					src="<?php echo esc_url($video_link); ?>">
+					preload="metadata"
+					src="<?php echo esc_url($native_src); ?>">
 				</video>
 
 			<?php elseif ($media_source === 'youtube' && $youtube_id) :

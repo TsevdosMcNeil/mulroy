@@ -112,12 +112,12 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_67bff97f5f15b",
-                            "label": "Video Url",
-                            "name": "video_url",
+                            "key": "field_6a2c2e1b2c001",
+                            "label": "Media Source",
+                            "name": "media_source",
                             "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
+                            "type": "select",
+                            "instructions": "Choose what to display in the hero.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -125,12 +125,21 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "maxlength": "",
+                            "choices": {
+                                "image": "Image",
+                                "upload_video": "Upload Video",
+                                "youtube": "YouTube",
+                                "vimeo": "Vimeo",
+                                "video_link": "Direct Video Link"
+                            },
+                            "default_value": "image",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
                             "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
                         },
                         {
                             "key": "field_67bff97f5f196",
@@ -140,7 +149,15 @@
                             "type": "image",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2c001",
+                                        "operator": "==",
+                                        "value": "image"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -157,6 +174,229 @@
                             "mime_types": "",
                             "allow_in_bindings": 0,
                             "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_6a2c2e1b2c003",
+                            "label": "Video File",
+                            "name": "video_file",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "Upload an MP4 or WebM video.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2c001",
+                                        "operator": "==",
+                                        "value": "upload_video"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": "mp4,webm,ogg,mov",
+                            "allow_in_bindings": 0
+                        },
+                        {
+                            "key": "field_6a2c2e1b2c004",
+                            "label": "YouTube URL",
+                            "name": "youtube_url",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "e.g. https://www.youtube.com/watch?v=XXXXXXXXXXX, https://youtu.be/XXXXXXXXXXX or a Shorts link.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2c001",
+                                        "operator": "==",
+                                        "value": "youtube"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "https://www.youtube.com/watch?v="
+                        },
+                        {
+                            "key": "field_6a2c2e1b2c005",
+                            "label": "Vimeo URL",
+                            "name": "vimeo_url",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "e.g. https://vimeo.com/123456789",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2c001",
+                                        "operator": "==",
+                                        "value": "vimeo"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "https://vimeo.com/"
+                        },
+                        {
+                            "key": "field_6a2c2e1b2c006",
+                            "label": "Video Link",
+                            "name": "video_link",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "Direct link to a video file (e.g. https://example.com/video.mp4).",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2c001",
+                                        "operator": "==",
+                                        "value": "video_link"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "https://"
+                        },
+                        {
+                            "key": "field_6a2c2e1b2c007",
+                            "label": "Autoplay",
+                            "name": "video_autoplay",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Autoplay always mutes the video (browser requirement).",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2c001",
+                                        "operator": "!=",
+                                        "value": "image"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_6a2c2e1b2c008",
+                            "label": "Loop",
+                            "name": "video_loop",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2c001",
+                                        "operator": "!=",
+                                        "value": "image"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_6a2c2e1b2c009",
+                            "label": "Muted",
+                            "name": "video_muted",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2c001",
+                                        "operator": "!=",
+                                        "value": "image"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_6a2c2e1b2c010",
+                            "label": "Show Controls",
+                            "name": "video_controls",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2c001",
+                                        "operator": "!=",
+                                        "value": "image"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
@@ -276,6 +516,33 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_6a2c2e1b2d001",
+                            "label": "Number of Projects",
+                            "name": "project_count",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Show one project (left side only) or two projects.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "one": "One Project",
+                                "two": "Two Projects"
+                            },
+                            "default_value": "two",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_67c0022894d67",
                             "label": "Left Side Design Image",
                             "name": "left_side_design_image",
@@ -338,7 +605,15 @@
                             "type": "image",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2d001",
+                                        "operator": "==",
+                                        "value": "two"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -364,7 +639,15 @@
                             "type": "post_object",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2d001",
+                                        "operator": "==",
+                                        "value": "two"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -395,6 +678,33 @@
                     "label": "Two Columns Small Image top Left Big Image Right Bottom",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_6a2c2e1b2d002",
+                            "label": "Number of Projects",
+                            "name": "project_count",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Show one project (left side only) or two projects.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "one": "One Project",
+                                "two": "Two Projects"
+                            },
+                            "default_value": "two",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
                         {
                             "key": "field_67c003e1bd536",
                             "label": "Left Side Design Image",
@@ -458,7 +768,15 @@
                             "type": "image",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2d002",
+                                        "operator": "==",
+                                        "value": "two"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -484,7 +802,15 @@
                             "type": "post_object",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2d002",
+                                        "operator": "==",
+                                        "value": "two"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -515,6 +841,33 @@
                     "label": "Two Columns Small image Left Top Big Landscap image Bottom Center",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_6a2c2e1b2d003",
+                            "label": "Number of Projects",
+                            "name": "project_count",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Show one project (left side only) or two projects.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "one": "One Project",
+                                "two": "Two Projects"
+                            },
+                            "default_value": "two",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
                         {
                             "key": "field_67c0043558039",
                             "label": "Left Side Design Image",
@@ -578,7 +931,15 @@
                             "type": "image",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2d003",
+                                        "operator": "==",
+                                        "value": "two"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -604,7 +965,15 @@
                             "type": "post_object",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c2e1b2d003",
+                                        "operator": "==",
+                                        "value": "two"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -653,5 +1022,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1791311946
+    "modified": 1793968800
 }
