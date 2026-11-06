@@ -8,6 +8,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.1.16] - 2026-11-06
+
+### Updated
+  Video Hero Section (Dynamic Blocks)
+    - Added Media Source select field (Image, Upload Video, YouTube, Vimeo, Direct Video Link).
+    - Added Video File, YouTube URL, Vimeo URL and Video Link fields shown based on the selection.
+    - Added Autoplay, Loop, Muted and Show Controls options for every video type.
+    - Removed old Video Url field, Image field now shows only when Image is selected.
+    - Uploaded video and video link now follow the autoplay, loop, muted and controls options.
+  Design Page
+    - Video Hero Section now has the same media fields and options as the Dynamic Blocks hero.
+    - Design video hero template updated to support image, uploaded video, YouTube, Vimeo and video link.
+    - Added Number of Projects (One / Two) field to two_columns_big_image_right_small_image_left, two_columns_big_img_left_small_image_right and two_columns_big_img_left_landscap_img_right.
+    - One project shows only the left project, two projects shows both (default).
+    - Cleaned up the three two column templates.
+
+
 ## [1.1.15] - 2026-11-05
 
 ### Updated
