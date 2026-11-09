@@ -1,16 +1,16 @@
 # Design category landing pages: implementation notes (Nov 2026)
 
-Branch: `feature/design-category-landing` (one commit on top of main 65e2949)
+Branch: `feature/design-category-landing` (two commits on top of main 65e2949: 869ab3f taxonomies + blocks, f91c7a4 starter content seeder)
 Figma: MUL_We Design_V7, frame "SEO PAGE" (node 13100:3632)
 
 ## Taxonomies (inc/taxonomies.php)
 - `design_category`: public, URL `/architecture/<slug>/` (set by the constant `MULROY_DESIGN_CATEGORY_SLUG`). Terms: home-extensions, basements, renovations, listed-buildings, sustainable-architecture
 - `design_sector`: admin only. Terms: residential, commercial, educational
 - Terms are created once and rewrite rules are flushed when `MULROY_TAXONOMY_VERSION` changes
+- Changing the URL base later: edit the constant, flush permalinks, add 301s from the old base
 
 ## Template
 `taxonomy-design_category.php` renders the Dynamic Blocks (`components`) field saved on the term. `components.php` now takes an optional `post_id` arg.
-
 ## URL
 
 The base is one line at the top of inc/taxonomies.php:
@@ -46,6 +46,12 @@ Each category’s own slug can also be changed separately in Designs → Categor
 | Discuss / View projects links | Landing CTA Links (new) |
 | FAQs | FAQ Section Global (new, same fields as the Legal FAQ, outputs FAQPage schema) |
 
+## Starter content (inc/landing-seeder.php)
+- Seed data: `inc/landing-seeds/<term-slug>.php` (only home-extensions so far). To add another category, copy that file and rename it to the new slug.
+- Admin: Designs > Categories > Edit > "Fill with starter content" (shown only while the page has no blocks)
+- WP-CLI: `wp mulroy seed-landing home-extensions [--force]`
+- The seeder adds text only. After seeding, add the hero image, the 5 image blocks, the second person and the FAQ questions (the Figma FAQs are placeholder text)
+- Text that is underlined in Figma (suburb names, "integrated range of services", "Fit & Flow approach", etc.) is seeded as plain text; the links still need adding
 ## How apply a git patch
 
 The patch is built on top of `main` at commit `65e2949` ("Merged developer changes into the main branch"). Download **mulroy-category-landing.patch**, then in your local clone:
@@ -91,8 +97,9 @@ The changes are then left uncommitted, and you commit them yourself.
 
 **After applying:** push the branch (`git push -u origin feature/design-category-landing`) and deploy it to staging. In WP admin, go to ACF → Field Groups and Sync "Dynamic Blocks" so the new blocks appear.
 
+
 ## Deploy checklist
 1. Deploy theme, then go to ACF > Field Groups > Sync "Dynamic Blocks"
 2. Assign projects to categories and sectors
-3. Build each landing page under Designs > Categories > Edit
+3. Fill Home Extensions with the starter content, then add images, people and FAQs
 4. Settings > Permalinks > Save if the URLs return 404

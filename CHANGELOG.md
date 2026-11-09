@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.1] - 2026-11-09
+
+### Added (starter content)
+  inc/landing-seeder.php + inc/landing-seeds/home-extensions.php
+    - Fills an empty category landing page with the Figma copy (text only, images added afterwards).
+    - Admin: Designs > Categories > Edit > "Fill with starter content" (only shown while the page is empty).
+    - WP-CLI: wp mulroy seed-landing home-extensions [--force]
+
 ## [1.2.0] - 2026-11-09
 
 ### Added
@@ -31,6 +39,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   Right Only Content Block: description wrapper is skipped when empty, so it can be used as an image only block.
   components.php: accepts a post_id arg so blocks can be rendered from a term.
   header.php: Barba namespace "design-category" for category pages.
+
+
 
 ## [1.1.17] - 2026-11-09
 
