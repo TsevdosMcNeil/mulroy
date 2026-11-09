@@ -163,6 +163,8 @@ $linkedin = get_field('linkedin', 'option');
         }
 	} elseif (is_page()) {
 		$slug = get_post_field('post_name', get_post());
+	} elseif (is_tax('design_category')) {
+		$slug = 'design-category';
 	} elseif (is_archive()) {
 		$slug = get_post_type();
 	} elseif (is_search()) {

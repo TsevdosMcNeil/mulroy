@@ -2,7 +2,7 @@
 $post_type  = get_post_type();
 $hero_image = get_sub_field( 'hero_image' );
 $heading    = get_sub_field( 'heading' );
-$page_slug  = get_post_field('post_name', get_post()); 
+$page_slug  = is_tax() ? '' : get_post_field('post_name', get_post());
 ?>
 <!-- template-parts/components/hero_section.php -->
 <?php
@@ -34,6 +34,17 @@ if($post_type=='post' ){
     null,
     [
       'hero_image' => $hero_image,
+    ]
+  );
+}
+
+if (is_tax('design_category')) {
+  get_template_part(
+    'template-parts/components/hero/landing',
+    null,
+    [
+      'hero_image' => $hero_image,
+      'heading'    => $heading,
     ]
   );
 }

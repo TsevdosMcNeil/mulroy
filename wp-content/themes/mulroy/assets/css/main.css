@@ -3135,3 +3135,79 @@ p a {
   transform: rotate(-90deg);
   display: block;
 }
+/* ==========================================================================
+   Design Category landing pages (taxonomy-design_category.php)
+   Blocks: landing_text_section, landing_info_table, landing_cta_links,
+   landing_featured_projects, faq_section_global, hero/landing.php
+   ========================================================================== */
+
+.landing-hero .hero-background {
+  z-index: -2;
+}
+
+.landing-hero__scroll svg {
+  transition: transform ease 0.2s;
+}
+
+.landing-hero__scroll:hover svg {
+  transform: translateY(3px);
+}
+
+.landing-text-section__copy,
+.landing-text-section__copy p {
+  line-height: 1.1;
+}
+
+.landing-text-section__copy p + p,
+.landing-text-section__lead p + p {
+  margin-top: 1em;
+}
+
+.landing-info-table__list,
+.landing-cta-links ul {
+  list-style: none;
+}
+
+.landing-info-table__inner span {
+  line-height: 1.1;
+}
+
+.landing-info-table__inner.is-link,
+.landing-cta-links__link {
+  transition: opacity ease 0.2s;
+}
+
+.landing-info-table__inner.is-link:hover,
+.landing-cta-links__link:hover {
+  opacity: 0.6;
+}
+
+.landing-cta-links__arrow {
+  opacity: 0;
+  transform: translateX(-0.5rem);
+  transition: all ease 0.2s;
+}
+
+.landing-cta-links__link:hover .landing-cta-links__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.faq-section-global .faq__card {
+  border-bottom: 0;
+}
+
+.faq-section-global .faq__answer p + p {
+  margin-top: 1em;
+}
+
+@media screen and (max-width: 1024px) {
+  .landing-hero {
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+}
+
+.landing-featured-projects__feature .project-sect-title {
+  opacity: 1;
+}

@@ -9,11 +9,13 @@ $photo = get_sub_field('photo');
   <div
     class="flex flex-col lg:grid grid-cols-12"
     style="grid-template-rows: min-content 1fr">
+    <?php if ($desc): ?>
     <div class="col-start-6 col-end-13 mb-8">
       <div class="atrium-post-desc-text fs-2xl section__copy__content letter__spacing__custom__-2px">
         <?php echo $desc; ?>
       </div>
     </div>
+    <?php endif; ?>
     <div
       class="col-start-6 col-end-13 h-full"
       id="atrium-post-right-text-image">

@@ -54,6 +54,16 @@ if ($atriums_query->have_posts()) :
     3 => 'col-start-3 col-end-6 pt-0 lg:pt-[7vw] lg:pl-[0]',
     4 => 'col-start-10 col-end-13 pt-0 lg:pt-[10vw] lg:pt-8',
   );
+
+  // "Landing" layout: two staggered cards per row (repeats every 2)
+  $layout_style = get_sub_field('layout_style') ?: 'default';
+  if ($layout_style === 'landing') {
+    $col_classes = array(
+      1 => 'col-start-4 col-end-7 pt-0',
+      2 => 'col-start-9 col-end-12 pt-0 lg:pt-[14.8vw]',
+    );
+  }
+  $pattern_size = count($col_classes);
   ?>
   <!-- template-parts/components/people_section.php -->
   <section class="scroll-section site-container bg-site container-py no_min_height_mobile consistent__space__single__project__mobile" id="people-most-left-sect">
@@ -67,8 +77,8 @@ if ($atriums_query->have_posts()) :
         $hover_picture = get_field('hover_picture');
         $picture = get_field('picture');
 
-        // repeat layout every 4
-        $pos = ($index % 4 === 0) ? 4 : ($index % 4);
+        // repeat layout every 4 (or 2 for the landing layout)
+        $pos = ($index % $pattern_size === 0) ? $pattern_size : ($index % $pattern_size);
         $col_class = isset($col_classes[$pos]) ? $col_classes[$pos] : $col_classes[1];
       ?>
         <div class="<?php echo esc_attr($col_class); ?>" id="<?php echo get_post_field('post_name', get_the_ID()); ?>">

@@ -368,3 +368,7 @@ add_action('pre_get_posts', function ($query) {
         $query->set('order', strtoupper($_GET['order'] ?? 'ASC')); // Respect ASC/DESC
     }
 });
+
+
+// Designs taxonomies (Categories with landing pages, Sectors).
+require_once get_template_directory() . '/inc/taxonomies.php';
