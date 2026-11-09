@@ -161,6 +161,9 @@ wp-content/themes/*
 # Deployment
 !deploy.sh
 
+# Documents
+!docs/
+
 
 # Wordpress: track these mu-plugins, plugins, and themes
 

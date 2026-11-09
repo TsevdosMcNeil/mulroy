@@ -8,6 +8,46 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.1] - 2026-11-09
+
+### Added (starter content)
+  inc/landing-seeder.php + inc/landing-seeds/home-extensions.php
+    - Fills an empty category landing page with the Figma copy (text only, images added afterwards).
+    - Admin: Designs > Categories > Edit > "Fill with starter content" (only shown while the page is empty).
+    - WP-CLI: wp mulroy seed-landing home-extensions [--force]
+
+## [1.2.0] - 2026-11-09
+
+### Added
+  Designs Taxonomies (inc/taxonomies.php)
+    - Categories (design_category): Home Extensions, Basements, Renovations, Listed Buildings, Sustainable Architecture. Each one has a landing page at /architecture/<category>/.
+    - Sectors (design_sector): Residential, Commercial, Educational. Admin only, no front-end page.
+    - Default terms are created once, rewrite rules flushed automatically (MULROY_TAXONOMY_VERSION).
+  Category Landing Page (taxonomy-design_category.php)
+    - Built from the Dynamic Blocks field on the category itself (Designs > Categories > Edit).
+  Dynamic Blocks (new layouts)
+    - Landing Text Section: left/right heading, lead text, two text columns, full / right / no top line.
+    - Landing Info Table: label + description rows, optional link per row.
+    - Landing CTA Links: large link rows.
+    - Landing Featured Projects: staggered project cards, automatic (projects in the current category) or hand-picked.
+    - FAQ Section Global: same fields and accordion as the Legal FAQ, plus FAQPage schema.
+    - Two Column Left Portrait and Right Landscape Image With Heading.
+
+### Updated
+  Hero Section: new short landing hero (hero/landing.php) on category pages, uses the same Heading / Hero Image fields.
+  People Section: new Layout option (Default / Landing page 2 staggered). Existing pages unchanged.
+  Right Only Content Block: description wrapper is skipped when empty, so it can be used as an image only block.
+  components.php: accepts a post_id arg so blocks can be rendered from a term.
+  header.php: Barba namespace "design-category" for category pages.
+
+
+
+## [1.1.17] - 2026-11-09
+
+### Updated
+Hide the scrollbar across the whole site.
+
+
 ## [1.1.16] - 2026-11-06
 
 ### Updated
