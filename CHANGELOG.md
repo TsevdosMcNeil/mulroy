@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.1.17] - 2026-11-09
+
+### Updated
+Hide the scrollbar across the whole site.
+
+
 ## [1.1.16] - 2026-11-06
 
 ### Updated
