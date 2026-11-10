@@ -37,7 +37,27 @@ $picture = get_field('picture');
           </div>
           <div class="persons-nav flex justify-between mt-10 lg:mt-0">
             <?php $next_post = get_next_post();
-            $prev_post = get_previous_post(); ?>
+            $prev_post = get_previous_post();
+
+            // Loop around: last person -> first, first person -> last.
+            if (!$next_post) {
+              $next_post = get_posts([
+                'post_type'      => get_post_type(),
+                'post_status'    => 'publish',
+                'posts_per_page' => 1,
+                'orderby'        => 'date',
+                'order'          => 'ASC',
+              ])[0] ?? null;
+            }
+            if (!$prev_post) {
+              $prev_post = get_posts([
+                'post_type'      => get_post_type(),
+                'post_status'    => 'publish',
+                'posts_per_page' => 1,
+                'orderby'        => 'date',
+                'order'          => 'DESC',
+              ])[0] ?? null;
+            } ?>
             <a href="<?php echo get_permalink($prev_post->ID); ?>" class='gray-hover-icon'>
               <span><img
                   src="<?php echo get_template_directory_uri(); ?>/assets/media/Arrow.svg"
