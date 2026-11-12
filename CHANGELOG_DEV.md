@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.4] - 2026-11-12
+
+### Updated
+  Design Page
+    - Fixed hero video showing only the first frame when opening a design page through Barba, it now plays without a refresh.
+
 ## [1.2.3] - 2026-11-06
 
 ### Updated
@@ -22,6 +28,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
     - Added Number of Projects (One / Two) field to two_columns_big_image_right_small_image_left, two_columns_big_img_left_small_image_right and two_columns_big_img_left_landscap_img_right.
     - One project shows only the left project, two projects shows both (default).
     - Cleaned up the three two column templates.
+  People Bio Page
+    - Next and Prev buttons now work in a loop, next on the last person goes to the first and prev on the first person goes to the last.
 
 ## [1.2.2] - 2026-11-05
 

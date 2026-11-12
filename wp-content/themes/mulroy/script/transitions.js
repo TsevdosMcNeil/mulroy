@@ -566,6 +566,16 @@ const pageNavigation = new PageNavigation({
 });
 
 pageNavigation.init();
+
+// Barba builds the next page with DOMParser, so autoplay videos arrive
+// paused on their first frame. Start them by hand once the page is in.
+barba.hooks.enter(({ next }) => {
+  next.container.querySelectorAll("video[autoplay]").forEach((video) => {
+    video.muted = true;
+    video.play().catch(() => {});
+  });
+});
+
 barba.init({
   views,
   // Slow responses wait on the current page instead of falling back to a full load.
