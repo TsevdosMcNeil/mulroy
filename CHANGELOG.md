@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.4] - 2026-11-12
+
+### Updated
+  Landing Hero (hero/landing.php)
+    - "Scroll" arrow now moves down and up in a loop (1.4s), as in the Figma prototype. It stays still when the visitor has reduced motion turned on.
+
 ## [1.2.3] - 2026-11-12
 
 ### Updated

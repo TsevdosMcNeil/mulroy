@@ -26,7 +26,7 @@ if (!$heading && is_tax()) {
     <?php endif; ?>
     <a href="#landing-content" class="landing-hero__scroll self-end inline-flex items-center gap-2 text-white text-[14px]" data-barba-prevent>
       <span class="text-white text-[14px]"><?php esc_html_e('Scroll', 'mulroy'); ?></span>
-      <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg class="landing-hero__scroll-arrow" width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M0.5 0.5L4 4L7.5 0.5" stroke="white" />
       </svg>
     </a>

@@ -3145,12 +3145,36 @@ p a {
   z-index: -2;
 }
 
-.landing-hero__scroll svg {
-  transition: transform ease 0.2s;
+/* "Scroll" chevron: rests, drops 5px, rises 5px above, settles (Figma prototype, 1.4s loop) */
+.landing-hero__scroll-arrow {
+  animation: landingScrollArrow 1.4s ease-in-out infinite;
 }
 
-.landing-hero__scroll:hover svg {
-  transform: translateY(3px);
+@keyframes landingScrollArrow {
+  0%,
+  21% {
+    transform: translateY(0);
+  }
+
+  43%,
+  50% {
+    transform: translateY(5px);
+  }
+
+  71%,
+  79% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-hero__scroll-arrow {
+    animation: none;
+  }
 }
 
 .landing-text-section__copy,
