@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.4] - 2026-11-12
+
+### Updated
+  Design Page
+    - Fixed hero video showing only the first frame when opening a design page through Barba, it now plays without a refresh.
+
 ## [1.2.3] - 2026-11-06
 
 ### Updated
