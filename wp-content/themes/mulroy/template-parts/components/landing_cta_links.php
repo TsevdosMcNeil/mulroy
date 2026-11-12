@@ -4,6 +4,8 @@
  *
  * Large right-column links separated by lines
  * (e.g. "Discuss Your Project", "View Residential Projects").
+ * Hover: the row fills with light grey (odd rows) or blue (even rows)
+ * and the arrow fades in, as in the Figma prototype.
  */
 $links = get_sub_field('links');
 
@@ -27,18 +29,11 @@ if (!$links) {
             <a
               href="<?php echo esc_url($link['url']); ?>"
               target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
-              class="landing-cta-links__link group flex items-center justify-between py-4 lg:py-[1.6vw]">
+              class="landing-cta-links__link flex items-center justify-between gap-4 py-4 px-3 lg:py-[1.6vw] lg:px-[0.94vw]">
               <span class="fs-2xl letter__spacing__custom__-2px"><?php echo esc_html($link['title']); ?></span>
-              <?php
-              get_template_part(
-                'template-parts/components/icons/arrow',
-                null,
-                [
-                  'container_class' => 'landing-cta-links__arrow inline-flex',
-                  'arrow_class'     => 'site__arrow',
-                ]
-              );
-              ?>
+              <svg class="landing-cta-links__arrow" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 16H34M19 1L34 16L19 31" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+              </svg>
             </a>
           </li>
         <?php endforeach; ?>

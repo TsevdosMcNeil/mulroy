@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.3] - 2026-11-12
+
+### Updated
+  Landing CTA Links (Contact & Project Enquiry)
+    - New hover: the row fills with light grey (1st link) or blue (2nd link) and a thin arrow fades in, as in the Figma prototype.
+    - Arrow is larger (1.75vw) and always visible on touch screens.
+    - Text no longer turns grey on hover.
+
 ## [1.2.2] - 2026-11-12
 
 ### Updated

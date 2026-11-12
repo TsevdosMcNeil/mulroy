@@ -3172,25 +3172,49 @@ p a {
   line-height: 1.1;
 }
 
-.landing-info-table__inner.is-link,
-.landing-cta-links__link {
+.landing-info-table__inner.is-link {
   transition: opacity ease 0.2s;
 }
 
-.landing-info-table__inner.is-link:hover,
-.landing-cta-links__link:hover {
+.landing-info-table__inner.is-link:hover {
   opacity: 0.6;
 }
 
-.landing-cta-links__arrow {
-  opacity: 0;
-  transform: translateX(-0.5rem);
-  transition: all ease 0.2s;
+/* CTA rows: background fill + arrow on hover (grey, then blue) */
+.landing-cta-links__link {
+  transition: background-color ease 0.3s;
 }
 
-.landing-cta-links__link:hover .landing-cta-links__arrow {
+.landing-cta-links li:nth-child(odd) .landing-cta-links__link:hover,
+.landing-cta-links li:nth-child(odd) .landing-cta-links__link:focus-visible {
+  background-color: var(--color-light);
+}
+
+.landing-cta-links li:nth-child(even) .landing-cta-links__link:hover,
+.landing-cta-links li:nth-child(even) .landing-cta-links__link:focus-visible {
+  background-color: var(--color-blue);
+}
+
+.landing-cta-links__arrow {
+  flex-shrink: 0;
+  width: 1.75vw;
+  min-width: 1.5rem;
+  height: auto;
+  color: var(--color-black);
+  opacity: 0;
+  transition: opacity ease 0.3s;
+}
+
+.landing-cta-links__link:hover .landing-cta-links__arrow,
+.landing-cta-links__link:focus-visible .landing-cta-links__arrow {
   opacity: 1;
-  transform: translateX(0);
+}
+
+/* Touch screens have no hover: keep the arrow visible */
+@media (hover: none) {
+  .landing-cta-links__arrow {
+    opacity: 1;
+  }
 }
 
 .faq-section-global .faq__card {
