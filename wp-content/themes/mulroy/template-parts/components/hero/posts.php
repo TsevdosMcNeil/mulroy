@@ -17,7 +17,10 @@ $months = str_split($month_number);
         'image' => $hero_image,
       ]
     );
-  endif; ?>
+  else : ?>
+  <!-- No hero or featured image: same orange background as the News page hero -->
+  <div class="hero-background bg-orange"></div>
+<?php endif; ?>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="content-sect">

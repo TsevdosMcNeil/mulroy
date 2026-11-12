@@ -48,11 +48,8 @@ $select_home_page_news = get_sub_field('select_home_page_news');
 
             $image_url = get_the_post_thumbnail_url($post->ID, 'full');
 
-            // Create anchor ID using sanitized title
-            $anchor_id = sanitize_title(get_the_title($post->ID));
-
-            // Link to News Page + anchor
-            $permalink = site_url('/news/#' . $anchor_id);
+            // Link to the news item's own page
+            $permalink = get_permalink($post->ID);
           ?>
             <li class="news-post__items">
               <a

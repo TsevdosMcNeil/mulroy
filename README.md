@@ -1,7 +1,7 @@
 # Wordpress Template & Plugins for Mulroy
 Infrastructure as code (Docker & Wordpress) project for Mulroy
 
-[![version](https://img.shields.io/badge/version-1.2.4-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-1.2.5-green.svg)](https://semver.org)
 
 
 ## Staging Server
@@ -14,11 +14,17 @@ https://staging.mulroyarchitects.com/
 https://mulroyarchitects.com/
 
 
+## Structure
+
+- [Category landing Pages](docs/design-category-landing-pages.md)
+
+- ["News" pages](docs/news-item-pages.md)
+
 ## Installation
 
 ### Docker Installation
 
-[DOCKER.md](https://github.com/TsevdosMcNeil/mulroy/blob/main/DOCKER.md)
+[DOCKER.md](docs/DOCKER.md)
 
 
 ## Deployment

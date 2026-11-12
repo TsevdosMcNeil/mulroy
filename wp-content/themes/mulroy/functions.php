@@ -375,3 +375,6 @@ require_once get_template_directory() . '/inc/taxonomies.php';
 
 // Starter content for the category landing pages (admin button + WP-CLI).
 require_once get_template_directory() . '/inc/landing-seeder.php';
+
+// News: helpers for the news item pages (single.php) and the News page list.
+require_once get_template_directory() . '/inc/news.php';

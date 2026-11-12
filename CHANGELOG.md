@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.5] - 2026-11-12
+
+### Added
+  News item pages (single.php)
+    - Each news item now has its own page: hero (date letters, date and title over the image), then the editor text, then any Dynamic Blocks added in News > Edit.
+    - Hero image: taken from a "Hero section" block if there is one, otherwise the featured image (orange background if neither).
+    - Back arrow returns to where the visitor came from, or to the News page when opened from outside the site.
+  inc/news.php
+    - Helpers: mulroy_news_page_url(), mulroy_news_hero_image().
+
+### Updated
+  News page list (news-page.php + "load more")
+    - Title and image now link to the news item's page; the arrow next to the title shows on hover again.
+    - Both lists use one shared template: template-parts/news/list-item.php.
+  Home Page News Section
+    - Links go to the news item's page instead of /news/#anchor.
+  components.php
+    - New optional exclude_layouts arg (single.php skips 'hero_section', it prints its own hero).
+  Right Only Text Paragraph
+    - Can also take the text as an argument (used for the news editor text).
+
 ## [1.2.4] - 2026-11-12
 
 ### Updated
