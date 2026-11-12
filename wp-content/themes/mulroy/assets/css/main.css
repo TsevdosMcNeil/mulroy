@@ -835,6 +835,10 @@ nav.open {
   background-color: var(--color-blue);
 }
 
+.hover-grey:hover {
+  background-color: var(--color-light);
+}
+
 .page-bar a .content,
 .page-bar .large-title {
   font-size: var(--fs-3xl);

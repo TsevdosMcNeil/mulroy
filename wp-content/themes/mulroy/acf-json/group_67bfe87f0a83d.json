@@ -1713,6 +1713,61 @@
                             "append": ""
                         },
                         {
+                            "key": "field_6b3f1a2c7d401",
+                            "label": "Heading Link",
+                            "name": "heading_link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "Optional. When set, the heading becomes a link with an arrow and a hover colour.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 0
+                        },
+                        {
+                            "key": "field_6b3f1a2c7d402",
+                            "label": "Heading Hover Colour",
+                            "name": "heading_hover_colour",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Background colour of the heading bar on hover (only used when the heading has a link).",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6b3f1a2c7d401",
+                                        "operator": "!=empty"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "orange": "Orange",
+                                "blue": "Blue",
+                                "light-blue": "Light blue",
+                                "grey": "Grey"
+                            },
+                            "default_value": "orange",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
                             "key": "field_68e4ef6b0a003",
                             "label": "Description",
                             "name": "desc",
@@ -3026,5 +3081,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1794220209
+    "modified": 1794502313
 }

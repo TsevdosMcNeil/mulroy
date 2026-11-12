@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.6] - 2026-11-12
+
+### Updated
+  Home Page About Section
+    - New "Heading Link" field: when set, the heading becomes a link with the arrow on hover, like the News and Studio headings.
+    - New "Heading Hover Colour" field (Orange, Blue, Light blue, Grey; default Orange). Shown only when the heading has a link.
+    - The text now sits in the right half with the left half empty, as in the Home Page News Section. The image (if any) goes below the text in the same column.
+  main.css
+    - New hover-grey class (light grey, --color-light) for page-bar headings.
+
+
+---
 ## [1.2.5] - 2026-11-12
 
 ### Added
