@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.7] - 2026-11-24
+
+### Updated
+
+ - New custom plugin **Codigo Environment Colours** 
+   - Distinguishes WordPress staging and production environments with admin colours and toolbar labels
+
 ## [1.2.6] - 2026-11-12
 
 ### Updated

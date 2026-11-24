@@ -1,0 +1,30 @@
+/* Sunrise-inspired mustard gold palette. Registered through wp_admin_css_color. */
+#adminmenuback, #adminmenuwrap, #adminmenu { background: #947000; }
+#adminmenu .wp-submenu { background: #806000; }
+#adminmenu a { color: #ffffff; }
+#adminmenu div.wp-menu-image:before { color: #ffffff; }
+#adminmenu li.menu-top:hover, #adminmenu li.opensub > a.menu-top, #adminmenu li > a.menu-top:focus { background: #705300; color: #fff; }
+#adminmenu li:hover div.wp-menu-image:before, #adminmenu li.opensub div.wp-menu-image:before { color: #fff1c2; }
+#adminmenu .wp-submenu a:hover, #adminmenu .wp-submenu a:focus { color: #fff1c2; }
+#adminmenu li.current a.menu-top, #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, #adminmenu li.wp-has-current-submenu .wp-submenu .wp-submenu-head { background: #705300; color: #fff; }
+#adminmenu li.current div.wp-menu-image:before, #adminmenu li.wp-has-current-submenu div.wp-menu-image:before { color: #fff; }
+#adminmenu .wp-submenu li.current a, #adminmenu .wp-submenu li.current a:hover { color: #fff1c2; }
+#wpadminbar { background: #947000; }
+#wpadminbar .menupop .ab-sub-wrapper, #wpadminbar .shortlink-input { background: #705300; }
+#wpadminbar .ab-top-menu > li.hover > .ab-item, #wpadminbar .ab-top-menu > li:hover > .ab-item, #wpadminbar .ab-top-menu > li > .ab-item:focus { background: #705300; color: #fff1c2; }
+#wpadminbar .ab-icon:before, #wpadminbar .ab-item:before { color: #ffffff; }
+.wp-core-ui .button-primary { background: #947000; border-color: #806000; color: #fff; }
+.wp-core-ui .button-primary:hover, .wp-core-ui .button-primary:focus { background: #705300; border-color: #604700; color: #fff; }
+a { color: #886600; }
+a:hover, a:active, a:focus { color: #644900; }
+#adminmenu .awaiting-mod, #adminmenu .update-plugins { background: #d5a927; color: #211b0a; }
+#collapse-button { color: #ffffff; }
+
+/* Keep secondary navigation and toolbar labels legible. */
+#adminmenu .wp-submenu a { color: #fff1c2; }
+#adminmenu .wp-submenu li.current a, #adminmenu .wp-submenu a:hover, #adminmenu .wp-submenu a:focus { color: #fff; }
+#wpadminbar .ab-item, #wpadminbar a.ab-item, #wpadminbar .ab-label { color: #fff; }
+#wpadminbar .menupop .ab-sub-wrapper { background: #806000; }
+#wpadminbar .ab-submenu .ab-item { color: #fff1c2; }
+#collapse-button:hover, #collapse-button:focus { color: #fff; }
+#wpadminbar #wp-admin-bar-codigo-environment > .ab-item { background: #705300 !important; color: #fff !important; }

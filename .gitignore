@@ -168,6 +168,7 @@ wp-content/themes/*
 # Wordpress: track these mu-plugins, plugins, and themes
 
 !wp-content/plugins/fento-wordpress-configuration
+!wp-content/plugins/codigo-environment-colours
 
 !wp-content/themes/mulroy/
 
