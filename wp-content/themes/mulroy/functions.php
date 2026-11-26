@@ -297,6 +297,35 @@ add_filter('acf/load_field/name=atrium_order', function ($field) {
     return $field;
 });
 
+// Design Archive > Design List > Year: years from current year down to 2000.
+add_filter('acf/load_field/key=field_6901f788a157e', function ($field) {
+    // Keep the ACF field group editor (and therefore acf-json) free of generated choices.
+    if (is_admin() && function_exists('get_current_screen')) {
+        $screen = get_current_screen();
+        if ($screen && $screen->post_type === 'acf-field-group') {
+            return $field;
+        }
+    }
+
+    $field['choices'] = [];
+
+    for ($year = (int) wp_date('Y'); $year >= 2000; $year--) {
+        $field['choices'][(string) $year] = (string) $year;
+    }
+
+    return $field;
+});
+
+// Keep any legacy saved Year value outside the generated range selectable, so saving doesn't wipe it.
+add_filter('acf/prepare_field/key=field_6901f788a157e', function ($field) {
+    $value = isset($field['value']) && is_scalar($field['value']) ? trim((string) $field['value']) : '';
+
+    if ($value !== '' && !isset($field['choices'][$value])) {
+        $field['choices'][$value] = $value;
+    }
+
+    return $field;
+});
 
 
 
@@ -308,6 +337,33 @@ add_filter('acf/load_field/name=atrium_order', function ($field) {
 
 
 
+
+
+/**
+ * Atrium story number: chronological position among ALL published Atrium posts
+ * (oldest = 01, newest = highest), two-digit padded. Returns null if the post isn't published.
+ */
+function mulroy_get_atrium_number($post_id)
+{
+    static $numbers = null;
+
+    if ($numbers === null) {
+        $ids = get_posts([
+            'post_type'      => 'atriums',
+            'posts_per_page' => -1,
+            'post_status'    => 'publish',
+            'orderby'        => ['date' => 'ASC', 'ID' => 'ASC'],
+            'fields'         => 'ids',
+        ]);
+
+        $numbers = [];
+        foreach ($ids as $index => $id) {
+            $numbers[(int) $id] = str_pad($index + 1, 2, '0', STR_PAD_LEFT);
+        }
+    }
+
+    return $numbers[(int) $post_id] ?? null;
+}
 
 // 1️⃣ Add Atrium Order column and move it second-last
 add_filter('manage_atriums_posts_columns', function ($columns) {

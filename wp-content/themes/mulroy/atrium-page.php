@@ -146,7 +146,6 @@ $post = get_post($post_id);
             $atriums_query = new WP_Query($args);
 
             if ($atriums_query->have_posts()) :
-              $i = 1;
               while ($atriums_query->have_posts()) : $atriums_query->the_post();
                 $featured_image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                 $published_date = get_the_date('d-m-Y');
@@ -156,7 +155,7 @@ $post = get_post($post_id);
                     href="<?php echo get_permalink(); ?>"
                     class="home-news-post-item"
                     data-image="<?php echo $featured_image_url; ?>">
-                    <span class="atrium-date letter__spacing__custom__-2px"><?php echo str_pad($i, 2, "0", STR_PAD_LEFT); ?></span>
+                    <span class="atrium-date letter__spacing__custom__-2px"><?php echo esc_html(mulroy_get_atrium_number(get_the_ID())); ?></span>
                     <span class="news-post-title letter__spacing__custom__-2px">
                       <?php echo get_the_title(); ?>
                       <span>
@@ -169,7 +168,6 @@ $post = get_post($post_id);
                   </a>
                 </li>
             <?php
-                $i++;
               endwhile;
             endif;
             ?>

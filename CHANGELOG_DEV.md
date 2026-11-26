@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.6] - 2026-11-26
+
+### Updated
+  Design Archive Page
+    - Typology column and field restored (text field labelled TYPOLOGY, existing values kept).
+    - Added separate Sector column after Typology, showing terms from the new Sector field.
+    - Added Sector field (design_sector taxonomy, multi select) to Design List, does not create or assign terms.
+    - Typology and Sector are independent, no values migrated between them until the client confirms the Sector values.
+    - Rows without a Sector show an empty cell, multiple sectors are comma separated.
+    - ACF field group updated in acf-json (same field keys, existing data kept), needs Sync in ACF > Field Groups.
+
+## [1.2.5] - 2026-11-26
+
+### Updated
+  Design Archive Page
+    - Typology column renamed to Sector, field changed to a select (Residential, Commercial, Educational).
+    - URL field renamed to Project Page, select an existing project page and its title and link are used automatically.
+    - Project Page can now be cleared, Project Name is used for projects without a page and shows as plain text (no link).
+    - Project Name still overrides the page title when filled, so existing names stay the same.
+    - Rows linked to an unpublished or deleted project page now show as plain text instead of a broken link.
+    - Year field changed from text to a select, years 2000 to current year (latest first) generated automatically in functions.php.
+    - Existing saved years kept, any older year outside the range stays selectable.
+    - ACF field group updated in acf-json (same field keys, existing data kept), needs Sync in ACF > Field Groups.
+  Atrium Page
+    - Story numbers now count from the oldest published story (oldest = 01, latest = highest number).
+    - Sorting unchanged, latest story still shows at the top.
+    - Numbers are based on all published stories, drafts and scheduled posts are not counted.
+    - Added mulroy_get_atrium_number() in functions.php so all pages use the same numbering.
+  Individual Atrium Page
+    - Hero "ATRIUM 0X" number now matches the number on the Atrium page.
+  Atrium Section HomePage
+    - Story number now matches the Atrium page.
+
 ## [1.2.4] - 2026-11-12
 
 ### Updated

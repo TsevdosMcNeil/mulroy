@@ -46,12 +46,42 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
+                    "key": "field_6901f798a1580",
+                    "label": "Project Page",
+                    "name": "url",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "Select an existing project page. Its title and link are used automatically. Leave empty for projects without a page.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "designs"
+                    ],
+                    "post_status": [
+                        "publish"
+                    ],
+                    "taxonomy": "",
+                    "return_format": "id",
+                    "multiple": 0,
+                    "allow_null": 1,
+                    "allow_in_bindings": 0,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "parent_repeater": "field_6901f6ef41464"
+                },
+                {
                     "key": "field_6901f780a157d",
                     "label": "Project Name",
                     "name": "project_name",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "Projects without a page: enter the name here (shown as plain text, not linked). With a Project Page selected this is optional and overrides the page title.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -72,8 +102,8 @@
                     "label": "Year",
                     "name": "year",
                     "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
+                    "type": "select",
+                    "instructions": "Years from 2000 to the current year are generated automatically.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -81,12 +111,17 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "maxlength": "",
                     "allow_in_bindings": 0,
+                    "choices": [],
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 1,
+                    "ui": 0,
+                    "ajax": 0,
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
+                    "create_options": 0,
+                    "save_options": 0,
                     "parent_repeater": "field_6901f6ef41464"
                 },
                 {
@@ -109,6 +144,33 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
+                    "parent_repeater": "field_6901f6ef41464"
+                },
+                {
+                    "key": "field_6904bf3584d51",
+                    "label": "SECTOR",
+                    "name": "sector",
+                    "aria-label": "",
+                    "type": "taxonomy",
+                    "instructions": "Select one or more sectors from Designs > Sectors.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "design_sector",
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "field_type": "multi_select",
+                    "allow_null": 1,
+                    "allow_in_bindings": 0,
+                    "bidirectional": 0,
+                    "multiple": 0,
+                    "bidirectional_target": [],
                     "parent_repeater": "field_6901f6ef41464"
                 },
                 {
@@ -159,36 +221,6 @@
                     "allow_in_bindings": 0,
                     "preview_size": "medium",
                     "parent_repeater": "field_6901f6ef41464"
-                },
-                {
-                    "key": "field_6901f798a1580",
-                    "label": "URL",
-                    "name": "url",
-                    "aria-label": "",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "designs"
-                    ],
-                    "post_status": [
-                        "publish"
-                    ],
-                    "taxonomy": "",
-                    "return_format": "object",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "allow_in_bindings": 0,
-                    "bidirectional": 0,
-                    "ui": 1,
-                    "bidirectional_target": [],
-                    "parent_repeater": "field_6901f6ef41464"
                 }
             ]
         }
@@ -214,5 +246,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1791299835
+    "modified": 1795712288
 }

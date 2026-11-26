@@ -68,6 +68,14 @@ $attachment_id = attachment_url_to_postid(
                 </svg>
               </div>
             </th>
+            <th class="text-start cursor-pointer topology__column" class="table__archive__arrow" data-type="text">
+              <div class="inner__th secondary-titles">
+                SECTOR
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.8715 6.28544L0 6.28544M11.8715 6.28544L6.0268 12.0943M11.8715 6.28544L6.0268 0.476562" stroke="black" stroke-width="1.34354" stroke-miterlimit="10" />
+                </svg>
+              </div>
+            </th>
             <th class="text-start cursor-pointer location__column" class="table__archive__arrow " data-type="text">
               <div class="inner__th secondary-titles">
                 LOCATION
@@ -84,17 +92,36 @@ $attachment_id = attachment_url_to_postid(
           ?>
           <?php if ($project_list):
             foreach ($project_list as $list):
-              $project_name = $list['project_name'];
-              $year = $list['year'];
-              $hover_image = $list['hover_image'];
-              $url = $list['url'];
-              $typology = $list['typology'];
-              $location = $list['location'];
+              $project_name = trim((string) ($list['project_name'] ?? ''));
+              $year = $list['year'] ?? '';
+              $hover_image = $list['hover_image'] ?? '';
+              $typology = $list['typology'] ?? '';
+              $location = $list['location'] ?? '';
+
+              // Project Page (meta name "url"): ID, or WP_Post for legacy return format.
+              $project_page = $list['url'] ?? '';
+              $project_page_id = $project_page instanceof WP_Post ? $project_page->ID : absint($project_page);
+              $url = ($project_page_id && get_post_status($project_page_id) === 'publish') ? get_permalink($project_page_id) : '';
+
+              // Manual name overrides the page title; otherwise use the selected page's title.
+              if ($project_name === '' && $url) {
+                $project_name = get_the_title($project_page_id);
+              }
+
+              // Sector: design_sector terms selected in the row's Sector field (independent of the Typology field).
+              $sector_names = [];
+              foreach ((array) ($list['sector'] ?? []) as $sector_term) {
+                $sector_term = $sector_term instanceof WP_Term ? $sector_term : get_term(absint($sector_term), 'design_sector');
+                if ($sector_term instanceof WP_Term) {
+                  $sector_names[] = $sector_term->name;
+                }
+              }
+              $sector = implode(', ', $sector_names);
           ?>
               <?php if ($url): ?>
                 <tr class="data-row" data-image="<?php echo esc_url($hover_image); ?>">
                   <td>
-                    <a href="<?php echo get_permalink($url); ?>" class="secondary-titles">
+                    <a href="<?php echo esc_url($url); ?>" class="secondary-titles">
                       <?php echo esc_html($project_name); ?>
                       <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.8715 6.28544L0 6.28544M11.8715 6.28544L6.0268 12.0943M11.8715 6.28544L6.0268 0.476562" stroke="black" stroke-width="1.34354" stroke-miterlimit="10" />
@@ -103,6 +130,7 @@ $attachment_id = attachment_url_to_postid(
                   </td>
                   <td class="secondary-titles"><?php echo esc_html($year); ?></td>
                   <td class="typorolog__td secondary-titles"><?php echo esc_html($typology); ?></td>
+                  <td class="typorolog__td secondary-titles"><?php echo esc_html($sector); ?></td>
                   <td class="locatoin__td secondary-titles"><?php echo esc_html($location); ?></td>
                 </tr>
               <?php else: ?>
@@ -114,6 +142,7 @@ $attachment_id = attachment_url_to_postid(
                   </td>
                   <td class="secondary-titles"><?php echo esc_html($year); ?></td>
                   <td class="typorolog__td secondary-titles"><?php echo esc_html($typology); ?></td>
+                  <td class="typorolog__td secondary-titles"><?php echo esc_html($sector); ?></td>
                   <td class="locatoin__td secondary-titles"><?php echo esc_html($location); ?></td>
                 </tr>
               <?php endif; ?>
