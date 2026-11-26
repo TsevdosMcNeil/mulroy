@@ -3,22 +3,10 @@ $hero_image  = $args['hero_image'] ?? null;
 $heading     = $args['heading'] ??  null;
 
 
-// Get all published Atrium posts ordered by newest first
-$all_atriums = get_posts([
-  'post_type'      => 'atriums',
-  'posts_per_page' => -1,
-  'post_status'    => 'publish',
-  'orderby'        => 'date',
-  'order'          => 'DESC',
-  'fields'         => 'ids',
-]);
+// Chronological story number (oldest = 01), same as the Atrium listing page
+$atrium_number = mulroy_get_atrium_number(get_the_ID());
 
-// Find the position of the current Atrium post
-$atrium_number = array_search(get_the_ID(), $all_atriums);
-
-if ($atrium_number !== false) {
-  $atrium_number = str_pad($atrium_number + 1, 2, '0', STR_PAD_LEFT);
-} else {
+if (!$atrium_number) {
   $atrium_number = '01';
 }
 ?>

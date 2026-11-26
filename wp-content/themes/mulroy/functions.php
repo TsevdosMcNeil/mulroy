@@ -339,6 +339,32 @@ add_filter('acf/prepare_field/key=field_6901f788a157e', function ($field) {
 
 
 
+/**
+ * Atrium story number: chronological position among ALL published Atrium posts
+ * (oldest = 01, newest = highest), two-digit padded. Returns null if the post isn't published.
+ */
+function mulroy_get_atrium_number($post_id)
+{
+    static $numbers = null;
+
+    if ($numbers === null) {
+        $ids = get_posts([
+            'post_type'      => 'atriums',
+            'posts_per_page' => -1,
+            'post_status'    => 'publish',
+            'orderby'        => ['date' => 'ASC', 'ID' => 'ASC'],
+            'fields'         => 'ids',
+        ]);
+
+        $numbers = [];
+        foreach ($ids as $index => $id) {
+            $numbers[(int) $id] = str_pad($index + 1, 2, '0', STR_PAD_LEFT);
+        }
+    }
+
+    return $numbers[(int) $post_id] ?? null;
+}
+
 // 1️⃣ Add Atrium Order column and move it second-last
 add_filter('manage_atriums_posts_columns', function ($columns) {
 
