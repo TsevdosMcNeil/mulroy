@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.6] - 2026-11-26
+
+### Updated
+  Design Archive Page
+    - Typology column and field restored (text field labelled TYPOLOGY, existing values kept).
+    - Added separate Sector column after Typology, showing terms from the new Sector field.
+    - Added Sector field (design_sector taxonomy, multi select) to Design List, does not create or assign terms.
+    - Typology and Sector are independent, no values migrated between them until the client confirms the Sector values.
+    - Rows without a Sector show an empty cell, multiple sectors are comma separated.
+    - ACF field group updated in acf-json (same field keys, existing data kept), needs Sync in ACF > Field Groups.
+
 ## [1.2.5] - 2026-11-26
 
 ### Updated

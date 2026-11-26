@@ -62,6 +62,14 @@ $attachment_id = attachment_url_to_postid(
             </th>
             <th class="text-start cursor-pointer topology__column" class="table__archive__arrow" data-type="text">
               <div class="inner__th secondary-titles">
+                TYPOLOGY
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.8715 6.28544L0 6.28544M11.8715 6.28544L6.0268 12.0943M11.8715 6.28544L6.0268 0.476562" stroke="black" stroke-width="1.34354" stroke-miterlimit="10" />
+                </svg>
+              </div>
+            </th>
+            <th class="text-start cursor-pointer topology__column" class="table__archive__arrow" data-type="text">
+              <div class="inner__th secondary-titles">
                 SECTOR
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M11.8715 6.28544L0 6.28544M11.8715 6.28544L6.0268 12.0943M11.8715 6.28544L6.0268 0.476562" stroke="black" stroke-width="1.34354" stroke-miterlimit="10" />
@@ -99,6 +107,16 @@ $attachment_id = attachment_url_to_postid(
               if ($project_name === '' && $url) {
                 $project_name = get_the_title($project_page_id);
               }
+
+              // Sector: design_sector terms selected in the row's Sector field (independent of the Typology field).
+              $sector_names = [];
+              foreach ((array) ($list['sector'] ?? []) as $sector_term) {
+                $sector_term = $sector_term instanceof WP_Term ? $sector_term : get_term(absint($sector_term), 'design_sector');
+                if ($sector_term instanceof WP_Term) {
+                  $sector_names[] = $sector_term->name;
+                }
+              }
+              $sector = implode(', ', $sector_names);
           ?>
               <?php if ($url): ?>
                 <tr class="data-row" data-image="<?php echo esc_url($hover_image); ?>">
@@ -112,6 +130,7 @@ $attachment_id = attachment_url_to_postid(
                   </td>
                   <td class="secondary-titles"><?php echo esc_html($year); ?></td>
                   <td class="typorolog__td secondary-titles"><?php echo esc_html($typology); ?></td>
+                  <td class="typorolog__td secondary-titles"><?php echo esc_html($sector); ?></td>
                   <td class="locatoin__td secondary-titles"><?php echo esc_html($location); ?></td>
                 </tr>
               <?php else: ?>
@@ -123,6 +142,7 @@ $attachment_id = attachment_url_to_postid(
                   </td>
                   <td class="secondary-titles"><?php echo esc_html($year); ?></td>
                   <td class="typorolog__td secondary-titles"><?php echo esc_html($typology); ?></td>
+                  <td class="typorolog__td secondary-titles"><?php echo esc_html($sector); ?></td>
                   <td class="locatoin__td secondary-titles"><?php echo esc_html($location); ?></td>
                 </tr>
               <?php endif; ?>

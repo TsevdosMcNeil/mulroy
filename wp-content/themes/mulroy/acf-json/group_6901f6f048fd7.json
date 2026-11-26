@@ -126,10 +126,10 @@
                 },
                 {
                     "key": "field_6904bf3584d4f",
-                    "label": "SECTOR",
+                    "label": "TYPOLOGY",
                     "name": "typology",
                     "aria-label": "",
-                    "type": "select",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -138,21 +138,39 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "Residential": "Residential",
-                        "Commercial": "Commercial",
-                        "Educational": "Educational"
-                    },
-                    "default_value": "Residential",
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
+                    "default_value": "",
+                    "maxlength": "",
                     "allow_in_bindings": 0,
-                    "ui": 0,
-                    "ajax": 0,
                     "placeholder": "",
-                    "create_options": 0,
-                    "save_options": 0,
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6901f6ef41464"
+                },
+                {
+                    "key": "field_6904bf3584d51",
+                    "label": "SECTOR",
+                    "name": "sector",
+                    "aria-label": "",
+                    "type": "taxonomy",
+                    "instructions": "Select one or more sectors from Designs > Sectors.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "design_sector",
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "return_format": "id",
+                    "field_type": "multi_select",
+                    "allow_null": 1,
+                    "allow_in_bindings": 0,
+                    "bidirectional": 0,
+                    "multiple": 0,
+                    "bidirectional_target": [],
                     "parent_repeater": "field_6901f6ef41464"
                 },
                 {
@@ -228,5 +246,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1795709997
+    "modified": 1795712288
 }
