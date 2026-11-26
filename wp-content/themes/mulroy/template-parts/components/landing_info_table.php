@@ -5,6 +5,7 @@
  * Right-column list of label / description rows separated by lines
  * (e.g. "An Integrated Architectural Service", "Areas of Specialism").
  * A row with a link becomes clickable (e.g. link to another category page).
+ * A link to an unpublished category landing page is dropped (inc/landing-status.php).
  */
 $rows = get_sub_field('rows');
 
@@ -22,6 +23,10 @@ if (!$rows) {
           $description = $row['description'] ?? '';
           $link        = $row['link'] ?? null;
           $url         = is_array($link) ? ($link['url'] ?? '') : '';
+
+          if (function_exists('mulroy_landing_url_is_hidden') && mulroy_landing_url_is_hidden($url)) {
+            $url = '';
+          }
           $target      = is_array($link) && !empty($link['target']) ? $link['target'] : '_self';
           $tag         = $url ? 'a' : 'div';
 

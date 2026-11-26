@@ -33,6 +33,24 @@ Changing the base doesn’t touch any content. Each category keeps its blocks, i
 
 Each category’s own slug can also be changed separately in Designs → Categories. That needs a redirect for the same reason.
 
+## Publish / unpublish a landing page (inc/landing-status.php)
+
+Only the landing page is affected. The category keeps working: Designs can still be assigned to it.
+
+- **Designs > Categories** has a **Landing page** column (Published / Unpublished). Hover a row for the **Publish** / **Unpublish** link. On an unpublished row, **View** becomes **Preview**.
+- The add and edit forms have a **Landing page** field. **New categories start Unpublished**, so an empty page doesn't go live.
+- An unpublished category's edit screen shows a notice with **Publish now** and **Preview** buttons.
+
+An unpublished landing page:
+- shows the 404 page to visitors (HTTP 404), like an unpublished post
+- can still be seen by logged-in users who can manage categories, with an "Unpublished landing page" notice in the admin bar. That preview is sent as noindex and isn't cached
+- is left out of the XML sitemap (Yoast, and core sitemaps as a fallback). The Yoast sitemap cache is cleared on every change
+- is removed from menus, and Landing Info Table rows that link to it are printed without the link
+
+Stored as term meta `mulroy_landing_status` = `draft`. Published means no meta, so existing categories stay published. Helpers: `mulroy_landing_is_published()`, `mulroy_landing_set_published()`, `mulroy_landing_url_is_hidden()`.
+
+Page caching: if a server or Cloudflare page cache is in front of staging/production, purge `/architecture/<slug>/` after unpublishing, or visitors may keep getting the cached page until it expires.
+
 ## How the Figma sections map to blocks
 | Figma section | Block |
 |---|---|

@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.3.1] - 2026-11-26
+
+### Added
+  Design Category landing pages
+    - Publish / Unpublish per category: "Landing page" column with row links in Designs > Categories, field on the add and edit forms.
+    - Unpublished landing pages return a 404 to visitors, logged-in editors can still preview them (admin bar notice, noindex).
+    - Unpublished landing pages are removed from the Yoast and core XML sitemaps, from menus, and from Landing Info Table links.
+    - The category itself keeps working, Designs can still be assigned to it.
+    - New categories start Unpublished, existing categories stay Published.
+    - docs/design-category-landing-pages.md updated.
+
 ## [1.3.0] - 2026-11-26
 
 ### Added

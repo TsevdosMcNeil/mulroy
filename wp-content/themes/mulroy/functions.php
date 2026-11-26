@@ -429,6 +429,9 @@ add_action('pre_get_posts', function ($query) {
 // Designs taxonomies (Categories with landing pages, Sectors).
 require_once get_template_directory() . '/inc/taxonomies.php';
 
+// Publish / unpublish the category landing pages.
+require_once get_template_directory() . '/inc/landing-status.php';
+
 // Starter content for the category landing pages (admin button + WP-CLI).
 require_once get_template_directory() . '/inc/landing-seeder.php';
 
