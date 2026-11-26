@@ -48,12 +48,13 @@ $select_home_page_news = get_sub_field('select_home_page_news');
 
             $image_url = get_the_post_thumbnail_url($post->ID, 'full');
 
-            // Link to the news item's own page
-            $permalink = get_permalink($post->ID);
+            // Link to the news item's own page, or to the item on the News
+            // page when the single pages are off (Fento > Single post pages)
+            $permalink = mulroy_news_item_url($post->ID);
           ?>
             <li class="news-post__items">
               <a
-                href="<?php echo $permalink; ?>"
+                href="<?php echo esc_url($permalink); ?>"
                 data-image="<?php echo $image_url; ?>"
                 class="home-news-post-item">
                 <span class="home-news-date letter__spacing__custom__-2px"><?php echo get_the_date('M y'); ?></span>

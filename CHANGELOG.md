@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.3.0] - 2026-11-26
+
+### Added
+  Fento WordPress Configuration plugin (1.3.0)
+    - New setting in Fento > Single post pages to turn single post pages off and back on.
+    - When off: post URLs redirect (301) to the posts list, category/tag/author/date archives redirect too.
+    - When off: posts, categories, tags and authors are removed from the Yoast and core XML sitemaps, Yoast sitemap cache is cleared on save.
+    - Post previews still work.
+
+### Updated
+  News
+    - News page list prints title and image without links when the single pages are off.
+    - Home Page News Section links to the item on the News page (/news/#slug) when the single pages are off.
+    - Old news URLs redirect to the item's anchor on the News page.
+    - docs/news-item-pages.md updated.
+
 ## [1.2.9] - 2026-11-26
 
 ### Updated
