@@ -14,11 +14,11 @@ https://staging.mulroyarchitects.com/
 https://mulroyarchitects.com/
 
 
-## Structure
+## Documentation
 
-- [Category landing Pages](docs/design-category-landing-pages.md)
-
+- [Category landing pages](docs/design-category-landing-pages.md)
 - ["News" pages](docs/news-item-pages.md)
+- [Docker installation](docs/DOCKER.md)
 
 ## Installation
 
@@ -35,13 +35,13 @@ Change permissions:
 chmod +x deploy.sh
 ```
 
-Deploy;
+Deploy:
 
 ```bash
 cd ~/Dockers/mulroy
 ./deploy.sh
 ```
-you’ll get:
+You'll get:
 
 ```bash
 Select deployment environment:
@@ -64,12 +64,51 @@ Choosing 2 deploys to:
 /public_html/wp-content/themes/mulroy
 ```
 
-and runs your existing production backup + cleanup first. The script also still asks for confirmation after showing the dry-run, but now identifies the selected environment clearly.
+and runs the production backup and cleanup first. The script asks for confirmation after showing the dry run, and shows which environment was selected.
+
+> **Note:** `deploy.sh` only deploys the theme. Changes to the custom plugins in `wp-content/plugins/` (Fento WordPress Configuration, Environment colours) have to be uploaded separately.
+
+---
+## Landing Pages
+
+Custom landing pages for the custom taxonomy "Design category", e.g. `/architecture/basements/`.
+
+- Each category's landing page can be published or unpublished from **Designs > Categories**. An unpublished page shows a 404 to visitors and is removed from the sitemap. Editors can still preview it while logged in. The category itself keeps working.
+- [Design category landing pages](docs/design-category-landing-pages.md)
+
+---
+
+## Fento plugin
+
+`wp-content/plugins/fento-wordpress-configuration/`
+
+This plugin manages the access of the SEO Manager role and also some custom features related to SEO:
+
+- [News articles](docs/news-item-pages.md): the single post pages can be enabled/disabled in **Fento > Single post pages**. Also, the posts have been renamed "News".
+- Plugin details and changelog: [readme.txt](wp-content/plugins/fento-wordpress-configuration/readme.txt)
+
+---
+
+## Environment colours
+
+`wp-content/plugins/codigo-environment-colours/`
+
+This plugin manages the CMS colour set for staging and production.
+
+- [README](wp-content/plugins/codigo-environment-colours/README.md)
+
+---
 
 ## Required Plugins
 
 * [Advanced Custom Fields](https://www.advancedcustomfields.com/pro/)
+* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (XML sitemaps, SEO Manager role)
 * [All-in-One WP Migration and Backup](https://wordpress.org/plugins/all-in-one-wp-migration/)
+
+Optional, used by the Fento plugin's access rules:
+
+* [Site Kit by Google](https://wordpress.org/plugins/google-site-kit/)
+* [Media File Renamer](https://wordpress.org/plugins/media-file-renamer/)
 
 ## Acknowledgements
 
@@ -78,7 +117,7 @@ and runs your existing production backup + cleanup first. The script also still 
 
 ## Copyright and License
 
-Copyright 2025 Mulroy Wordpress Theme released under the [MIT](https://github.com/pablorica/sparemytime/blob/main/LICENSE) license.
+Copyright 2026 Mulroy Wordpress Theme released under the [MIT](LICENSE) license.
 
 ## Versioning
 
@@ -86,4 +125,4 @@ We use [SemVer](https://semver.org/) for versioning. For the versions available,
 
 ### Changelog
 
-[CHANGELOG.md](https://github.com/TsevdosMcNeil/mulroy/blob/main/CHANGELOG.md)
+[CHANGELOG.md](CHANGELOG.md)
