@@ -297,6 +297,36 @@ add_filter('acf/load_field/name=atrium_order', function ($field) {
     return $field;
 });
 
+// Design Archive > Design List > Year: years from current year down to 2000.
+add_filter('acf/load_field/key=field_6901f788a157e', function ($field) {
+    // Keep the ACF field group editor (and therefore acf-json) free of generated choices.
+    if (is_admin() && function_exists('get_current_screen')) {
+        $screen = get_current_screen();
+        if ($screen && $screen->post_type === 'acf-field-group') {
+            return $field;
+        }
+    }
+
+    $field['choices'] = [];
+
+    for ($year = (int) wp_date('Y'); $year >= 2000; $year--) {
+        $field['choices'][(string) $year] = (string) $year;
+    }
+
+    return $field;
+});
+
+// Keep any legacy saved Year value outside the generated range selectable, so saving doesn't wipe it.
+add_filter('acf/prepare_field/key=field_6901f788a157e', function ($field) {
+    $value = isset($field['value']) && is_scalar($field['value']) ? trim((string) $field['value']) : '';
+
+    if ($value !== '' && !isset($field['choices'][$value])) {
+        $field['choices'][$value] = $value;
+    }
+
+    return $field;
+});
+
 
 
 

@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ---
+## [1.2.5] - 2026-11-26
+
+### Updated
+  Design Archive Page
+    - Typology column renamed to Sector, field changed to a select (Residential, Commercial, Educational).
+    - URL field renamed to Project Page, select an existing project page and its title and link are used automatically.
+    - Project Page can now be cleared, Project Name is used for projects without a page and shows as plain text (no link).
+    - Project Name still overrides the page title when filled, so existing names stay the same.
+    - Rows linked to an unpublished or deleted project page now show as plain text instead of a broken link.
+    - Year field changed from text to a select, years 2000 to current year (latest first) generated automatically in functions.php.
+    - Existing saved years kept, any older year outside the range stays selectable.
+    - ACF field group updated in acf-json (same field keys, existing data kept), needs Sync in ACF > Field Groups.
+
 ## [1.2.4] - 2026-11-12
 
 ### Updated
