@@ -40,6 +40,11 @@ $attachment_id = attachment_url_to_postid(
       );
     }
     ?>
+    <?php
+    // Typology column toggle. Not saved yet (existing pages) = shown; only an explicit "off" hides it.
+    $show_typology = !metadata_exists('post', get_the_ID(), 'show_typology_column')
+      || (bool) get_field('show_typology_column');
+    ?>
     <div class="col-start-6 col-end-13 px-[2rem] lg:pr-10 table__desgin__archive">
       <table class="w-full archive-table" id="designTable">
         <thead>
@@ -60,6 +65,7 @@ $attachment_id = attachment_url_to_postid(
                 </svg>
               </div>
             </th>
+            <?php if ($show_typology): ?>
             <th class="text-start cursor-pointer topology__column" class="table__archive__arrow" data-type="text">
               <div class="inner__th secondary-titles">
                 TYPOLOGY
@@ -68,6 +74,7 @@ $attachment_id = attachment_url_to_postid(
                 </svg>
               </div>
             </th>
+            <?php endif; ?>
             <th class="text-start cursor-pointer topology__column" class="table__archive__arrow" data-type="text">
               <div class="inner__th secondary-titles">
                 SECTOR
@@ -92,25 +99,35 @@ $attachment_id = attachment_url_to_postid(
           ?>
           <?php if ($project_list):
             foreach ($project_list as $list):
-              $project_name = trim((string) ($list['project_name'] ?? ''));
               $year = $list['year'] ?? '';
               $hover_image = $list['hover_image'] ?? '';
               $typology = $list['typology'] ?? '';
               $location = $list['location'] ?? '';
 
               // Project Page (meta name "url"): ID, or WP_Post for legacy return format.
+              // Only a published Project page counts as linked (no links to drafts/private/deleted pages).
               $project_page = $list['url'] ?? '';
               $project_page_id = $project_page instanceof WP_Post ? $project_page->ID : absint($project_page);
-              $url = ($project_page_id && get_post_status($project_page_id) === 'publish') ? get_permalink($project_page_id) : '';
+              $is_linked = $project_page_id
+                && get_post_type($project_page_id) === 'designs'
+                && get_post_status($project_page_id) === 'publish';
+              $url = $is_linked ? get_permalink($project_page_id) : '';
 
-              // Manual name overrides the page title; otherwise use the selected page's title.
-              if ($project_name === '' && $url) {
+              if ($is_linked) {
+                // The selected Project page is the single source of truth: its title and its
+                // current design_sector terms. Saved manual Name/Sector values are ignored.
                 $project_name = get_the_title($project_page_id);
+                $sector_terms = get_the_terms($project_page_id, 'design_sector');
+                $sector_terms = is_array($sector_terms) ? $sector_terms : [];
+              } else {
+                // No Project page: manual name (plain text) and manually selected Sector terms.
+                $project_name = trim((string) ($list['project_name'] ?? ''));
+                $sector_terms = (array) ($list['sector'] ?? []);
               }
 
-              // Sector: design_sector terms selected in the row's Sector field (independent of the Typology field).
+              // Sector terms may be term IDs or WP_Term objects (depending on the return format).
               $sector_names = [];
-              foreach ((array) ($list['sector'] ?? []) as $sector_term) {
+              foreach ($sector_terms as $sector_term) {
                 $sector_term = $sector_term instanceof WP_Term ? $sector_term : get_term(absint($sector_term), 'design_sector');
                 if ($sector_term instanceof WP_Term) {
                   $sector_names[] = $sector_term->name;
@@ -129,7 +146,9 @@ $attachment_id = attachment_url_to_postid(
                     </a>
                   </td>
                   <td class="secondary-titles"><?php echo esc_html($year); ?></td>
-                  <td class="typorolog__td secondary-titles"><?php echo esc_html($typology); ?></td>
+                  <?php if ($show_typology): ?>
+                    <td class="typorolog__td secondary-titles"><?php echo esc_html($typology); ?></td>
+                  <?php endif; ?>
                   <td class="typorolog__td secondary-titles"><?php echo esc_html($sector); ?></td>
                   <td class="locatoin__td secondary-titles"><?php echo esc_html($location); ?></td>
                 </tr>
@@ -141,7 +160,9 @@ $attachment_id = attachment_url_to_postid(
                     </div>
                   </td>
                   <td class="secondary-titles"><?php echo esc_html($year); ?></td>
-                  <td class="typorolog__td secondary-titles"><?php echo esc_html($typology); ?></td>
+                  <?php if ($show_typology): ?>
+                    <td class="typorolog__td secondary-titles"><?php echo esc_html($typology); ?></td>
+                  <?php endif; ?>
                   <td class="typorolog__td secondary-titles"><?php echo esc_html($sector); ?></td>
                   <td class="locatoin__td secondary-titles"><?php echo esc_html($location); ?></td>
                 </tr>

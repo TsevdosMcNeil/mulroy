@@ -24,6 +24,27 @@
             "delay": 0
         },
         {
+            "key": "field_6b0990b9a1c3e",
+            "label": "Show Typology Column",
+            "name": "show_typology_column",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Controls the Typology column in both the CMS and on the website. When off, the Typology field is hidden in the Design List below and the Typology column is removed from the Project Archive table. Existing Typology values are kept and come back when this is turned on again.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6901f6ef41464",
             "label": "Design List",
             "name": "design_list",
@@ -51,7 +72,7 @@
                     "name": "url",
                     "aria-label": "",
                     "type": "post_object",
-                    "instructions": "Select an existing project page. Its title and link are used automatically. Leave empty for projects without a page.",
+                    "instructions": "Select an existing project page. Its title, link and Sectors are used automatically. Leave empty for projects without a page to enter the name and Sector manually.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -81,9 +102,16 @@
                     "name": "project_name",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "Projects without a page: enter the name here (shown as plain text, not linked). With a Project Page selected this is optional and overrides the page title.",
+                    "instructions": "Projects without a page: enter the name here (shown as plain text, not linked). Hidden when a Project Page is selected.",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6901f798a1580",
+                                "operator": "==empty"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -132,7 +160,15 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6b0990b9a1c3e",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -152,9 +188,16 @@
                     "name": "sector",
                     "aria-label": "",
                     "type": "taxonomy",
-                    "instructions": "Select one or more sectors from Designs > Sectors.",
+                    "instructions": "Projects without a page: select one or more sectors from Designs > Sectors. Hidden when a Project Page is selected (its own Sectors are used).",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6901f798a1580",
+                                "operator": "==empty"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -246,5 +289,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1795712288
+    "modified": 1795788985
 }
